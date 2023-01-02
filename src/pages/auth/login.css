@@ -1,0 +1,84 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+.login-body {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 156px 156px 0 0;
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.login-logo {
+  width: 140px;
+  height: 230px;
+}
+.login-title {
+  font-family: iranSansBold !important;
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #753418;
+  margin: 10px 0;
+}
+.login-subtitle {
+  color: #626262;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.login-policy {
+  margin: 10px 0 15px 0;
+}
+.login-timeout {
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #753418;
+}
+.login-resend-code {
+  color: #40b1d1;
+  margin: 10px 0;
+  font-size: 18px;
+}
+.login-resend-area {
+  margin-top: 30px;
+}
+.login-resend-area > span:nth-child(2) {
+  margin: 0 10px;
+  color: #9e9e9e;
+}
+.login-resend-area > span {
+  color: #4086ef;
+}
+
+@media only screen and (max-height: 650px) {
+  .login-logo {
+    width: 100px;
+    height: 180px;
+  }
+  .login-title {
+    font-size: 26px;
+  }
+  .login-subtitle {
+    font-size: 12px;
+  }
+  .login-resend-area > span {
+    font-size: 12px;
+  }
+  .login-policy span {
+    font-size: 10px !important;
+  }
+}

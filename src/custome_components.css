@@ -1,0 +1,49 @@
+/* ----------------------------------– input ------------------------------------- */
+.mv-input {
+  background: #f7f7f7 !important;
+  border: 1px solid #e1e1e1;
+  border-radius: 48px !important;
+  height: 45px;
+}
+.mv-input:focus {
+  border: 1px solid #40b1d1 !important;
+}
+.mv-input > input {
+  background-color: transparent !important;
+}
+/* ----------------------------------– button ------------------------------------- */
+.mv-button {
+  height: 45px;
+  min-height: 40px;
+  background-color: #40b1d1;
+  color: white;
+  border-radius: 30px;
+  width: 100%;
+}
+.mv-button:focus,
+.mv-button:active {
+  color: white !important;
+}
+.mv-button:not(:disabled):hover {
+  color: white !important;
+}
+/* --------------------------------– pin input ---------------------------------- */
+.react-code-input {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+.react-code-input > input {
+  background-color: #eaf7fa !important;
+  transition: border 0.1s;
+  color: #40b1d1;
+}
+.react-code-input > input:focus {
+  outline: none !important;
+  border: 1px solid #40b1d1 !important;
+}
+.react-code-input > input[value=""] {
+  background-color: #f7f7f7 !important;
+}

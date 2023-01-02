@@ -1,5 +1,43 @@
+@font-face {
+  font-family: iranSans;
+  src: url(/src/assets/fonts/IRANSansWeb.ttf);
+}
+@font-face {
+  font-family: iranSansBold;
+  src: url(/src/assets/fonts/IRANSansWeb_Bold.ttf);
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  direction: rtl;
+  font-family: iranSans !important;
+}
+.desktop-view {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+}
+.desktop-view > img {
+  margin-bottom: 30px;
+}
+.desktop-view > span {
+  font-family: iranSansBold !important;
+}
+.mobile-view {
+  display: none;
+  width: 100%;
+  height: 100vh;
+}
+@media only screen and (max-width: 800px) {
+  .desktop-view {
+    display: none;
+  }
+  .mobile-view {
+    display: block;
+  }
 }
