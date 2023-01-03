@@ -63,8 +63,60 @@
 .login-resend-area > span {
   color: #4086ef;
 }
+.login-upload {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.login-upload > div {
+  width: 130px;
+  height: 150px;
+  border: 1px solid #e1e1e1;
+  border-radius: 62px 62px 32px 0px;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-upload > button {
+  width: 130px;
+  margin-top: 15px;
+}
+.login-form-field {
+  width: 100%;
+  margin: 10px 0;
+}
+.login-form-field > span {
+  padding-right: 10px;
+  color: #3b3b3b;
+}
+.login-form-field > div,
+.login-form-field > input {
+  margin-top: 5px;
+}
+.login-form-datepicker {
+  width: 100% !important;
+}
+.DatePicker {
+  width: 100%;
+}
+.login-form-actions {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+.login-form-actions > button:nth-child(1) {
+  width: 75%;
+  margin-left: 10px;
+}
+.login-form-actions > button:nth-child(2) {
+  width: 25%;
+}
 
-@media only screen and (max-height: 650px) {
+@media only screen and (max-height: 700px) {
   .login-logo {
     width: 100px;
     height: 180px;

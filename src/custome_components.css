@@ -4,6 +4,7 @@
   border: 1px solid #e1e1e1;
   border-radius: 48px !important;
   height: 45px;
+  text-align: right;
 }
 .mv-input:focus {
   border: 1px solid #40b1d1 !important;
@@ -27,6 +28,25 @@
 .mv-button:not(:disabled):hover {
   color: white !important;
 }
+/* --------------------------------– btn outline ---------------------------------- */
+.mv-button-outline {
+  height: 45px;
+  min-height: 40px;
+  border: 1px solid #40b1d1;
+  color: #40b1d1;
+  border-radius: 30px;
+  width: 100%;
+}
+/* --------------------------------– btn outline white ---------------------------------- */
+.mv-button-outline-white {
+  height: 45px;
+  min-height: 40px;
+  border: 1px solid #cfcfcf;
+  color: #626262;
+  border-radius: 30px;
+  width: 100%;
+}
+
 /* --------------------------------– pin input ---------------------------------- */
 .react-code-input {
   width: 100% !important;
