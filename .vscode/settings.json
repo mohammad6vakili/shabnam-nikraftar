@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "add login pages",
-        "add complete profile"
+        "add complete profile",
+        "add basic layout"
     ]
 }

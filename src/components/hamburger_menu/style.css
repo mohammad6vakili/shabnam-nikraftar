@@ -1,0 +1,127 @@
+.hamburger-menu {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  background: #f7f7f7;
+  transition: right 0.3s;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none !important;
+  direction: rtl;
+  padding: 10px;
+}
+.hamburger-menu::-webkit-scrollbar {
+  display: none !important;
+}
+.hamburger-menu-open {
+  right: 0;
+}
+.hamburger-menu-header {
+  width: 100%;
+  background-color: #051115;
+  border-radius: 24px;
+  padding: 8px;
+}
+.hamburger-menu-header > button {
+  background: unset;
+  color: white;
+  border: none;
+  height: 40px;
+  margin: 5px;
+}
+.hamburger-menu-header > button > img {
+  margin-left: 5px;
+}
+.hamburger-menu-header > img {
+  width: 100%;
+}
+.hamburger-menu-menus {
+  width: 100%;
+  background-color: white;
+  border-radius: 24px;
+  margin-top: 8px;
+  padding: 16px 0;
+}
+.hamburger-menu-menus > div {
+  width: 100%;
+  padding: 16px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+  border-bottom: 1px solid #f7f7f7;
+}
+.hamburger-menu-menus > div:active {
+  background: rgba(241, 241, 241, 0.675);
+}
+.hamburger-menu-menus > div > div {
+  display: flex;
+  align-items: center;
+}
+.hamburger-menu-menus > div > div > img {
+  margin-left: 8px;
+}
+.hamburger-menu-buttons {
+  width: 100%;
+  background-color: white;
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 24px;
+}
+.hamburger-menu-buttons > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hamburger-menu-buttons > div > button {
+  width: 48%;
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 900;
+}
+.hamburger-menu-buttons > div > button:nth-child(1) {
+  border: 1px solid rgba(64, 177, 209, 1);
+  color: #40b1d1;
+  background: #eaf7fa !important;
+}
+.hamburger-menu-buttons > div > button:nth-child(1):not(:disabled):hover {
+  color: #40b1d1 !important;
+}
+.hamburger-menu-buttons > div > button:nth-child(2) {
+  border: 1px solid rgba(64, 209, 122, 1);
+  background: #eafff2 !important;
+  color: #40d17a;
+}
+.hamburger-menu-buttons > div > button:nth-child(2):not(:disabled):hover {
+  color: #40d17a !important;
+}
+.hamburger-menu-buttons-social {
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 56px;
+  height: 48px;
+  background-color: #f7f7f7;
+}
+.hamburger-menu-buttons-social a {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #e1e1e1;
+  transition: opacity 0.2s;
+}
+.hamburger-menu-buttons-social a:active {
+  opacity: 0.7;
+}
+.hamburger-menu-buttons-social a:nth-child(1) {
+  border: none !important;
+}

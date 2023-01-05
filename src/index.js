@@ -1,5 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "antd/dist/antd.css";
+import "./ant.css";
+import "swiper/css";
+import "swiper/css/autoplay";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
@@ -12,14 +16,12 @@ import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <ToastContainer position="top-left" autoClose={5000} />
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Provider store={store}>
+      <ToastContainer position="top-left" autoClose={5000} />
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
 
 // If you want your app to work offline and load faster, you can change

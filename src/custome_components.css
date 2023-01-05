@@ -3,8 +3,10 @@
   background: #f7f7f7 !important;
   border: 1px solid #e1e1e1;
   border-radius: 48px !important;
-  height: 45px;
+  height: 50px;
   text-align: right;
+  font-size: 16px;
+  direction: rtl;
 }
 .mv-input:focus {
   border: 1px solid #40b1d1 !important;
@@ -12,21 +14,38 @@
 .mv-input > input {
   background-color: transparent !important;
 }
+@media only screen and (max-height: 700px) {
+  .mv-input {
+    height: 40px;
+    font-size: 14px;
+  }
+}
 /* ----------------------------------– button ------------------------------------- */
 .mv-button {
   height: 45px;
   min-height: 40px;
-  background-color: #40b1d1;
+  transition: background 0.3s;
+  background: #40b1d1 !important;
   color: white;
   border-radius: 30px;
   width: 100%;
+  direction: rtl;
 }
 .mv-button:focus,
 .mv-button:active {
   color: white !important;
+  box-shadow: 0px 0px 10px #40b2d156;
 }
 .mv-button:not(:disabled):hover {
   color: white !important;
+}
+@media only screen and (max-height: 700px) {
+  .mv-button {
+    height: 40px !important;
+  }
+  .mv-button > span {
+    font-size: 14px;
+  }
 }
 /* --------------------------------– btn outline ---------------------------------- */
 .mv-button-outline {
@@ -36,6 +55,15 @@
   color: #40b1d1;
   border-radius: 30px;
   width: 100%;
+  direction: rtl;
+}
+@media only screen and (max-height: 700px) {
+  .mv-button-outline {
+    height: 40px;
+  }
+  .mv-button-outline > span {
+    font-size: 14px;
+  }
 }
 /* --------------------------------– btn outline white ---------------------------------- */
 .mv-button-outline-white {
@@ -45,6 +73,15 @@
   color: #626262;
   border-radius: 30px;
   width: 100%;
+  direction: rtl;
+}
+@media only screen and (max-height: 700px) {
+  .mv-button-outline-white {
+    height: 40px !important;
+  }
+  .mv-button-outline-white > span {
+    font-size: 14px !important;
+  }
 }
 
 /* --------------------------------– pin input ---------------------------------- */
@@ -54,6 +91,7 @@
   flex-direction: row !important;
   align-items: center !important;
   justify-content: space-between !important;
+  direction: rtl;
 }
 .react-code-input > input {
   background-color: #eaf7fa !important;
@@ -66,4 +104,35 @@
 }
 .react-code-input > input[value=""] {
   background-color: #f7f7f7 !important;
+}
+
+/* --------------------------------– pin input ---------------------------------- */
+.responsive-calendar {
+  /* by setting font-size, all the elements will correspond */
+  font-size: 9px !important; /* default to 10px */
+}
+
+@media (max-width: 1500px) {
+  .responsive-calendar {
+    font-size: 8px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .responsive-calendar {
+    font-size: 7px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-calendar {
+    font-size: 6px !important;
+  }
+}
+
+/* Large screens */
+@media (min-width: 2500px) {
+  .responsive-calendar {
+    font-size: 12px !important;
+  }
 }

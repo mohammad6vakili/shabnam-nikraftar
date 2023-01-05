@@ -4,13 +4,17 @@ import "./custome_components.css";
 import loginLogo from "./assets/images/loginLogo.svg";
 import Login from "./pages/auth/login";
 import { useHistory, Switch, Route } from "react-router-dom";
-import Home from "./pages/panel/home";
+import Home from "./pages/home/home";
+import Queue from "./pages/queue/queue";
+import Shop from "./pages/shop/shop";
+import Search from "./pages/search/search";
+import Profile from "./pages/profile/profile";
 
 function App() {
   const history = useHistory();
 
   useEffect(() => {
-    history.push("/login");
+    history.push("/home");
   }, []);
 
   return (
@@ -23,8 +27,12 @@ function App() {
       {/* mobile view */}
       <div className="mobile-view">
         <Switch>
-          <Route component={Login} path="/login" />
-          <Route component={Home} path="/home" />
+          <Route exact path="/" component={Login} />
+          <Route path="/home" component={Home} />
+          <Route path="/queue" component={Queue} />
+          <Route path="/shop" component={Shop} />
+          <Route path="/search" component={Search} />
+          <Route path="/profile" component={Profile} />
         </Switch>
       </div>
     </div>

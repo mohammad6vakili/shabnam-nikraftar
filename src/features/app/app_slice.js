@@ -1,21 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  //   exitModal: false,
+  hamburgerMenu: false,
 };
 
 export const appReducer = createSlice({
   name: "app",
   initialState,
   reducers: {
-    // setExitModal: (state, action) => {
-    //   state.exitModal = action.payload;
-    // },
+    setHamburgerMenu: (state, action) => {
+      state.hamburgerMenu = action.payload;
+    },
   },
 });
 
-export const {
-  // setExitModal
-} = appReducer.actions;
+export const { setHamburgerMenu } = appReducer.actions;
 
 export default appReducer.reducer;

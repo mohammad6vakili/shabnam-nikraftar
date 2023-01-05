@@ -39,6 +39,8 @@
   margin-bottom: 15px;
 }
 .login-policy {
+  width: 100%;
+  direction: rtl;
   margin: 10px 0 15px 0;
 }
 .login-timeout {
@@ -87,6 +89,7 @@
 .login-form-field {
   width: 100%;
   margin: 10px 0;
+  direction: rtl;
 }
 .login-form-field > span {
   padding-right: 10px;
@@ -102,11 +105,19 @@
 .DatePicker {
   width: 100%;
 }
+.DatePicker > input {
+  transition: border 0.25s;
+}
+.DatePicker > input:focus {
+  outline: none !important;
+  border: 1px solid #40b1d1 !important;
+}
 .login-form-actions {
   width: 100%;
   margin-top: auto;
   display: flex;
   align-items: center;
+  direction: rtl;
 }
 .login-form-actions > button:nth-child(1) {
   width: 75%;
@@ -117,6 +128,13 @@
 }
 
 @media only screen and (max-height: 700px) {
+  .login-body {
+    overflow-y: auto;
+    scrollbar-width: none !important;
+  }
+  .login-body::-webkit-scrollbar {
+    display: none !important;
+  }
   .login-logo {
     width: 100px;
     height: 180px;
@@ -132,5 +150,21 @@
   }
   .login-policy span {
     font-size: 10px !important;
+  }
+  .login-upload {
+    margin-bottom: 10px;
+  }
+  .login-upload > div {
+    width: 110px;
+    height: 130px;
+  }
+  .login-upload > button {
+    width: 110px;
+  }
+  .login-form-field {
+    margin: 5px 0;
+  }
+  .login-form-field > span {
+    font-size: 14px;
   }
 }

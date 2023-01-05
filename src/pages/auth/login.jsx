@@ -1,7 +1,8 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./login.css";
-import { Form, Input, Checkbox, Button } from "antd";
+import { Input, Checkbox, Button } from "antd";
 import FormatHelper from "../../helper/FormatHelper";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import Countdown from "react-countdown";
 import { PinInput } from "react-input-pin-code";
@@ -11,6 +12,8 @@ import loginNoImage from "../../assets/images/loginNoImage.svg";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 
 export default function Login() {
+  const history = useHistory();
+
   const [step, setStep] = useState(0);
   const [mobile, setMobile] = useState("");
   const [accepted, setAccepted] = useState(false);
@@ -81,7 +84,7 @@ export default function Login() {
               onChange={(e) =>
                 setMobile(FormatHelper.toPersianString(e.target.value))
               }
-              style={{ minHeight: "50px", fontSize: "17px", margin: "10px 0" }}
+              style={{ margin: "10px 0" }}
               placeholder="مثلا: ۰۹۱۱۲۳۴۵۶۷"
               prefix={<img src={loginInputPrefix} alt="login" />}
             />
@@ -205,13 +208,26 @@ export default function Login() {
                 value={date}
                 onChange={setDate}
                 locale={"fa"}
+                colorPrimary="#40b1d1"
+                calendarClassName="responsive-calendar"
                 inputClassName="mv-input login-form-datepicker"
                 inputPlaceholder="روز / ماه / سال"
               />
             </div>
+            {/* actions */}
             <div className="login-form-actions">
-              <Button className="mv-button">تکمیل ثبت نام و ورود</Button>
-              <Button className="mv-button-outline-white">بعدا</Button>
+              <Button
+                onClick={() => history.push("/home")}
+                className="mv-button"
+              >
+                تکمیل ثبت نام و ورود
+              </Button>
+              <Button
+                onClick={() => history.push("/home")}
+                className="mv-button-outline-white"
+              >
+                بعدا
+              </Button>
             </div>
           </Fragment>
         )}
