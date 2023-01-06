@@ -33,6 +33,9 @@
   height: 100vh;
   overflow-x: hidden !important;
 }
+.bold {
+  font-family: iranSansBold !important;
+}
 @media only screen and (max-width: 800px) {
   .desktop-view {
     display: none;
