@@ -1,0 +1,188 @@
+.notifications {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  background: #f7f7f7;
+  transition: left 0.3s;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none !important;
+  direction: rtl;
+  padding: 10px;
+}
+.notifications::-webkit-scrollbar {
+  display: none !important;
+}
+.notifications-open {
+  left: 0;
+}
+.notifications-header {
+  width: 100%;
+  background-color: #051115;
+  border-radius: 24px;
+  padding: 8px;
+}
+.notifications-header > button {
+  background: unset;
+  color: white;
+  border: none;
+  height: 40px;
+  margin: 5px;
+}
+.notifications-header > button > img {
+  margin-left: 5px;
+}
+.notifications-header > img {
+  width: 100%;
+}
+.notifications-header-banner {
+  width: 100%;
+  height: 68px;
+  border-radius: 20px;
+  background: #eaf7fa;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 8px;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+.notifications-header-banner:active {
+  opacity: 0.7;
+}
+.notifications-header-banner > div:nth-child(1) {
+  width: 40px;
+  height: 48px;
+  background: #40b1d1;
+  border-radius: 40px 40px 16px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+}
+.notifications-header-banner > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+.notifications-header-banner > div:nth-child(2) > span:nth-child(1) {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #222222;
+}
+.notifications-header-banner > div:nth-child(2) > span:nth-child(2) {
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: capitalize;
+  color: #626262;
+  margin-top: 5px;
+}
+.notifications-header-banner > img {
+  margin-right: auto;
+}
+.notifications-body {
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 24px;
+  background: white;
+  padding: 16px;
+}
+.notifications-body-tabs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.notifications-body-tabs > span:nth-child(1) {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #222222;
+}
+.notifications-body-tabs > span:nth-child(2) {
+  color: #3b3b3b;
+  font-size: 14px;
+  transition: opacity 0.3s;
+}
+.notifications-body-tabs > span:nth-child(2):active {
+  opacity: 0.7;
+}
+.notifications-body-items {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.notifications-announcement {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid #f7f7f7;
+  padding: 8px 0;
+  transition: background 0.3s;
+  border-radius: 5px;
+}
+.notifications-announcement:active {
+  background: rgba(238, 238, 238, 0.806);
+}
+.notifications-announcement > div:nth-child(2) {
+  margin-right: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.notifications-announcement > div:nth-child(2) > strong:nth-child(1) {
+  font-size: 14px;
+  color: #222222;
+}
+.notifications-announcement > div:nth-child(2) > span:nth-child(2) {
+  color: #222222;
+  font-size: 12px;
+  margin: 5px 0;
+}
+.notifications-announcement > div:nth-child(2) > span:nth-child(3) {
+  color: #9e9e9e;
+  font-size: 12px;
+}
+.notifications-message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid #f7f7f7;
+  padding: 8px 0;
+  transition: background 0.3s;
+  border-radius: 5px;
+}
+.notifications-message:active {
+  background: rgba(238, 238, 238, 0.806);
+}
+.notifications-message > div:nth-child(2) {
+  margin-right: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.notifications-message > div:nth-child(2) > strong:nth-child(1) {
+  font-size: 14px;
+  color: #222222;
+}
+.notifications-message > div:nth-child(2) > span:nth-child(2) {
+  color: #9e9e9e;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 350px) {
+  .notifications-header-banner > div:nth-child(2) > span:nth-child(1) {
+    font-size: 12px;
+  }
+  .notifications-header-banner > div:nth-child(2) > span:nth-child(2) {
+    font-size: 10px;
+  }
+}
