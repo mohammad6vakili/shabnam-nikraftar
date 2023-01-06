@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setPostPreview } from "../../features/app/app_slice";
 import FormatHelper from "../../helper/FormatHelper";
 import postImage from "../../assets/images/post.png";
 import postCommentIcon from "../../assets/images/postComment.svg";
@@ -10,6 +12,7 @@ import postUnsavedIcon from "../../assets/images/postUnsaved.svg";
 import postSavedIcon from "../../assets/images/postSaved.svg";
 
 const Post = ({ index }) => {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [saved, setSaved] = useState(false);
   const [liked, setLiked] = useState(false);
@@ -22,7 +25,11 @@ const Post = ({ index }) => {
   }, []);
 
   return (
-    <div key={index} className="post">
+    <div
+      onClick={() => dispatch(setPostPreview(true))}
+      key={index}
+      className="post"
+    >
       <div className={loading ? "post-loading-skeleton" : ""}>
         <div
           onClick={() => {

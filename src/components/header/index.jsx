@@ -1,10 +1,11 @@
 import React from "react";
 import "./style.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setHamburgerMenu,
   setNotifications,
 } from "../../features/app/app_slice";
+import { useHistory } from "react-router-dom";
 import notificationIcon from "../../assets/images/notification.svg";
 import headerLogo from "../../assets/images/headerLogo.svg";
 import hamburgerIcon from "../../assets/images/hamburger.svg";
@@ -13,6 +14,7 @@ import Notifications from "../notifications";
 
 const Header = ({ children }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <div className="header">
@@ -22,7 +24,7 @@ const Header = ({ children }) => {
         <button onClick={() => dispatch(setHamburgerMenu(true))} type="button">
           <img src={hamburgerIcon} alt="menu" />
         </button>
-        <button type="button">
+        <button onClick={() => history.replace("/home")} type="button">
           <img src={headerLogo} alt="shabnam nickraftar" />
         </button>
         <button onClick={() => dispatch(setNotifications(true))} type="button">

@@ -3,6 +3,11 @@ import "./home.css";
 import MobileMenu from "../../components/mobile_menu";
 import Header from "../../components/header";
 import Post from "../../components/post";
+import LiveAlert from "../../components/live_alert";
+import PostPreview from "../../components/post_preview";
+import StoryPreview from "../../components/story_preview";
+import { useDispatch } from "react-redux";
+import { setStoryPreview } from "../../features/app/app_slice";
 import { categories, articles } from "../../utils/util";
 import Banner from "../../assets/images/headerBanner.svg";
 import coursesModelOne from "../../assets/images/coursesModelOne.svg";
@@ -13,10 +18,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const [postTab, setPostTab] = useState(1);
   const array = [1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <div className="home">
+      {/* live alert */}
+      <LiveAlert />
       {/* header */}
       <Header>
         <div className="home-header-carousel">
@@ -47,7 +55,7 @@ const Home = () => {
           </Swiper>
         </div>
       </Header>
-      {/* main carousel */}
+      {/* stories carousel */}
       <div>
         <Swiper
           style={{
@@ -64,6 +72,7 @@ const Home = () => {
           {array.map((item, index) => (
             <SwiperSlide key={index}>
               <div
+                onClick={() => dispatch(setStoryPreview(true))}
                 className="home-main-carousel-item"
                 href={"#"}
                 target="_blank"
@@ -211,7 +220,12 @@ const Home = () => {
           <Post index={index} />
         ))}
       </div>
+      {/* mobile menu component */}
       <MobileMenu />
+      {/* post preview component */}
+      <PostPreview />
+      {/* story preview component */}
+      <StoryPreview />
     </div>
   );
 };
