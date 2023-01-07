@@ -67,7 +67,7 @@ const Home = () => {
           spaceBetween={10}
           modules={[Autoplay]}
           autoplay={true}
-          slidesPerView={6}
+          slidesPerView={5}
         >
           {array.map((item, index) => (
             <SwiperSlide key={index}>

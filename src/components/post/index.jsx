@@ -25,11 +25,7 @@ const Post = ({ index }) => {
   }, []);
 
   return (
-    <div
-      onClick={() => dispatch(setPostPreview(true))}
-      key={index}
-      className="post"
-    >
+    <div key={index} className="post">
       <div className={loading ? "post-loading-skeleton" : ""}>
         <div
           onClick={() => {
@@ -42,7 +38,13 @@ const Post = ({ index }) => {
         >
           <img src={saved ? postSavedIcon : postUnsavedIcon} alt="saved" />
         </div>
-        {!loading && <img src={postImage} alt="post" />}
+        {!loading && (
+          <img
+            onClick={() => dispatch(setPostPreview(true))}
+            src={postImage}
+            alt="post"
+          />
+        )}
       </div>
       <div>
         <div>
