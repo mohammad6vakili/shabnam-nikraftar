@@ -6,6 +6,7 @@
         "add notifications",
         "complete home layout",
         "add story",
-        "add post preview modal"
+        "add post preview modal",
+        "add modal slide component"
     ]
 }

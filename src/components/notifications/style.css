@@ -177,6 +177,58 @@
   font-size: 12px;
   margin-top: 5px;
 }
+.notifications-view-message-header {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.notifications-view-message-header > img {
+  transition: opacity 0.3s;
+}
+.notifications-view-message-header > img:active {
+  opacity: 0.5;
+}
+.notifications-view-message-header > div {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.notifications-view-message-header > div > span:nth-child(1) {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #222222;
+}
+.notifications-view-message-header > div > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.notifications-view-message-header > div > div:nth-child(2) > div {
+  margin: 0 10px;
+  height: 15px;
+  width: 1px;
+  border-radius: 8px;
+  background: #62626288;
+}
+.notifications-view-message-header > div > div:nth-child(2) > span {
+  font-size: 12px;
+  text-transform: capitalize;
+  color: #626262;
+}
+.notifications-view-message-content {
+  width: 100%;
+  border-top: 1px solid #f7f7f7;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #3b3b3b;
+  padding-top: 10px;
+  text-align: justify;
+  line-height: 2;
+  padding-bottom: 20px;
+}
 
 @media only screen and (max-width: 350px) {
   .notifications-header-banner > div:nth-child(2) > span:nth-child(1) {
