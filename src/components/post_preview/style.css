@@ -162,6 +162,48 @@
   padding: 10px 15px;
   color: white;
 }
+.post-preview-setting-title {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e1e1e1;
+  text-align: center;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #222222;
+}
+.post-preview-setting-items {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.post-preview-setting-items > div {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+.post-preview-setting-items > div:active {
+  opacity: 0.5;
+}
+.post-preview-setting-items > div > div {
+  width: 64px;
+  height: 64px;
+  background: #f7f7f7;
+  border: 1px solid #e1e1e1;
+  border-radius: 32px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-preview-setting-items > div > span {
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #222222;
+}
 
 @media only screen and (max-width: 350px) {
   .post-preview-bottom-controls > div:nth-child(1) > span {
