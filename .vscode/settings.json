@@ -8,6 +8,7 @@
         "add story",
         "add post preview modal",
         "add modal slide component",
-        "add setting menu"
+        "add setting menu",
+        "add post comments"
     ]
 }

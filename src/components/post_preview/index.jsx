@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./style.css";
+import { Input } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { setPostPreview } from "../../features/app/app_slice";
-import { toast } from "react-toastify";
+import { postComments } from "../../utils/util";
 import FormatHelper from "../../helper/FormatHelper";
 import backButtonIcon from "../../assets/images/storyBackButton.svg";
 import likeIcon from "../../assets/images/postLike.svg";
@@ -13,15 +14,21 @@ import menuIcon from "../../assets/images/postVerticalMenu.svg";
 import postShareIcon from "../../assets/images/postShare.svg";
 import postLinkIcon from "../../assets/images/postLink.svg";
 import postSaveIcon from "../../assets/images/postSave.svg";
+import commentsSortIcon from "../../assets/images/postPreviewSortComments.svg";
+import sendIcon from "../../assets/images/postPreviewSendComment.svg";
+import PostComment from "../post_comment";
 import ModalSlide from "../modal_slide";
 
 const PostPreview = () => {
   const dispatch = useDispatch();
 
+  const [comments, setComments] = useState(postComments);
+
   const [step, setStep] = useState(0);
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(100);
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+  const [isCommentOpen, setIsCommentsOpen] = useState(false);
 
   const postPreview = useSelector((state) => state.app.postPreview);
 
@@ -53,7 +60,10 @@ const PostPreview = () => {
             <span>{FormatHelper.toPersianString(likeCount)}</span>
           </div>
           {/* post comments */}
-          <div className="post-preview-actions-button">
+          <div
+            onClick={() => setIsCommentsOpen(true)}
+            className="post-preview-actions-button"
+          >
             <img src={postCommentIcon} alt="comments" />
             <span>{FormatHelper.toPersianString(55)}</span>
           </div>
@@ -110,6 +120,26 @@ const PostPreview = () => {
             </div>
             <span>ذخیره کردن</span>
           </div>
+        </div>
+      </ModalSlide>
+      {/* post comments */}
+      <ModalSlide visible={isCommentOpen} setVisible={setIsCommentsOpen}>
+        <div className="post-preview-setting-title bold">
+          نظر کاربران
+          <img src={commentsSortIcon} alt="sort" />
+        </div>
+        <div className="post-preview-comments-items">
+          {isCommentOpen && (
+            <div className="post-preview-comments-send">
+              <Input className="mv-input" placeholder="نظر خود را بنویسید" />
+              <button type="button">
+                <img src={sendIcon} alt="send" />
+              </button>
+            </div>
+          )}
+          {comments.map((comment, index) => (
+            <PostComment comment={comment} index={index} />
+          ))}
         </div>
       </ModalSlide>
     </div>

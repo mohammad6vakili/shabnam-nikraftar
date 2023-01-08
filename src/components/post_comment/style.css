@@ -1,0 +1,81 @@
+.post-preview-comments-comment {
+  width: 100%;
+  min-height: 10vh;
+  border-bottom: 1px solid #f7f7f7;
+  position: relative;
+  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+.post-preview-comments-comment > img:nth-child(1) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 0.3s;
+}
+.post-preview-comments-comment > img:nth-child(1):active {
+  opacity: 0.5;
+}
+.post-preview-comments-comment > div:nth-child(2) {
+  margin-left: 10px;
+}
+.post-preview-comments-comment > div:nth-child(2) > div {
+  width: 40px;
+  height: 48px;
+  background: #f7f7f7;
+  border-radius: 40px 40px 16px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-preview-comments-comment > div:nth-child(3) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.post-preview-comments-comment-reply > span:nth-child(1),
+.post-preview-comments-comment > div:nth-child(3) > span:nth-child(1) {
+  color: #40b1d1;
+  font-size: 12px;
+}
+.post-preview-comments-comment-reply > span:nth-child(2),
+.post-preview-comments-comment > div:nth-child(3) > span:nth-child(2) {
+  color: #3b3b3b;
+  margin-top: 3px;
+  font-size: 12px;
+  padding-left: 30px;
+}
+.post-preview-comments-comment > div:nth-child(3) > button {
+  padding: 5px 10px;
+  background: #f7f7f7;
+  border-radius: 40px;
+  border: none;
+  color: #3b3b3b;
+  font-size: 12px;
+  margin-top: 15px;
+  transition: box-shadow 0.3s;
+}
+.post-preview-comments-comment > div:nth-child(3) > button:active {
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.256);
+}
+.post-preview-comments-comment-reply {
+  width: 100%;
+  background: #f7f7f7;
+  border-radius: 16px;
+  margin-top: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+}
+.post-preview-comments-comment-reply > img {
+  position: absolute;
+  right: -30px;
+  transition: opacity 0.3s;
+}
+.post-preview-comments-comment-reply > img:active {
+  opacity: 0.5;
+}
