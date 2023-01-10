@@ -7,6 +7,7 @@ import { useHistory, Switch, Route } from "react-router-dom";
 import Home from "./pages/home/home";
 import Queue from "./pages/queue/queue";
 import Shop from "./pages/shop/shop";
+import ViewProduct from "./pages/shop/view-product";
 import Search from "./pages/search/search";
 import Profile from "./pages/profile/profile";
 
@@ -30,7 +31,8 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} />
           <Route path="/queue" component={Queue} />
-          <Route path="/shop" component={Shop} />
+          <Route path="/shop" exact component={Shop} />
+          <Route path="/shop/view" component={ViewProduct} />
           <Route path="/search" component={Search} />
           <Route path="/profile" component={Profile} />
         </Switch>

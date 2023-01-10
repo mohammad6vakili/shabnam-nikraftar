@@ -18,6 +18,11 @@ import perfumeIcon from "../assets/category_icons/perfume.svg";
 // article image import
 import articleImage from "../assets/images/articleImage.svg";
 
+// products image import
+import productOne from "../assets/shop/product-1.svg";
+import productTwo from "../assets/shop/product-2.svg";
+import productThree from "../assets/shop/product-3.svg";
+
 export const menuItems = [
   {
     icon: beautyLineIcon,
@@ -217,4 +222,49 @@ export const searchResult = [
   { title: "لاین زیبایی اکستنشن مو و ابرو", category: "مقاله های آموزشی" },
   { title: "لاین زیبایی اکستنشن مو و ابرو", category: "لاین زیبایی" },
   { title: "لاین زیبایی اکستنشن مو و ابرو", category: "پست" },
+];
+
+export const products = [
+  {
+    id: 1,
+    icon: productOne,
+    title: "کرم بدن ضد آفتاب ۱۰۰ میلی گرم",
+    price: 2500,
+    discount: 15,
+  },
+  {
+    id: 2,
+    icon: productTwo,
+    title: "کرم بدن ضد آفتاب ۱۰۰ میلی گرم",
+    price: 4000,
+    discount: 15,
+  },
+  {
+    id: 3,
+    icon: productThree,
+    title: "کرم بدن ضد آفتاب ۱۰۰ میلی گرم",
+    price: 1200,
+    discount: 25,
+  },
+  {
+    id: 4,
+    icon: productOne,
+    title: "کرم بدن ضد آفتاب ۱۰۰ میلی گرم",
+    price: 2350,
+    discount: 15,
+  },
+  {
+    id: 5,
+    icon: productTwo,
+    title: "کرم بدن ضد آفتاب ۱۰۰ میلی گرم",
+    price: 500,
+    discount: 25,
+  },
+  {
+    id: 5,
+    icon: productThree,
+    title: "کرم بدن ضد آفتاب ۱۰۰ میلی گرم",
+    price: 500,
+    discount: 25,
+  },
 ];
