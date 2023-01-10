@@ -209,3 +209,12 @@ export const postComments = [
     replies: [],
   },
 ];
+
+export const searchResult = [
+  { title: "لاین زیبایی اکستنشن مو و ابرو", category: "مقاله های آموزشی" },
+  { title: "لاین زیبایی اکستنشن مو و ابرو", category: "لاین زیبایی" },
+  { title: "لاین زیبایی اکستنشن مو و ابرو", category: "پست" },
+  { title: "لاین زیبایی اکستنشن مو و ابرو", category: "مقاله های آموزشی" },
+  { title: "لاین زیبایی اکستنشن مو و ابرو", category: "لاین زیبایی" },
+  { title: "لاین زیبایی اکستنشن مو و ابرو", category: "پست" },
+];
