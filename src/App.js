@@ -15,7 +15,11 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    history.push("/home");
+    if (localStorage.getItem("token")) {
+      history.push("/home");
+    } else {
+      history.push("/");
+    }
   }, []);
 
   return (

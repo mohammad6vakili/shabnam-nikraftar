@@ -11,6 +11,7 @@
         "add setting menu",
         "add post comments",
         "add search page",
-        "add shop"
+        "add shop",
+        "add useHttp hook"
     ]
 }
