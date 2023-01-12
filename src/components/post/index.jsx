@@ -8,8 +8,7 @@ import postImage from "../../assets/images/post.png";
 import postCommentIcon from "../../assets/images/postComment.svg";
 import postUnlikeIcon from "../../assets/images/postUnlike.svg";
 import postLikeIcon from "../../assets/images/postLike.svg";
-import postUnsavedIcon from "../../assets/images/postUnsaved.svg";
-import postSavedIcon from "../../assets/images/postSaved.svg";
+import videoPlayIcon from "../../assets/images/postVideoPlay.svg";
 
 const Post = ({ index }) => {
   const dispatch = useDispatch();
@@ -26,18 +25,14 @@ const Post = ({ index }) => {
 
   return (
     <div key={index} className="post">
-      <div className={loading ? "post-loading-skeleton" : ""}>
-        <div
-          onClick={() => {
-            setSaved(!saved);
-            if (!saved) {
-              toast.success("با موفقیت ذخیره شد");
-            }
-          }}
-          className="post-save"
-        >
-          <img src={saved ? postSavedIcon : postUnsavedIcon} alt="saved" />
-        </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        className={loading ? "post-loading-skeleton" : ""}
+      >
         {!loading && (
           <img
             onClick={() => dispatch(setPostPreview(true))}
@@ -45,6 +40,13 @@ const Post = ({ index }) => {
             alt="post"
           />
         )}
+        <div style={{ position: "absolute", zIndex: 99999 }}>
+          <img
+            style={{ width: 40, height: 40 }}
+            src={videoPlayIcon}
+            alt="video"
+          />
+        </div>
       </div>
       <div>
         <div>

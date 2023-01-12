@@ -13,6 +13,7 @@
         "add search page",
         "add shop",
         "add useHttp hook",
-        "add auth system"
+        "add auth system",
+        "fix ui bug"
     ]
 }
