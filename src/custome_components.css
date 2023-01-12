@@ -164,3 +164,6 @@
     font-size: 12px !important;
   }
 }
+.ant-btn-loading-icon {
+  margin-left: 10px !important;
+}

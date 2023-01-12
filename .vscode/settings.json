@@ -12,6 +12,7 @@
         "add post comments",
         "add search page",
         "add shop",
-        "add useHttp hook"
+        "add useHttp hook",
+        "add auth system"
     ]
 }

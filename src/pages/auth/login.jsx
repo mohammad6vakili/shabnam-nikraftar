@@ -4,6 +4,7 @@ import { Input, Checkbox, Button } from "antd";
 import FormatHelper from "../../helper/FormatHelper";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import useAuth from "../../hooks/useAuth";
 import Countdown from "react-countdown";
 import { PinInput } from "react-input-pin-code";
 import loginLogo from "../../assets/images/loginLogo.svg";
@@ -13,13 +14,23 @@ import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 
 export default function Login() {
   const history = useHistory();
+  const {
+    step,
+    setStep,
+    getVerificationCode,
+    getJwtToken,
+    mobile,
+    setMobile,
+    timeout,
+    setTimeout,
+    code,
+    setCode,
+    loading,
+    isTimeout,
+    setIsTimeout,
+  } = useAuth();
 
-  const [step, setStep] = useState(0);
-  const [mobile, setMobile] = useState("");
   const [accepted, setAccepted] = useState(false);
-  const [code, setCode] = React.useState(["", "", "", "", ""]);
-  const [isTimeout, setIsTimeout] = useState(true);
-  const [timeout, setTimeout] = useState(Date.now() + 120000);
   const [isKeyboard, setIsKeyboard] = useState(false);
   const [inp, setInp] = useState(null);
   const [file, setFile] = useState(null);
@@ -56,8 +67,7 @@ export default function Login() {
     } else if (!accepted) {
       toast.warning("قوانین و مقررات را نپذیرفته اید");
     } else {
-      setStep(1);
-      setTimeout(Date.now() + 120000);
+      getVerificationCode();
     }
   };
 
@@ -66,6 +76,18 @@ export default function Login() {
       setShowImage(true);
     }
   }, [showImage]);
+
+  useEffect(() => {
+    let prevent = false;
+    code.map((co) => {
+      if (co.length === 0) {
+        prevent = true;
+      }
+    });
+    if (prevent === false) {
+      getJwtToken();
+    }
+  }, [code]);
 
   return (
     <div className="login">
@@ -97,7 +119,11 @@ export default function Login() {
                 <span>پلتفرم شبنم نیکرفتار را می پذیرم.</span>
               </Checkbox>
             </div>
-            <Button onClick={handleLogin} className="mv-button">
+            <Button
+              loading={loading}
+              onClick={handleLogin}
+              className="mv-button"
+            >
               دریافت کد تایید
             </Button>
           </Fragment>
@@ -119,11 +145,11 @@ export default function Login() {
             </span>
             <PinInput
               values={code}
+              disabled={loading}
               inputMode="tel"
               containerStyle={{ direction: "ltr" }}
               onFocus={() => setIsKeyboard(true)}
               onBlur={() => setIsKeyboard(false)}
-              onComplete={() => setStep(2)}
               onChange={(value, index, values) => {
                 setCode(values);
               }}
@@ -144,7 +170,7 @@ export default function Login() {
               <span
                 onClick={() => {
                   if (!isTimeout) {
-                    setIsTimeout(true);
+                    getVerificationCode();
                   }
                 }}
                 style={isTimeout ? { color: "#9E9E9E" } : null}

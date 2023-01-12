@@ -8,12 +8,17 @@ const useHttp = () => {
 
   const HttpService = axios.create({
     baseURL: Env.base_url,
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("token"),
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
+    // headers: {
+    //   // Authorization: "Bearer " + localStorage.getItem("token"),
+    //   "Content-Type": "application/json",
+    //   Accept: "application/json",
+    // },
   });
+
+  HttpService.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+  HttpService.defaults.headers.common.Accept = "application/json";
+  HttpService.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+  HttpService.defaults.withCredentials = true;
 
   HttpService.interceptors.response.use(
     (response) => response,
@@ -21,6 +26,9 @@ const useHttp = () => {
       console.log("HttpService error", error);
       console.log("HttpService response", response);
       console.log("HttpService response.data", response?.data);
+      if (response.status === 200 && response.data.ok === false) {
+        toast.error(response.data.message);
+      }
       if (response.status === 401) {
         localStorage.removeItem("token");
         history.push("/");
