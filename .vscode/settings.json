@@ -14,6 +14,7 @@
         "add shop",
         "add useHttp hook",
         "add auth system",
-        "fix ui bug"
+        "fix ui bug",
+        "add view product"
     ]
 }

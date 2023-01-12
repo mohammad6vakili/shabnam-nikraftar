@@ -26,13 +26,12 @@ const useHttp = () => {
       console.log("HttpService error", error);
       console.log("HttpService response", response);
       console.log("HttpService response.data", response?.data);
-      if (response.status === 200 && response.data.ok === false) {
-        toast.error(response.data.message);
-      }
       if (response.status === 401) {
         localStorage.removeItem("token");
         history.push("/");
         toast.error("شما از برنامه خارج شدید.");
+      } else if (response.status === 422) {
+        toast.error(response.data.message);
       } else {
         if (response?.data?.message) {
           toast.error(response?.data?.message);

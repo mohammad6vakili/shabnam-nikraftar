@@ -22,15 +22,17 @@ const useAuth = () => {
       const response = await HttpService.post("api/auth", {
         username: FormatHelper.toEnglishString(mobile),
       });
-      if (response?.data?.data?.sent_before === false) {
-        toast.success(response?.data?.message);
-      } else {
-        toast.info(response?.data?.message);
+      if (response.status === 200) {
+        setLoading(false);
+        setIsTimeout(true);
+        setTimeout(Date.now() + 120000);
+        setStep(1);
+        if (response?.data?.data?.sent_before === false) {
+          toast.success(response?.data?.message);
+        } else {
+          toast.info(response?.data?.message);
+        }
       }
-      setIsTimeout(true);
-      setLoading(false);
-      setTimeout(Date.now() + 120000);
-      setStep(1);
     } catch ({ err, response }) {
       setLoading(false);
     }
