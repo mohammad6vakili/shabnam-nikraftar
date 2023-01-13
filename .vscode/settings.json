@@ -15,6 +15,7 @@
         "add useHttp hook",
         "add auth system",
         "fix ui bug",
-        "add view product"
+        "add view product",
+        "add pwa configuration"
     ]
 }
