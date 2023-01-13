@@ -16,6 +16,7 @@
         "add auth system",
         "fix ui bug",
         "add view product",
-        "add pwa configuration"
+        "add pwa configuration",
+        "add profile menu page"
     ]
 }

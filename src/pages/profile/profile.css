@@ -7,7 +7,143 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 100px;
+  padding-top: 8px;
+  direction: rtl;
 }
 .profile::-webkit-scrollbar {
   display: none !important;
+}
+.profile-avatar {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-avatar > button {
+  width: 120px;
+  background: #0a2229 !important;
+  border: 1px solid #40b1d1 !important;
+}
+.profile-avatar > button > span {
+  color: #40b1d1 !important;
+}
+.profile-avatar > div {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.profile-avatar > div > img {
+  margin-left: 8px;
+}
+.profile-avatar > div > div {
+  display: flex;
+  flex-direction: column;
+}
+.profile-avatar > div > div > span:nth-child(2) {
+  margin-top: 8px;
+  color: #cfcfcf;
+}
+.profile-body {
+  padding: 0 8px;
+  margin-top: 8px;
+}
+.profile-menu {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.profile-menu > div {
+  width: 33%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+  position: relative;
+}
+.profile-menu > div:active {
+  opacity: 0.5;
+}
+.profile-menu > div > img {
+  position: absolute;
+  top: 20px;
+}
+.profile-menu-item-badge {
+  min-width: 32px;
+  height: 24px;
+  padding: 0 5px;
+  position: absolute;
+  right: 50%;
+  bottom: 40px;
+  background: #f7f7f7;
+  border-radius: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-menu > div > span {
+  font-size: 16px;
+  margin-bottom: 8px;
+  margin-top: auto;
+}
+.border-left-gray {
+  border-left: 1px solid #f7f7f7;
+}
+.border-right-gray {
+  border-right: 1px solid #f7f7f7;
+}
+.border-top-gray {
+  border-top: 1px solid #f7f7f7;
+}
+.border-bottom-gray {
+  border-bottom: 1px solid #f7f7f7;
+}
+.clippath-left-top {
+  width: 30px;
+  height: 30px;
+  background: white;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  z-index: 9999;
+}
+.profile-clippath {
+  width: 30px;
+  height: 30px;
+  background: white;
+  position: absolute;
+  z-index: 9999;
+}
+.clippath-left-top {
+  top: -15px;
+  left: -15px;
+}
+.clippath-right-top {
+  top: -15px;
+  right: -15px;
+}
+.clippath-right-bottom {
+  bottom: -15px;
+  right: -15px;
+}
+.clippath-left-bottom {
+  bottom: -15px;
+  left: -15px;
+}
+.profile-exit {
+  color: #f54851;
+  transition: opacity 0.3s;
+}
+.profile-exit:active {
+  opacity: 0.5;
+}
+.profile-exit > img {
+  margin-left: 8px;
 }
