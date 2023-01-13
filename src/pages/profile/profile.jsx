@@ -54,7 +54,7 @@ const Profile = () => {
             <div className="profile-menu-item-badge">۱۰</div>
           </div>
           {/* saved items */}
-          <div>
+          <div onClick={() => history.push("/profile/saved")}>
             <img src={savedIcon} alt="saved" />
             <span>ذخیره ها</span>
             <div className="profile-menu-item-badge">۲۹</div>

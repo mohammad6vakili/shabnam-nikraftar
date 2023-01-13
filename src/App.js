@@ -11,6 +11,7 @@ import ViewProduct from "./pages/shop/view-product";
 import Search from "./pages/search/search";
 import Profile from "./pages/profile/profile";
 import profileQueue from "./pages/profile/profile_queue";
+import Saved from "./pages/profile/saved";
 
 function App() {
   const history = useHistory();
@@ -41,6 +42,7 @@ function App() {
           <Route path="/search" component={Search} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/profile/queue" component={profileQueue} />
+          <Route path="/profile/saved" component={Saved} />
         </Switch>
       </div>
     </div>

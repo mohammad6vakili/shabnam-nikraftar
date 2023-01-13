@@ -40,7 +40,10 @@ const Post = ({ index }) => {
             alt="post"
           />
         )}
-        <div style={{ position: "absolute", zIndex: 99999 }}>
+        <div
+          onClick={() => dispatch(setPostPreview(true))}
+          style={{ position: "absolute", zIndex: 99999 }}
+        >
           <img
             style={{ width: 40, height: 40 }}
             src={videoPlayIcon}

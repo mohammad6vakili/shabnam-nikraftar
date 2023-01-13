@@ -19,6 +19,7 @@
         "add pwa configuration",
         "add profile menu page",
         "add logout method",
-        "add queue list"
+        "add queue list",
+        "add saved items page"
     ]
 }
