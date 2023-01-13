@@ -1,6 +1,7 @@
 import React from "react";
 import "./profile.css";
 import { Button } from "antd";
+import useAuth from "../../hooks/useAuth";
 import MobileMenu from "../../components/mobile_menu";
 import Header from "../../components/header";
 import profileAvatar from "../../assets/profile/profileImage.svg";
@@ -16,6 +17,7 @@ import accountIcon from "../../assets/profile/account.svg";
 import exitIcon from "../../assets/profile/exitIcon.svg";
 
 const Profile = () => {
+  const { handleLogout } = useAuth();
   return (
     <div className="profile">
       {/* header */}
@@ -106,7 +108,7 @@ const Profile = () => {
             <div className="profile-menu-item-badge">۰۴/۲۲</div>
           </div>
         </div>
-        <div className="profile-menu profile-exit">
+        <div onClick={handleLogout} className="profile-menu profile-exit">
           <img src={exitIcon} alt="exit" />
           <span>خروج از حساب کاربری</span>
         </div>

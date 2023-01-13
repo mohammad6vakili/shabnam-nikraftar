@@ -63,6 +63,12 @@ const useAuth = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.replace("/");
+    toast.error("شما از برنامه خارج شدید.");
+  };
+
   const exports = {
     getVerificationCode,
     loading,
@@ -77,6 +83,7 @@ const useAuth = () => {
     code,
     setCode,
     getJwtToken,
+    handleLogout,
   };
   return exports;
 };
