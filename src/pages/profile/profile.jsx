@@ -1,6 +1,7 @@
 import React from "react";
 import "./profile.css";
 import { Button } from "antd";
+import { useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import MobileMenu from "../../components/mobile_menu";
 import Header from "../../components/header";
@@ -17,6 +18,7 @@ import accountIcon from "../../assets/profile/account.svg";
 import exitIcon from "../../assets/profile/exitIcon.svg";
 
 const Profile = () => {
+  const history = useHistory();
   const { handleLogout } = useAuth();
   return (
     <div className="profile">
@@ -37,7 +39,10 @@ const Profile = () => {
       <div className="profile-body">
         <div className="profile-menu">
           {/* queue */}
-          <div className="border-left-gray">
+          <div
+            onClick={() => history.push("/profile/queue")}
+            className="border-left-gray"
+          >
             <img src={queueIcon} alt="queue" />
             <div className="profile-menu-item-badge">۵</div>
             <span>نوبت ها</span>
