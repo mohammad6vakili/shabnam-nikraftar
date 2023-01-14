@@ -24,6 +24,7 @@
         "add wallet",
         "add addresses list",
         "add map",
-        "add create address form"
+        "add create address form",
+        "add profile messages"
     ]
 }

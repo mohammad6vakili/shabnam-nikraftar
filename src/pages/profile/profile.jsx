@@ -104,7 +104,12 @@ const Profile = () => {
             <div className="profile-menu-item-badge">۱</div>
           </div>
           {/* messages */}
-          <div className="border-left-gray border-right-gray">
+          <div
+            onClick={() => {
+              history.push("/profile/messages");
+            }}
+            className="border-left-gray border-right-gray"
+          >
             <img src={messagesIcon} alt="messages" />
             <span>پیغام ها</span>
             <div className="profile-menu-item-badge">۸</div>
