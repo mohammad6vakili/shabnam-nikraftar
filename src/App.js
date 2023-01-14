@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import "./App.css";
 import "./custome_components.css";
 import loginLogo from "./assets/images/loginLogo.svg";
-import Login from "./pages/auth/login";
+import { setRTLTextPlugin } from "react-map-gl";
 import { useHistory, Switch, Route } from "react-router-dom";
+import Login from "./pages/auth/login";
 import Home from "./pages/home/home";
 import Queue from "./pages/queue/queue";
 import Shop from "./pages/shop/shop";
@@ -24,6 +25,9 @@ function App() {
     } else {
       history.push("/");
     }
+    setRTLTextPlugin(
+      "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js"
+    );
   }, []);
 
   return (

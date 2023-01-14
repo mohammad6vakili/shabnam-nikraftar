@@ -63,3 +63,69 @@
 .profile-addresses-list > div > img:nth-child(3):active {
   opacity: 0.5;
 }
+.profile-addresses-add-modal {
+  background: white;
+  height: 100vh;
+  padding-bottom: 100px;
+  overflow-y: auto;
+  scrollbar-width: none !important;
+}
+.profile-addresses-add-modal::-webkit-scrollbar {
+  display: none !important;
+}
+.profile-addresses-add-modal-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid #e1e1e1;
+  color: #222222;
+  font-size: 16px;
+}
+.profile-addresses-add-modal-header > img {
+  transition: opacity 0.3s;
+  position: absolute;
+  left: 24px;
+}
+.profile-addresses-add-modal-header > img:active {
+  opacity: 0.5;
+}
+.profile-addresses-add-modal-actions {
+  width: calc(100% - 16px);
+  height: 80px;
+  background: #051115;
+  border-radius: 24px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 999999999999;
+}
+.profile-addresses-add-modal-actions > button:nth-child(1) {
+  width: 70% !important;
+  border: none;
+  margin-left: 16px;
+}
+.profile-addresses-add-modal-actions > button:nth-child(2) {
+  width: 30% !important;
+  background: transparent !important;
+}
+.map-marker {
+  transition: opacity 0.5s;
+}
+.map-marker:active {
+  opacity: 0.3;
+}
+
+@media only screen and (max-width: 350px) {
+  .profile-addresses-add-modal-header {
+    height: 60px;
+    font-size: 14px;
+  }
+  .profile-addresses-add-modal-actions {
+    height: 70px;
+  }
+}
