@@ -82,6 +82,7 @@
   border-bottom: 1px solid #e1e1e1;
   color: #222222;
   font-size: 16px;
+  margin-bottom: 16px;
 }
 .profile-addresses-add-modal-header > img {
   transition: opacity 0.3s;
@@ -119,13 +120,99 @@
 .map-marker:active {
   opacity: 0.3;
 }
-
-@media only screen and (max-width: 350px) {
+.profile-addresses-add-form {
+  padding: 0 8px;
+}
+.profile-addresses-add-form-address-name {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.profile-addresses-add-form-address-name > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  color: #3b3b3b;
+}
+.profile-addresses-add-form-address-name
+  > div:nth-child(1)
+  > span:nth-child(2) {
+  color: #40b1d1;
+}
+.profile-addresses-add-form-address-name > div:nth-child(2) {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 8px;
+  background: #f7f7f7;
+  border-radius: 50px;
+  height: 50px;
+}
+.profile-addresses-add-form-field {
+  margin-top: 16px;
+}
+.profile-addresses-add-form-field > div:nth-child(1) {
+  margin-bottom: 8px;
+  color: #3b3b3b;
+  padding: 0 16px;
+}
+.profile-addresses-add-form-field > div:nth-child(3) {
+  margin-top: 8px;
+  font-size: 12px;
+  padding: 0 16px;
+  color: #9e9e9e;
+}
+.profile-addresses-add-form-field-half {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-addresses-add-form-field-half > div {
+  width: 45%;
+}
+.profile-addresses-add-form-radio {
+  display: flex;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 8px;
+  background: #f7f7f7;
+  height: 50px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.profile-addresses-add-form-radio > div:nth-child(1) {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid #cfcfcf;
+}
+.mv-radio-selected > div:nth-child(1) {
+  transition: background 0.4s;
+  background: #40b1d1;
+}
+@media only screen and (max-width: 375px) {
   .profile-addresses-add-modal-header {
     height: 60px;
     font-size: 14px;
   }
   .profile-addresses-add-modal-actions {
     height: 70px;
+  }
+  .profile-addresses-add-form-field > div:nth-child(1),
+  .profile-addresses-add-form-address-name > div:nth-child(1) {
+    font-size: 12px;
+  }
+  .profile-addresses-add-form-radio,
+  .profile-addresses-add-form-address-name > div:nth-child(2) {
+    height: 40px;
+    font-size: 12px !important;
   }
 }

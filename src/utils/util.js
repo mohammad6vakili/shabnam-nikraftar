@@ -375,3 +375,9 @@ export const addresses = [
     mobile: "09390624049",
   },
 ];
+
+export const provinces = [
+  { value: "Tehran", label: "تهران" },
+  { value: "Qazvin", label: "قزوین" },
+  { value: "Tabriz", label: "تبریز" },
+];

@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import "./addresses.css";
-import { Button, Input } from "antd";
+import { Button, Input, Radio } from "antd";
 import { useHistory } from "react-router-dom";
-import { addresses } from "../../utils/util";
+import { addresses, provinces } from "../../utils/util";
 import ReactMapGL, { Marker } from "react-map-gl";
 import FormatHelper from "../../helper/FormatHelper";
 import ProfileHeader from "../../components/profile_header";
@@ -14,6 +14,7 @@ import closeIcon from "../../assets/profile/closeIcon.svg";
 import searchIcon from "../../assets/profile/search.svg";
 import markerIcon from "../../assets/profile/location-marker.png";
 import { toast } from "react-toastify";
+import SelectComponent from "../../components/select";
 
 const Addresses = () => {
   const history = useHistory();
@@ -21,6 +22,7 @@ const Addresses = () => {
   const [addStep, setAddStep] = useState(0);
   const [lat, setLat] = useState(35.705358555150355);
   const [lng, setLng] = useState(51.40896029286827);
+  const [radioSelected, setRadioSelected] = useState(false);
 
   const [viewport, setViewport] = useState({
     latitude: parseFloat(lat),
@@ -30,6 +32,12 @@ const Addresses = () => {
     zoom: 14,
     transitionDuration: 2000,
   });
+
+  useEffect(() => {
+    if (addModal === false) {
+      setAddStep(0);
+    }
+  }, [addModal]);
 
   return (
     <div className="profile-addresses">
@@ -94,7 +102,7 @@ const Addresses = () => {
             <Fragment>
               {/* search location */}
               <Input
-                style={{ margin: "16px 0" }}
+                style={{ marginBottom: 16 }}
                 prefix={
                   <img
                     style={{ marginLeft: 8 }}
@@ -103,7 +111,7 @@ const Addresses = () => {
                   />
                 }
                 className="mv-input"
-                placeholder="جستو جو آدرس"
+                placeholder="جستجو آدرس"
               />
               {/* map */}
               <ReactMapGL
@@ -133,7 +141,134 @@ const Addresses = () => {
               </ReactMapGL>
             </Fragment>
           )}
-          {addStep === 1 && <div>s</div>}
+          {addStep === 1 && (
+            <div className="profile-addresses-add-form">
+              {/* reciever address */}
+              <div className="profile-addresses-add-form-address-name">
+                <div>
+                  <span>آدرس گیرنده</span>
+                  <span onClick={() => setAddStep(0)}>ویرایش</span>
+                </div>
+                <div>تهران/خیابان انقلاب/کوی دانشجو/بهار ۲۰</div>
+              </div>
+              {/* province */}
+              <div className="profile-addresses-add-form-field">
+                <div>
+                  استان <span style={{ color: "red" }}>*</span>
+                </div>
+                <div>
+                  <SelectComponent
+                    searchable
+                    placeHolder={"انتخاب کنید"}
+                    data={provinces}
+                  />
+                </div>
+              </div>
+              {/* district */}
+              <div className="profile-addresses-add-form-field">
+                <div>
+                  شهرستان <span style={{ color: "red" }}>*</span>
+                </div>
+                <div>
+                  <SelectComponent
+                    searchable
+                    placeHolder={"انتخاب کنید"}
+                    data={provinces}
+                  />
+                </div>
+              </div>
+              {/* area */}
+              <div className="profile-addresses-add-form-field">
+                <div>
+                  محله <span style={{ color: "red" }}>*</span>
+                </div>
+                <div>
+                  <SelectComponent
+                    searchable
+                    placeHolder={"انتخاب کنید"}
+                    data={provinces}
+                  />
+                </div>
+              </div>
+              {/* form field half */}
+              <div
+                className="profile-addresses-add-form-field-half"
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                {/* plaque */}
+                <div className="profile-addresses-add-form-field">
+                  <div>
+                    پلاک <span style={{ color: "red" }}>*</span>
+                  </div>
+                  <div>
+                    <Input className="mv-input" />
+                  </div>
+                </div>
+                {/* unit */}
+                <div className="profile-addresses-add-form-field">
+                  <div>واحد</div>
+                  <div>
+                    <Input className="mv-input" />
+                  </div>
+                </div>
+              </div>
+              {/* post code */}
+              <div className="profile-addresses-add-form-field">
+                <div>
+                  کد پستی <span style={{ color: "red" }}>*</span>
+                </div>
+                <div>
+                  <Input className="mv-input" />
+                </div>
+                <div>کدپستی ۱۰ رقمی بدون خط تیره وارد کنید</div>
+              </div>
+              {/* devider */}
+              <div
+                style={{
+                  width: "100%",
+                  height: 1,
+                  background: "#F7F7F7",
+                  marginTop: 16,
+                }}
+              ></div>
+              <div
+                onClick={() => setRadioSelected(!radioSelected)}
+                className={`profile-addresses-add-form-radio ${
+                  radioSelected ? "mv-radio-selected" : ""
+                }`}
+              >
+                <div></div>
+                <div>گیرنده محصول خودمم</div>
+              </div>
+              {/* reciever first name */}
+              <div className="profile-addresses-add-form-field">
+                <div>
+                  نام گیرنده <span style={{ color: "red" }}>*</span>
+                </div>
+                <div>
+                  <Input className="mv-input" />
+                </div>
+              </div>
+              {/* reciever last name */}
+              <div className="profile-addresses-add-form-field">
+                <div>
+                  نام خانوادگی گیرنده <span style={{ color: "red" }}>*</span>
+                </div>
+                <div>
+                  <Input className="mv-input" />
+                </div>
+              </div>
+              {/* reciever mobile */}
+              <div className="profile-addresses-add-form-field">
+                <div>
+                  شماره موبایل گیرنده <span style={{ color: "red" }}>*</span>
+                </div>
+                <div>
+                  <Input className="mv-input" placeholder="مثلا: ۰۹۱۲۱۲۳۴۵۶۷" />
+                </div>
+              </div>
+            </div>
+          )}
           {/* action area */}
           {addModal && (
             <div className="profile-addresses-add-modal-actions">
@@ -143,7 +278,6 @@ const Addresses = () => {
                     setAddStep(1);
                   } else if (addStep === 1) {
                     setAddModal(false);
-                    setAddStep(0);
                     toast.success("آدرس با موفقیت افزوده شد.");
                   }
                 }}

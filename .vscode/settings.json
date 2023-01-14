@@ -23,6 +23,7 @@
         "add saved items page",
         "add wallet",
         "add addresses list",
-        "add map"
+        "add map",
+        "add create address form"
     ]
 }
