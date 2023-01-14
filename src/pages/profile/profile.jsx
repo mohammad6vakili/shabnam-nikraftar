@@ -92,7 +92,10 @@ const Profile = () => {
             <div className="profile-clippath clippath-left-bottom"></div>
           </div>
           {/* scores */}
-          <div className="border-top-gray border-bottom-gray">
+          <div
+            onClick={() => history.push("/profile/scores")}
+            className="border-top-gray border-bottom-gray"
+          >
             <img src={scoresIcon} alt="scores" />
             <span>امتیازات</span>
             <div

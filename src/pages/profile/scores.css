@@ -1,0 +1,81 @@
+.profile-account-header {
+  width: 100%;
+  background: #051115;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+.profile-account-header > div:nth-child(1) {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+.profile-account-header > div:nth-child(1) > div:nth-child(1) {
+  transition: opacity 0.3s;
+}
+.profile-account-header > div:nth-child(1) > div:nth-child(1):active {
+  opacity: 0.5;
+}
+.profile-account-header > div:nth-child(1) > div:nth-child(1) > img {
+  margin-left: 8px;
+}
+.profile-account-header > div:nth-child(2) {
+  width: 100%;
+  margin-top: 8px;
+  background: #fffaec;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  color: #626262;
+  padding: 8px;
+  font-size: 12px;
+}
+.profile-account-header > div:nth-child(2) > div:nth-child(1) {
+  margin-left: 8px;
+  min-width: 40px;
+  min-height: 48px;
+  background: #fbc12e;
+  border-radius: 40px 40px 16px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-scores-item {
+  width: 100%;
+  padding: 16px 0;
+  border-bottom: 1px solid #f7f7f7;
+  display: flex;
+  align-items: center;
+}
+.profile-scores-item > div:nth-child(1) {
+  min-width: 48px;
+  min-height: 48px;
+  background: #f7f7f7;
+  border-radius: 40px 40px 16px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+}
+.profile-scores-item > div:nth-child(2) {
+  width: 100%;
+  color: #626262;
+}
+.profile-scores-item > div:nth-child(2) > div:nth-child(2) {
+  font-size: 12px;
+  margin-top: 4px;
+}
+.profile-scores-item > div:nth-child(3) {
+  margin-right: 8px;
+  border: 1px solid #40b1d1;
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 104px;
+  min-height: 48px;
+}
