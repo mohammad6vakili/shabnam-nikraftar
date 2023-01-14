@@ -66,7 +66,10 @@ const Profile = () => {
             <div className="profile-menu-item-badge">۳</div>
           </div>
           {/* wallet */}
-          <div className="border-left-gray border-top-gray border-bottom-gray">
+          <div
+            onClick={() => history.push("/profile/wallet")}
+            className="border-left-gray border-top-gray border-bottom-gray"
+          >
             <img src={walletIcon} alt="wallet" />
             <span>کیف پول</span>
             <div style={{ right: "35%" }} className="profile-menu-item-badge">

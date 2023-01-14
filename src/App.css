@@ -4,7 +4,7 @@
 }
 @font-face {
   font-family: iranSansBold;
-  src: url(/src/assets/fonts/IRANSansWeb_Bold.ttf);
+  src: url(/src/assets/fonts/IRANSansWeb_Medium.ttf);
 }
 * {
   padding: 0;

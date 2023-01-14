@@ -1,0 +1,255 @@
+.profile-wallet {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  overflow-y: auto;
+  scrollbar-width: none !important;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  padding-bottom: 10px;
+  direction: rtl;
+}
+.profile-wallet::-webkit-scrollbar {
+  display: none !important;
+}
+.profile-wallet-tabs {
+  display: flex;
+  align-items: center;
+}
+.profile-wallet-tabs > div {
+  width: 50%;
+  display: flex;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+.profile-wallet-tabs > div > div {
+  width: 32px;
+  height: 24px;
+  background: #e1e1e1;
+  border-radius: 128px;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #626262;
+}
+.profile-wallet-list {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 16px;
+  margin-top: 8px;
+}
+.profile-wallet-banner {
+  background: #fffaec;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  padding: 8px;
+}
+.profile-wallet-banner > div:nth-child(1) {
+  min-width: 40px;
+  min-height: 48px;
+  background: #fbc12e;
+  border-radius: 40px 40px 16px 0px;
+  margin-left: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-wallet-banner > div:nth-child(2) {
+  font-size: 12px;
+}
+.profile-wallet-options {
+  margin-top: 16px;
+  background: #f7f7f7;
+  border-radius: 40px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+.profile-wallet-options > button {
+  background: transparent !important ;
+  color: #626262 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+#option-tab-selected {
+  background: #40b1d1 !important;
+  color: white !important;
+}
+.profile-wallet-option-items > div {
+  padding: 16px 0;
+  border-bottom: 1px solid #f7f7f7;
+  display: flex;
+  align-items: center;
+}
+.profile-wallet-option-items > div > div:nth-child(1) {
+  margin-left: 8px;
+  background: #f7f7f7;
+  border-radius: 40px 40px 16px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+  min-height: 48px;
+}
+.profile-wallet-option-items > div > div:nth-child(2) {
+  width: 100%;
+  color: #626262 !important;
+}
+.profile-wallet-option-items > div > div:nth-child(2) > div:nth-child(2) {
+  font-size: 12px;
+}
+.profile-wallet-option-items > div > button:nth-child(3) {
+  width: 102px;
+  height: 40px;
+}
+.profile-wallet-options-custome-field {
+  margin-top: 16px;
+}
+.profile-wallet-options-custome-field > div:nth-child(1) {
+  color: #3b3b3b;
+  margin-bottom: 8px;
+}
+.profile-wallet-options-custome-field > div:nth-child(2) {
+  position: relative;
+}
+.profile-wallet-options-custome-field > div:nth-child(2) > input {
+  padding-left: 100px;
+}
+.profile-wallet-options-custome-field > div:nth-child(2) > div {
+  position: absolute;
+  width: 90px;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e1e1e1;
+  border-radius: 24px 0px 0px 24px;
+  color: #3b3b3b;
+  font-size: 17px;
+}
+.profile-wallet-options-custome-port {
+  margin-top: 24px;
+}
+.profile-wallet-options-custome-port > div:nth-child(1) {
+  color: #3b3b3b;
+  margin-bottom: 8px;
+}
+.profile-wallet-options-custome-port > div:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.profile-wallet-options-custome-port > div:nth-child(2) > div {
+  background: #f7f7f7;
+  border-radius: 16px;
+  min-width: 70px;
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  transition: opacity 0.3s;
+}
+.profile-wallet-options-custome-port > div:nth-child(2) > div:active {
+  opacity: 0.5;
+}
+.port-active {
+  background: #eaf7fa !important;
+  border: 1px solid #40b1d1 !important;
+}
+.profile-wallet-transaction-item {
+  width: 100%;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f7f7f7;
+  position: relative;
+}
+.profile-wallet-transaction-item > div:nth-child(1) {
+  margin-left: 8px;
+  min-width: 40px;
+  min-height: 48px;
+  background: #e4ffec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px 40px 16px 0px;
+}
+.profile-wallet-transaction-item > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  color: #626262;
+}
+.profile-wallet-transaction-item > div:nth-child(2) > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.profile-wallet-transaction-item > div:nth-child(2) > div:nth-child(2) > div {
+  width: 1px;
+  height: 10px;
+  margin: 0 8px;
+  background: #d2d2d2cd;
+}
+.profile-wallet-transaction-item > div:nth-child(3) {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #513f12;
+  width: 61px;
+  height: 32px;
+  background: #fffaec;
+  border: 1px solid #fbc12e;
+  border-radius: 32px;
+  font-size: 12px !important;
+}
+@media only screen and (max-width: 350px) {
+  .profile-wallet-banner > div:nth-child(2) {
+    font-size: 10px;
+  }
+  .profile-wallet-tabs > div {
+    font-size: 12px !important;
+  }
+  .profile-wallet-tabs > div > div {
+    width: 28px;
+    height: 21px;
+    font-size: 12px !important;
+  }
+  .profile-wallet-options,
+  .profile-wallet-banner {
+    margin-top: 8px;
+  }
+  .profile-wallet-options > button > span {
+    font-size: 12px !important;
+  }
+  .profile-wallet-options-custome-field > div:nth-child(2) > div {
+    width: 65px !important;
+    font-size: 12px !important;
+  }
+  .profile-wallet-options-custome-port > div:nth-child(1),
+  .profile-wallet-options-custome-field > div:nth-child(1) {
+    font-size: 12px !important;
+  }
+  .profile-wallet-transaction-item > div:nth-child(3) {
+    font-size: 10px !important;
+    width: 55px;
+    height: 28px;
+  }
+  .profile-wallet-transaction-item > div:nth-child(2) > div:nth-child(2) {
+    font-size: 10px;
+  }
+}
