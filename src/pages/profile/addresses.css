@@ -1,0 +1,65 @@
+.profile-addresses {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  overflow-y: auto;
+  scrollbar-width: none !important;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  padding-bottom: 10px;
+  direction: rtl;
+  padding-bottom: 80px;
+}
+.profile-addresses::-webkit-scrollbar {
+  display: none !important;
+}
+.profile-addresses-add-button {
+  position: fixed;
+  bottom: 24px;
+  left: 16px;
+  width: 120px;
+  height: 50px;
+}
+.profile-addresses-add-button > img {
+  margin-left: 8px;
+}
+.profile-addresses-list {
+  margin-top: 8px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 16px;
+}
+.profile-addresses-list > div {
+  border-bottom: 1px solid #f7f7f7;
+  padding: 16px 0;
+  display: flex;
+  align-items: flex-start;
+}
+.profile-addresses-list > div > div:nth-child(1) {
+  margin-left: 8px;
+  min-width: 40px;
+  min-height: 48px;
+  background: #f7f7f7;
+  border-radius: 40px 40px 16px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-addresses-list > div > div:nth-child(2) {
+  color: #626262;
+}
+.profile-addresses-list > div > div:nth-child(2) > div:nth-child(1) {
+  font-size: 14px;
+}
+.profile-addresses-list > div > div:nth-child(2) > div {
+  font-size: 12px;
+  margin: 8px 0;
+}
+.profile-addresses-list > div > img:nth-child(3) {
+  transition: opacity 0.3s;
+  margin-right: 8px;
+}
+.profile-addresses-list > div > img:nth-child(3):active {
+  opacity: 0.5;
+}

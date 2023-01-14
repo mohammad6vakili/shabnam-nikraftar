@@ -13,6 +13,7 @@ import Profile from "./pages/profile/profile";
 import profileQueue from "./pages/profile/profile_queue";
 import Saved from "./pages/profile/saved";
 import Wallet from "./pages/profile/wallet";
+import Addresses from "./pages/profile/addresses";
 
 function App() {
   const history = useHistory();
@@ -45,6 +46,7 @@ function App() {
           <Route path="/profile/queue" component={profileQueue} />
           <Route path="/profile/saved" component={Saved} />
           <Route path="/profile/wallet" component={Wallet} />
+          <Route path="/profile/addresses" component={Addresses} />
         </Switch>
       </div>
     </div>

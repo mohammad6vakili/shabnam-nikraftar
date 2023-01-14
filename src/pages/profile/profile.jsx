@@ -98,7 +98,7 @@ const Profile = () => {
             </div>
           </div>
           {/* addresses */}
-          <div>
+          <div onClick={() => history.push("/profile/addresses")}>
             <img src={addressesIcon} alt="addresses" />
             <span>آدرس ها</span>
             <div className="profile-menu-item-badge">۱</div>
