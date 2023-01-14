@@ -32,7 +32,12 @@ const Profile = () => {
               <span>۰۹۱۲۱۲۳۴۵۶۷</span>
             </div>
           </div>
-          <Button className="mv-button">ویرایش حساب</Button>
+          <Button
+            onClick={() => history.push("/profile/account")}
+            className="mv-button"
+          >
+            ویرایش حساب
+          </Button>
         </div>
       </Header>
       {/* menu */}
@@ -115,7 +120,7 @@ const Profile = () => {
             <div className="profile-menu-item-badge">۸</div>
           </div>
           {/* account */}
-          <div>
+          <div onClick={() => history.push("/profile/account")}>
             <img src={accountIcon} alt="account" />
             <span>حساب کاربری</span>
             <div className="profile-menu-item-badge">۰۴/۲۲</div>

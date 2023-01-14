@@ -1,3 +1,13 @@
 .Toastify__toast-body {
   text-align: right !important;
 }
+.DatePicker__calendarArrow {
+  display: none !important  ;
+}
+.DatePicker__calendarContainer {
+  background: transparent !important;
+  z-index: 999999999999999999 !important;
+}
+.DatePicker__calendarContainer > div {
+  z-index: 999999999999999999 !important;
+}

@@ -65,8 +65,10 @@ const useAuth = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.replace("/");
     toast.error("شما از برنامه خارج شدید.");
+    setTimeout(() => {
+      window.location.replace("/");
+    }, 1000);
   };
 
   const exports = {
