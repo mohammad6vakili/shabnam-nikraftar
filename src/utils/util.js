@@ -381,3 +381,60 @@ export const provinces = [
   { value: "Qazvin", label: "قزوین" },
   { value: "Tabriz", label: "تبریز" },
 ];
+
+export const courses = [
+  {
+    id: 1,
+    title: "دوره پیشرفته آموزش حرفه‌ای اکستنشن مو و ابرو ",
+    status: "doing",
+    teacher: "استاد سمانه درخشانی",
+    sessions: 3,
+    active: true,
+  },
+  {
+    id: 2,
+    title: "دوره پیشرفته آموزش حرفه‌ای اکستنشن مو و ابرو ",
+    status: "doing",
+    teacher: "استاد سمانه درخشانی",
+    sessions: 1,
+    active: false,
+    dateTime: "جلسه دوم - ۲۳ دی ۱۴۰۱",
+  },
+  {
+    id: 3,
+    title: "دوره پیشرفته آموزش حرفه‌ای اکستنشن مو و ابرو ",
+    status: "doing",
+    teacher: "استاد سمانه درخشانی",
+    sessions: 7,
+    active: false,
+    dateTime: "جلسه دهم - ۰۱ بهمن ۱۴۰۱",
+  },
+  {
+    id: 4,
+    title: "دوره پیشرفته آموزش حرفه‌ای اکستنشن مو و ابرو ",
+    status: "done",
+    teacher: "استاد سمانه درخشانی",
+    sessions: 3,
+  },
+  {
+    id: 5,
+    title: "دوره پیشرفته آموزش حرفه‌ای اکستنشن مو و ابرو ",
+    status: "done",
+    teacher: "استاد سمانه درخشانی",
+    sessions: 3,
+  },
+  {
+    id: 6,
+    title: "دوره پیشرفته آموزش حرفه‌ای اکستنشن مو و ابرو ",
+    status: "reject",
+    teacher: "استاد سمانه درخشانی",
+    sessions: 3,
+  },
+  {
+    id: 7,
+    title: "دوره پیشرفته آموزش حرفه‌ای اکستنشن مو و ابرو ",
+    status: "reject",
+    teacher: "استاد سمانه درخشانی",
+    sessions: 3,
+  },
+];

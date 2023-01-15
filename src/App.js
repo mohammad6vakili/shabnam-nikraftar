@@ -18,6 +18,7 @@ import Addresses from "./pages/profile/addresses";
 import ProfileMessages from "./pages/profile/messages";
 import Account from "./pages/profile/account";
 import ProfileScores from "./pages/profile/scores";
+import ProfileCourses from "./pages/profile/courses";
 
 function App() {
   const history = useHistory();
@@ -57,6 +58,7 @@ function App() {
           <Route path="/profile/messages" component={ProfileMessages} />
           <Route path="/profile/account" component={Account} />
           <Route path="/profile/scores" component={ProfileScores} />
+          <Route path="/profile/courses" component={ProfileCourses} />
         </Switch>
       </div>
     </div>

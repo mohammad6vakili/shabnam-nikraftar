@@ -65,7 +65,10 @@ const Profile = () => {
             <div className="profile-menu-item-badge">۲۹</div>
           </div>
           {/* courses */}
-          <div className="border-left-gray border-top-gray border-bottom-gray">
+          <div
+            onClick={() => history.push("/profile/courses")}
+            className="border-left-gray border-top-gray border-bottom-gray"
+          >
             <img src={coursesIcon} alt="courses" />
             <span>دوره ها</span>
             <div className="profile-menu-item-badge">۳</div>
