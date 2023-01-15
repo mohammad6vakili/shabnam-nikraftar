@@ -96,6 +96,67 @@ const ProfileCourses = () => {
               );
             }
           })}
+        {tab === 1 &&
+          courses.map((course, index) => {
+            if (course.status === "done") {
+              return (
+                <div
+                  key={index}
+                  className="profile-courses-item profile-done-item"
+                >
+                  <div>
+                    <img src={courseImageOne} alt="courses" />
+                    <img src={courseImageTwo} alt="courses" />
+                    <img src={courseImageSmall} alt="courses" />
+                  </div>
+                  <div>
+                    <div>
+                      <div className="bold">{course.title}</div>
+                      <div>{course.teacher}</div>
+                    </div>
+                    <div>
+                      <span>اتمام</span>
+                      <span>دوره</span>
+                    </div>
+                  </div>
+                  <div>
+                    <Button className="mv-button">مشاهده مدرک</Button>
+                    <Button className="mv-button-outline">نظر بده</Button>
+                  </div>
+                </div>
+              );
+            }
+          })}
+        {tab === 2 &&
+          courses.map((course, index) => {
+            if (course.status === "reject") {
+              return (
+                <div
+                  key={index}
+                  className="profile-courses-item profile-reject-item"
+                >
+                  <div>
+                    <img src={courseImageOne} alt="courses" />
+                    <img src={courseImageTwo} alt="courses" />
+                    <img src={courseImageSmall} alt="courses" />
+                  </div>
+                  <div>
+                    <div>
+                      <div className="bold">{course.title}</div>
+                      <div>{course.teacher}</div>
+                    </div>
+                    <div>
+                      <span>لغو</span>
+                      <span>دوره</span>
+                    </div>
+                  </div>
+                  <div>
+                    <Button className="mv-button-outline">مشاهده دوره</Button>
+                  </div>
+                </div>
+              );
+            }
+          })}
       </div>
     </div>
   );

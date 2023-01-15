@@ -102,7 +102,7 @@
   align-items: center;
   justify-content: center;
 }
-.profile-courses-item > div:nth-child(3) > button > span {
+.profile-doing-item > div:nth-child(3) > button > span {
   margin-left: 8px;
 }
 .profile-doing-item > div:nth-child(3) > div {
@@ -113,6 +113,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.profile-reject-item > div:nth-child(3) > button {
+  border: 1px solid #cfcfcf;
+  color: #626262;
+}
+.profile-reject-item > div:nth-child(2) > div:nth-child(2) {
+  background: #ffedee;
+  color: #f54851;
+}
+.profile-done-item > div:nth-child(2) > div:nth-child(2) {
+  background: #e4ffec;
+  color: #23cb52;
+}
+.profile-done-item > div:nth-child(3) {
+  display: flex;
+}
+.profile-done-item > div:nth-child(3) > button:nth-child(1) {
+}
+.profile-done-item > div:nth-child(3) > button:nth-child(1) {
+  width: 65% !important;
+  margin-left: 8px;
+}
+.profile-done-item > div:nth-child(3) > button:nth-child(2) {
+  width: 35%;
 }
 
 @media only screen and (max-width: 350px) {
