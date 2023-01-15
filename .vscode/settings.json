@@ -29,6 +29,7 @@
         "add account page",
         "add scores page",
         "add courses",
-        "add courses pages"
+        "add courses pages",
+        "add view doc modal"
     ]
 }
