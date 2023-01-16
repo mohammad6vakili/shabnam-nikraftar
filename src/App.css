@@ -20,6 +20,7 @@
   justify-content: center;
   align-items: center;
   font-size: 32px;
+  direction: rtl;
 }
 .desktop-view > img {
   margin-bottom: 30px;

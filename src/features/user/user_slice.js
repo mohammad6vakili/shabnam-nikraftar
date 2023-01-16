@@ -1,21 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  //   exitModal: false,
+  userQueue: [],
 };
 
 export const userReducer = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // setExitModal: (state, action) => {
-    //   state.exitModal = action.payload;
-    // },
+    setUserQueue: (state, action) => {
+      state.userQueue.push(action.payload);
+    },
   },
 });
 
-export const {
-  // setExitModal
-} = userReducer.actions;
+export const { setUserQueue } = userReducer.actions;
 
 export default userReducer.reducer;
