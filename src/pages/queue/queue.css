@@ -78,3 +78,46 @@
 .queue-list-empty > button:nth-child(3) {
   width: 148px;
 }
+.queue-privacy-title {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.queue-privacy-body {
+  max-height: 60vh;
+  margin-bottom: 100px;
+  overflow-y: auto;
+  scrollbar-width: none !important;
+}
+.queue-privacy-body {
+  width: 100%;
+  height: calc(100% - 100px);
+}
+.queue-privacy-body::-webkit-scrollbar {
+  display: none !important;
+}
+.queue-privacy-actions {
+  width: calc(100% - 16px);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  left: 8px;
+  bottom: 8px;
+  background: #150904;
+  border-radius: 24px;
+  padding: 0 16px;
+}
+.queue-privacy-actions > button:nth-child(1) {
+  border: none !important;
+  width: 65%;
+  margin-left: 16px;
+}
+.queue-privacy-actions > button:nth-child(2) {
+  background-color: transparent !important;
+  width: 35%;
+}

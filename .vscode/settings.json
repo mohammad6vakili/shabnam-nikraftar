@@ -31,6 +31,7 @@
         "add courses",
         "add courses pages",
         "add view doc modal",
-        "add queue default page"
+        "add queue default page",
+        "add privacy modal"
     ]
 }
