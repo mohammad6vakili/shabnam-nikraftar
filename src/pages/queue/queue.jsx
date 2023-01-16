@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import "./queue.css";
 import { Button } from "antd";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,8 @@ import Header from "../../components/header";
 import ModalSlide from "../../components/modal_slide";
 import warningIcon from "../../assets/queue/warning.svg";
 import emptyIcon from "../../assets/queue/emptyList.svg";
+import addIcon from "../../assets/queue/plusWhite.svg";
+import editIcon from "../../assets/queue/edit.svg";
 
 const Queue = () => {
   const history = useHistory();
@@ -121,6 +123,34 @@ const Queue = () => {
             </div>
             <div>متاسفانه، نوبتی برای شما ثبت نشده است.</div>
             <Button className="mv-button">ثبت‌ نوبت جدید</Button>
+          </div>
+        )}
+        {userQueue?.length > 0 && (
+          <div className="queue-list-filled">
+            <div className="queue-list-header bold">نوبت های ثبت شده من</div>
+            {userQueue.map((queue, index) => (
+              <div className="queue-queue-item" key={index}>
+                <div className="bold">
+                  {FormatHelper.toPersianString(index + 1)}
+                </div>
+                <div>
+                  <div className="bold">{queue.title}</div>
+                  <div>
+                    <div>{queue.date}</div>
+                    <div></div>
+                    <div>{queue.time}</div>
+                  </div>
+                  {queue.isPayed === false && (
+                    <Button className="mv-button-outline">پرداخت نشده</Button>
+                  )}
+                </div>
+                <img src={editIcon} alt="edit" />
+              </div>
+            ))}
+            <Button className="mv-button">
+              <img src={addIcon} alt="add" />
+              <span>نوبت جدید</span>
+            </Button>
           </div>
         )}
       </div>

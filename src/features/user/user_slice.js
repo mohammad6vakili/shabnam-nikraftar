@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { userQueue } from "../../utils/util";
 
 const initialState = {
-  userQueue: [],
+  userQueue: userQueue,
 };
 
 export const userReducer = createSlice({

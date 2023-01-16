@@ -438,3 +438,69 @@ export const courses = [
     sessions: 3,
   },
 ];
+
+export const userQueue = [
+  {
+    id: 1,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: true,
+  },
+  {
+    id: 2,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: false,
+  },
+  {
+    id: 3,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: true,
+  },
+  {
+    id: 1,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: true,
+  },
+  {
+    id: 2,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: true,
+  },
+  {
+    id: 4,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: true,
+  },
+  {
+    id: 5,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: false,
+  },
+  {
+    id: 6,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: true,
+  },
+  {
+    id: 7,
+    title: "لاین کاشت ناخن",
+    date: "چهارشنبه ۱۸ دی",
+    time: "ساعت ۱۱ الی ۱۲",
+    isPayed: true,
+  },
+];
