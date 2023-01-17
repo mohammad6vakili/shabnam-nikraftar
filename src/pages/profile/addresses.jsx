@@ -237,7 +237,7 @@ const Addresses = () => {
                   radioSelected ? "mv-radio-selected" : ""
                 }`}
               >
-                <div></div>
+                <div>{radioSelected && <div></div>}</div>
                 <div>گیرنده محصول خودمم</div>
               </div>
               {/* reciever first name */}

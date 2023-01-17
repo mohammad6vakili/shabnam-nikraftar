@@ -3,9 +3,9 @@
   background: #f7f7f7 !important;
   border: 1px solid #e1e1e1;
   border-radius: 48px !important;
-  height: 50px;
+  height: 45px;
   text-align: right;
-  font-size: 16px;
+  font-size: 14px;
   direction: rtl;
 }
 .mv-input:focus {
@@ -14,10 +14,10 @@
 .mv-input > input {
   background-color: transparent !important;
 }
-@media only screen and (max-height: 700px) {
+@media only screen and (max-width: 375px) {
   .mv-input {
     height: 40px;
-    font-size: 14px;
+    font-size: 12px !important;
   }
 }
 /* ----------------------------------– button ------------------------------------- */

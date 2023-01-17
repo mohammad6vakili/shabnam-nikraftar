@@ -33,6 +33,7 @@
         "add view doc modal",
         "add queue default page",
         "add privacy modal",
-        "add queue list"
+        "add queue list",
+        "add create queue page"
     ]
 }

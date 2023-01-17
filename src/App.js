@@ -19,6 +19,7 @@ import ProfileMessages from "./pages/profile/messages";
 import Account from "./pages/profile/account";
 import ProfileScores from "./pages/profile/scores";
 import ProfileCourses from "./pages/profile/courses";
+import CreateQueue from "./pages/queue/create_queue";
 
 function App() {
   const history = useHistory();
@@ -46,7 +47,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Home} />
-          <Route path="/queue" component={Queue} />
+          <Route path="/queue" exact component={Queue} />
+          <Route path="/queue/create" component={CreateQueue} />
           <Route path="/shop" exact component={Shop} />
           <Route path="/shop/view" component={ViewProduct} />
           <Route path="/search" component={Search} />
@@ -59,6 +61,7 @@ function App() {
           <Route path="/profile/account" component={Account} />
           <Route path="/profile/scores" component={ProfileScores} />
           <Route path="/profile/courses" component={ProfileCourses} />
+          <Route path="/queue/create" component={CreateQueue} />
         </Switch>
       </div>
     </div>

@@ -193,6 +193,19 @@
   border-radius: 50%;
   background: white;
   border: 1.5px solid #cfcfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-addresses-add-form-radio > div:nth-child(1) > div {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none !important;
+  background-color: white;
+}
+.mv-radio-selected {
+  background: #eaf7fa !important;
 }
 .mv-radio-selected > div:nth-child(1) {
   transition: background 0.4s;

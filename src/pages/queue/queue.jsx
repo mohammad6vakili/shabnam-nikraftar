@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import "./queue.css";
 import { Button } from "antd";
 import { useHistory } from "react-router-dom";
@@ -122,9 +122,15 @@ const Queue = () => {
               <img src={emptyIcon} alt="empty" />
             </div>
             <div>متاسفانه، نوبتی برای شما ثبت نشده است.</div>
-            <Button className="mv-button">ثبت‌ نوبت جدید</Button>
+            <Button
+              onClick={() => history.push("/queue/create")}
+              className="mv-button"
+            >
+              ثبت‌ نوبت جدید
+            </Button>
           </div>
         )}
+        {/* filled queue list */}
         {userQueue?.length > 0 && (
           <div className="queue-list-filled">
             <div className="queue-list-header bold">نوبت های ثبت شده من</div>
@@ -147,7 +153,10 @@ const Queue = () => {
                 <img src={editIcon} alt="edit" />
               </div>
             ))}
-            <Button className="mv-button">
+            <Button
+              onClick={() => history.push("/queue/create")}
+              className="mv-button"
+            >
               <img src={addIcon} alt="add" />
               <span>نوبت جدید</span>
             </Button>

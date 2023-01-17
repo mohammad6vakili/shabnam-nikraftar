@@ -141,7 +141,8 @@ export default function Login() {
               />
             )}
             <span className="login-subtitle">
-              کد ۵ رقمی ارسالی به شماره ۰۹۱۱۲۳۴۵۶۷۸ را وارد کنید
+              کد ۵ رقمی ارسالی به شماره {FormatHelper.toPersianString(mobile)}{" "}
+              را وارد کنید
             </span>
             <PinInput
               values={code}

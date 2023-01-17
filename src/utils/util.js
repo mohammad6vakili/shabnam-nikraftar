@@ -504,3 +504,120 @@ export const userQueue = [
     isPayed: true,
   },
 ];
+
+export const beautyLines = [
+  {
+    value: 1,
+    title: "لاین اکستنشن مو",
+  },
+  {
+    value: 2,
+    title: "لاین هیدرو المنت",
+  },
+  {
+    value: 3,
+    title: "لاین هیرکات",
+  },
+  {
+    value: 4,
+    title: "لاین رنگ مو",
+  },
+  {
+    value: 5,
+    title: "لاین ابرو",
+  },
+  {
+    value: 6,
+    title: "لاین موخوره گیری",
+  },
+];
+
+export const dates = [
+  {
+    id: 1,
+    date: 14,
+    title: "امروز",
+    today: true,
+    closed: false,
+  },
+  {
+    id: 2,
+    date: 15,
+    title: "ی ش",
+    today: false,
+    closed: false,
+  },
+  {
+    id: 3,
+    date: 16,
+    title: "تعطیل",
+    today: false,
+    closed: true,
+  },
+  {
+    id: 4,
+    date: 17,
+    title: "س ش",
+    today: false,
+    closed: false,
+  },
+  {
+    id: 5,
+    date: 18,
+    title: "چ ش",
+    today: false,
+    closed: false,
+  },
+  {
+    id: 6,
+    date: 19,
+    title: "پ ش",
+    today: false,
+    closed: false,
+  },
+  {
+    id: 7,
+    date: 20,
+    title: "ج",
+    today: false,
+    closed: false,
+  },
+];
+
+export const times = [
+  {
+    id: 1,
+    from: "۰۹:۱۵",
+    to: "۱۰:۱۵",
+  },
+  {
+    id: 2,
+    from: "۱۱",
+    to: "۱۲",
+  },
+  {
+    id: 3,
+    from: "۱۲",
+    to: "۱۳",
+  },
+  {
+    id: 4,
+    from: "۱۳",
+    to: "۱۴",
+  },
+  {
+    id: 5,
+    from: "۱۴",
+    to: "۱۵",
+  },
+  {
+    id: 6,
+    from: "۱۵",
+    to: "۱۶",
+  },
+  {
+    id: 7,
+    from: "۱۶",
+    to: "۱۷",
+  },
+];
