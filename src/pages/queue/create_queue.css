@@ -162,6 +162,40 @@
 .queue-create-action-area > button:nth-child(2):focus {
   color: #40b1d1 !important;
 }
+.queue-create-remote-cansulate {
+  width: calc(100% - 24px);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+.queue-create-remote-cansulate > div {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+.queue-create-remote-cansulate > div > div:nth-child(1) {
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #cfcfcf;
+  transition: background 0.3s;
+}
+.queue-create-remote-cansulate-selected > div:nth-child(1) {
+  background: #40b1d1 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.queue-create-remote-cansulate-selected > div:nth-child(1) > div {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+  border: none !important;
+}
 
 @media only screen and (max-width: 375px) {
   .queue-create-tabs > div {
