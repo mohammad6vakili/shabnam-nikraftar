@@ -35,6 +35,7 @@
         "add privacy modal",
         "add queue list",
         "add create queue page",
-        "add cansulate tab"
+        "add cansulate tab",
+        "add status bar"
     ]
 }
