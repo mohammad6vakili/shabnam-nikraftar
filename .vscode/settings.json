@@ -39,6 +39,7 @@
         "add status bar",
         "add factor modal",
         "add ports modal",
-        "add successfull payment"
+        "add successfull payment",
+        "add failed payment"
     ]
 }

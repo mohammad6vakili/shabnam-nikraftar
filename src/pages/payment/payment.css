@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: center;
 }
+.payment-failed,
 .payment-successfull {
   width: 100%;
   height: 100%;
@@ -25,20 +26,31 @@
   flex-direction: column;
   align-items: center;
 }
+.payment-failed > div:nth-child(1),
 .payment-successfull > div:nth-child(1) {
   width: 96px;
   height: 112px;
-  background: #deffe7;
   border-radius: 96px 96px 32px 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 32px;
 }
+.payment-successfull > div:nth-child(1) {
+  background: #deffe7;
+}
+.payment-failed > div:nth-child(1) {
+  background: #ffedee;
+}
 .payment-successfull > div:nth-child(2) {
   font-size: 18px;
   color: #23cb52;
 }
+.payment-failed > div:nth-child(2) {
+  font-size: 18px;
+  color: #f54851;
+}
+.payment-failed > div:nth-child(3),
 .payment-successfull > div:nth-child(3) {
   margin: 8px 0 16px 0;
   color: #3b3b3b;
@@ -53,9 +65,16 @@
   justify-content: center;
   align-items: center;
 }
+.payment-failed > button:nth-child(5),
 .payment-successfull > button:nth-child(5) {
   background-color: transparent !important;
   border: 1px solid #cfcfcf;
   color: #3b3b3b !important;
   margin-top: 24px;
+}
+.payment-failed > button:nth-child(4) {
+  margin: 24px 0 16px 0;
+}
+.payment-failed > button:nth-child(5) {
+  margin-top: 0 !important;
 }

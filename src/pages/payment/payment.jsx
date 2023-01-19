@@ -7,7 +7,7 @@ import failedIcon from "../../assets/images/paymentFailed.svg";
 
 const Payment = () => {
   const history = useHistory();
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState(1);
 
   return (
     <div className="payment">
@@ -28,7 +28,17 @@ const Payment = () => {
             </Button>
           </div>
         ) : (
-          <Fragment>2</Fragment>
+          <div className="payment-failed">
+            <div>
+              <img src={failedIcon} alt="payment result" />
+            </div>
+            <div className="bold">پرداخت ناموفق</div>
+            <div>نوبت شما با موفقیت ثبت نشد.</div>
+            <Button className="mv-button">مجددا تلاش کنید</Button>
+            <Button className="mv-button" onClick={() => history.push("/home")}>
+              صفحه اصلی
+            </Button>
+          </div>
         )}
       </div>
     </div>
