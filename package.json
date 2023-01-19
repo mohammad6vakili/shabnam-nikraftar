@@ -1,7 +1,6 @@
 {
   "name": "beauty",
   "version": "0.1.0",
-  "homepage": "https://mohammad6vakili.github.io/shabnam-nikraftar",
   "private": true,
   "dependencies": {
     "@hassanmojab/react-modern-calendar-datepicker": "^3.1.7",
