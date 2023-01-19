@@ -448,7 +448,7 @@ const CreateQueue = () => {
               <span></span>
               <div>
                 <Button
-                  onClick={() => setPortModal(true)}
+                  onClick={() => history.push("/payment")}
                   className="mv-button"
                 >
                   پرداخت هزینه

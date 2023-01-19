@@ -38,6 +38,7 @@
         "add cansulate tab",
         "add status bar",
         "add factor modal",
-        "add ports modal"
+        "add ports modal",
+        "add successfull payment"
     ]
 }
