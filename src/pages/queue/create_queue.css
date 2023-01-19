@@ -330,6 +330,7 @@
 }
 .queue-create-factor-actions > div:nth-child(2) > button:nth-child(2) {
   width: 35% !important;
+  min-width: 90px !important;
   background-color: transparent !important;
   margin-right: 16px;
   border: 1px solid #cfcfcf !important;
@@ -349,6 +350,62 @@
 .queue-create-discount > div:nth-child(2) > button {
   margin-right: 16px;
   width: 30% !important;
+}
+.queue-create-port {
+  padding-bottom: 120px;
+}
+.queue-create-port > div:nth-child(1) > div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.queue-create-port > div:nth-child(1) > div > div:nth-child(1) {
+  min-width: 18px;
+  min-height: 18px;
+  margin-left: 8px;
+  border: 1.5px solid #cfcfcf;
+  background: white;
+  transition: background 0.3s;
+  border-radius: 50%;
+}
+.queue-create-port > div:nth-child(1) > div > div:nth-child(2) {
+  color: #626262;
+  font-size: 14px;
+}
+.queue-create-port
+  > div:nth-child(1)
+  > div
+  > div:nth-child(2)
+  > div:nth-child(2) {
+  font-size: 12px;
+  margin-top: 2px;
+}
+.queue-create-port > div:nth-child(1) > div > div:nth-child(3) {
+  position: absolute;
+  left: 0;
+}
+.method-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none !important;
+  background: #40b1d1 !important;
+}
+.method-selected > div {
+  background: white;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.queue-create-port-ports {
+  margin-right: 28px;
+}
+.queue-create-port-ports > div {
+  padding: 8px;
+  background: #f7f7f7;
+  border-radius: 16px !important;
+  border: 1px solid #cfcfcf !important;
 }
 
 @media only screen and (max-width: 375px) {

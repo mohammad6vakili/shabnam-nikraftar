@@ -37,6 +37,7 @@
         "add create queue page",
         "add cansulate tab",
         "add status bar",
-        "add factor modal"
+        "add factor modal",
+        "add ports modal"
     ]
 }

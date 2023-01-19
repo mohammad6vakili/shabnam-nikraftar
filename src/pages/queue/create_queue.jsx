@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./create_queue.css";
 import { useHistory } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import { beautyLines, dates, times, factorQueues } from "../../utils/util";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SelectModal from "../../components/select_modal";
 import ModalSlide from "../../components/modal_slide";
 import backIcon from "../../assets/queue/backButton.svg";
 import beautyIcon from "../../assets/queue/beautyTab.svg";
+import melliBank from "../../assets/profile/melliBank.svg";
+import samanBank from "../../assets/profile/samanBank.svg";
 import cansulateIcon from "../../assets/queue/cansulateTab.svg";
 import FormatHelper from "../../helper/FormatHelper";
 import { toast } from "react-toastify";
@@ -24,6 +25,9 @@ const CreateQueue = () => {
   const [factorModal, setFactorModal] = useState(false);
   const [discountModal, setDiscountModal] = useState(false);
   const [discountCode, setDiscountCode] = useState("");
+  const [portModal, setPortModal] = useState(false);
+  const [method, setMethod] = useState(0);
+  const [portActive, setPortActive] = useState(0);
 
   return (
     <div className="queue-create">
@@ -347,7 +351,12 @@ const CreateQueue = () => {
                 </div>
               </div>
               <div>
-                <Button className="mv-button">پرداخت هزینه</Button>
+                <Button
+                  onClick={() => setPortModal(true)}
+                  className="mv-button"
+                >
+                  پرداخت هزینه
+                </Button>
                 <Button
                   onClick={() => setDiscountModal(true)}
                   className="mv-button"
@@ -385,6 +394,74 @@ const CreateQueue = () => {
               ثبت کد
             </Button>
           </div>
+        </div>
+      </ModalSlide>
+      {/* port */}
+      <ModalSlide visible={portModal} setVisible={setPortModal}>
+        {/* header */}
+        <div className="queue-create-factor-modal-header">
+          <span className="bold">انتخاب روش پرداخت</span>
+        </div>
+        <div className="queue-create-port">
+          <div>
+            <div onClick={() => setMethod(0)}>
+              <div className={method === 0 ? "method-selected" : ""}>
+                {method === 0 && <div></div>}
+              </div>
+              <div>
+                <div style={{ color: "black" }}>پرداخت از طریق کیف پول</div>
+                <div>موجودی کافی نیست</div>
+              </div>
+              <div>
+                <span style={{ color: "#40b1d1", marginLeft: 3 }}>۲۵,۰۰۰</span>
+                <span>تومان</span>
+              </div>
+            </div>
+            <div onClick={() => setMethod(1)}>
+              <div className={method === 1 ? "method-selected" : ""}>
+                <div>{method === 1 && <div></div>}</div>
+              </div>
+              <div style={{ color: "black" }}>پرداخت از طریق درگاه بانکی</div>
+            </div>
+            <div className="queue-create-port-ports">
+              <div
+                className={portActive === 0 ? "port-active" : ""}
+                onClick={() => {
+                  setPortActive(0);
+                }}
+              >
+                <img src={melliBank} alt="port" />
+              </div>
+              <div
+                className={portActive === 1 ? "port-active" : ""}
+                onClick={() => {
+                  setPortActive(1);
+                }}
+              >
+                <img src={samanBank} alt="port" />
+              </div>
+            </div>
+          </div>
+          {/* actionbar */}
+          {portModal && (
+            <div className="queue-create-factor-actions">
+              <span></span>
+              <div>
+                <Button
+                  onClick={() => setPortModal(true)}
+                  className="mv-button"
+                >
+                  پرداخت هزینه
+                </Button>
+                <Button
+                  onClick={() => setPortModal(false)}
+                  className="mv-button"
+                >
+                  بازگشت
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </ModalSlide>
     </div>
