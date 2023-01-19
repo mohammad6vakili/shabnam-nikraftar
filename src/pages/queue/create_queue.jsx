@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./create_queue.css";
 import { useHistory } from "react-router-dom";
-import { beautyLines, dates, times } from "../../utils/util";
+import { ToastContainer } from "react-toastify";
+import { beautyLines, dates, times, factorQueues } from "../../utils/util";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SelectModal from "../../components/select_modal";
+import ModalSlide from "../../components/modal_slide";
 import backIcon from "../../assets/queue/backButton.svg";
 import beautyIcon from "../../assets/queue/beautyTab.svg";
 import cansulateIcon from "../../assets/queue/cansulateTab.svg";
@@ -19,6 +21,9 @@ const CreateQueue = () => {
   const [selectedTime, setSelectedTime] = useState("");
   const [radioSelected, setRadioSelected] = useState(false);
   const [remoteCansulate, setRemoteCansulate] = useState(0);
+  const [factorModal, setFactorModal] = useState(false);
+  const [discountModal, setDiscountModal] = useState(false);
+  const [discountCode, setDiscountCode] = useState("");
 
   return (
     <div className="queue-create">
@@ -233,10 +238,155 @@ const CreateQueue = () => {
         </div>
         {/* action area */}
         <div className="queue-create-action-area">
-          <Button className="mv-button">پرداخت</Button>
-          <Button className="mv-button">افزودن و نوبت جدید</Button>
+          <Button onClick={() => setFactorModal(true)} className="mv-button">
+            پرداخت
+          </Button>
+          <Button onClick={() => setFactorModal(true)} className="mv-button">
+            افزودن و نوبت جدید
+          </Button>
         </div>
       </div>
+      {/* factor modal */}
+      <ModalSlide visible={factorModal} setVisible={setFactorModal}>
+        <div className="queue-create-factor">
+          {/* header */}
+          <div className="queue-create-factor-modal-header">
+            <span className="bold">فاکتور نهایی</span>
+            <span>
+              {FormatHelper.toPersianString(factorQueues.length)} نوبت
+            </span>
+          </div>
+          {/* queues */}
+          {factorQueues.map((queue, index) => (
+            <div className="queue-create-factor-queue" key={index}>
+              <div>
+                <div>{FormatHelper.toPersianString(index + 1)}</div>
+                <Button className="mv-button-outline">ویرایش نوبت</Button>
+              </div>
+              <div>
+                {/* type */}
+                <div>
+                  <div>نوع رزرو</div>
+                  <div></div>
+                  <div className="bold">{queue.type}</div>
+                </div>
+                {/* beauty line */}
+                <div>
+                  <div>لاین زیبایی</div>
+                  <div></div>
+                  <div className="bold">{queue.beautyLine}</div>
+                </div>
+                {/* name */}
+                <div>
+                  <div>نام زیباجو</div>
+                  <div></div>
+                  <div className="bold">{queue.name}</div>
+                </div>
+                {/* date time */}
+                <div>
+                  <div>تاریخ رزرو</div>
+                  <div></div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <span className="bold">
+                      {FormatHelper.toPersianString(queue.date)}
+                    </span>
+                    <span className="bold">
+                      {FormatHelper.toPersianString(queue.time)}
+                    </span>
+                  </div>
+                </div>
+                {/* price */}
+                <div>
+                  <div>پ پرداخت</div>
+                  <div></div>
+                  <div>
+                    <span
+                      className="bold"
+                      style={{ color: "#40B1D1", fontSize: 16, marginLeft: 3 }}
+                    >
+                      {FormatHelper.toPersianString(
+                        FormatHelper.numberSeperator(queue.price)
+                      )}
+                    </span>
+                    <span>تومان</span>
+                  </div>
+                </div>
+                {/* discount */}
+                <div>
+                  <div>تخفیف</div>
+                  <div></div>
+                  <div>
+                    <span className="bold" style={{ marginLeft: 3 }}>
+                      ۰
+                    </span>{" "}
+                    تومان
+                  </div>
+                </div>
+                {/* final price */}
+                <div>
+                  <div>مبلغ نهایی</div>
+                  <div></div>
+                  <div>-----------------</div>
+                </div>
+              </div>
+            </div>
+          ))}
+          {/* actionbar */}
+          {factorModal && (
+            <div className="queue-create-factor-actions">
+              <div>
+                <div className="bold">مجموع مبلغ پرداختی :</div>
+                <div>
+                  <span
+                    className="bold"
+                    style={{ color: "#40B1D1", marginLeft: 3, fontSize: 16 }}
+                  >
+                    ۵۹۰,۰۰۰
+                  </span>
+                  <span>تومان</span>
+                </div>
+              </div>
+              <div>
+                <Button className="mv-button">پرداخت هزینه</Button>
+                <Button
+                  onClick={() => setDiscountModal(true)}
+                  className="mv-button"
+                >
+                  کد تخفیف
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </ModalSlide>
+      {/* discount modal */}
+      <ModalSlide visible={discountModal} setVisible={setDiscountModal}>
+        {/* header */}
+        <div className="queue-create-factor-modal-header">
+          <span className="bold">اعمال کد تخفیف</span>
+        </div>
+        {/* body */}
+        <div className="queue-create-discount">
+          <div>کد تخفیف</div>
+          <div>
+            <Input
+              value={discountCode}
+              onChange={(e) => setDiscountCode(e.target.value)}
+              className="mv-input"
+            />
+            <Button
+              onClick={() => {
+                setDiscountModal(false);
+                setDiscountCode("");
+              }}
+              disabled={discountCode.length === 0}
+              className="mv-button"
+            >
+              ثبت کد
+            </Button>
+          </div>
+        </div>
+      </ModalSlide>
     </div>
   );
 };

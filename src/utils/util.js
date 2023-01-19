@@ -621,3 +621,46 @@ export const times = [
     to: "۱۷",
   },
 ];
+
+export const factorQueues = [
+  {
+    id: 1,
+    type: "آرایشی",
+    beautyLine: "اکستنشن مو و ابرو",
+    name: "سمانه درخشانی",
+    date: "سه شنبه ۲۰ بهمن ۱۴۰۱",
+    time: "۰۹:۳۰  تا ۱۱:۱۰",
+    price: 250000,
+    discount: 0,
+  },
+  {
+    id: 2,
+    type: "آرایشی",
+    beautyLine: "اکستنشن مو و ابرو",
+    name: "سمانه درخشانی",
+    date: "سه شنبه ۲۰ بهمن ۱۴۰۱",
+    time: "۰۹:۳۰  تا ۱۱:۱۰",
+    price: 250000,
+    discount: 0,
+  },
+  {
+    id: 3,
+    type: "آرایشی",
+    beautyLine: "اکستنشن مو و ابرو",
+    name: "سمانه درخشانی",
+    date: "سه شنبه ۲۰ بهمن ۱۴۰۱",
+    time: "۰۹:۳۰  تا ۱۱:۱۰",
+    price: 250000,
+    discount: 0,
+  },
+  {
+    id: 4,
+    type: "آرایشی",
+    beautyLine: "اکستنشن مو و ابرو",
+    name: "سمانه درخشانی",
+    date: "سه شنبه ۲۰ بهمن ۱۴۰۱",
+    time: "۰۹:۳۰  تا ۱۱:۱۰",
+    price: 250000,
+    discount: 0,
+  },
+];
