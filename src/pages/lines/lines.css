@@ -84,7 +84,7 @@
   position: absolute;
   width: 80%;
   height: 95%;
-  left: -13px;
+  left: -30px;
   top: -13px;
 }
 .lines-line-item > div:nth-child(2) > div {
@@ -118,4 +118,17 @@
 }
 .lines-line-item > div:nth-child(3) > div:active {
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 350px) {
+  .lines-line-item > div:nth-child(1) > div:nth-child(2) > img:nth-child(2) {
+    left: -15px !important;
+    top: -13px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .lines-line-item > div:nth-child(1) > div:nth-child(2) > img:nth-child(2) {
+    left: -20px;
+    top: -13px;
+  }
 }
