@@ -41,6 +41,7 @@
         "add ports modal",
         "add successfull payment",
         "add failed payment",
-        "add CI/CD"
+        "add CI/CD",
+        "add routes"
     ]
 }

@@ -3,6 +3,7 @@ import "./style.css";
 import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { setHamburgerMenu } from "../../features/app/app_slice";
+import { useHistory } from "react-router-dom";
 import menuBackButton from "../../assets/images/menuBackButton.svg";
 import menuBanner from "../../assets/images/menuBanner.svg";
 import hamburgerItemArrow from "../../assets/images/hamburgerItemArrow.svg";
@@ -16,6 +17,7 @@ import { menuItems } from "../../utils/util";
 
 const HamburgerMenu = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const hamburgerMenu = useSelector((state) => state.app.hamburgerMenu);
 
   return (
@@ -33,7 +35,13 @@ const HamburgerMenu = () => {
       {/* menu items */}
       <div className="hamburger-menu-menus">
         {menuItems.map((item, index) => (
-          <div key={index}>
+          <div
+            onClick={() => {
+              dispatch(setHamburgerMenu(false));
+              history.push(item.redirectRoute);
+            }}
+            key={index}
+          >
             <div>
               <img src={item.icon} alt="item icon" />
               <span>{item.title}</span>

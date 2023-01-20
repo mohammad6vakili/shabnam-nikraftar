@@ -27,30 +27,37 @@ export const menuItems = [
   {
     icon: beautyLineIcon,
     title: "لاین های زیبایی",
+    redirectRoute: "/home",
   },
   {
     icon: queueIcon,
     title: "رزرو نوبت",
+    redirectRoute: "/home",
   },
   {
     icon: coursesIcon,
     title: "دوره آموزشی",
+    redirectRoute: "/courses",
   },
   {
     icon: shopIcon,
     title: "فروشگاه ما",
+    redirectRoute: "/shop",
   },
   {
     icon: blogIcon,
     title: "بلاگ ما",
+    redirectRoute: "/blog",
   },
   {
     icon: collabrateIcon,
     title: "فرصت همکاری",
+    redirectRoute: "/collaborate",
   },
   {
     icon: aboutIcon,
     title: "درباره ما",
+    redirectRoute: "/about",
   },
 ];
 
