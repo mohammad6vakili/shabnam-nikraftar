@@ -44,6 +44,7 @@
         "add CI/CD",
         "add routes",
         "add beauty lines",
-        "fix lines responsive"
+        "fix lines responsive",
+        "add lines modal"
     ]
 }

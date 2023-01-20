@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./lines.css";
 import { Button } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
+import { useHistory } from "react-router-dom";
 import FormatHelper from "../../helper/FormatHelper";
 import { lines } from "../../utils/util";
+import ModalSlide from "../../components/modal_slide";
 import MobileMenu from "../../components/mobile_menu";
 import Header from "../../components/header";
 import Banner from "../../assets/images/headerBanner.svg";
@@ -12,8 +14,14 @@ import leftArrow from "../../assets/lines/leftArrow.svg";
 import unlikeIcon from "../../assets/lines/unLike.svg";
 import shareIcon from "../../assets/lines/share.svg";
 import imageBackground from "../../assets/lines/imageBackground.svg";
+import closeIcon from "../../assets/lines/closeIcon.svg";
+import nextIcon from "../../assets/lines/nextIcon.svg";
+import reserveIcon from "../../assets/lines/reserveIcon.svg";
 
 const Lines = () => {
+  const history = useHistory();
+  const [step, setStep] = useState(0);
+  const [modal, setModal] = useState(false);
   const array = [1, 2, 3, 4, 5, 6];
   return (
     <div className="home">
@@ -84,22 +92,42 @@ const Lines = () => {
           {/* menu items */}
           <div>
             {/* intro */}
-            <div>
+            <div
+              onClick={() => {
+                setModal(true);
+                setStep(0);
+              }}
+            >
               <div>معرفی لاین</div>
               <img src={leftArrow} alt="menu" />
             </div>
             {/* posts */}
-            <div>
+            <div
+              onClick={() => {
+                setModal(true);
+                setStep(1);
+              }}
+            >
               <div>پست های مرتبط</div>
               <img src={leftArrow} alt="menu" />
             </div>
             {/* Q&A */}
-            <div>
+            <div
+              onClick={() => {
+                setModal(true);
+                setStep(2);
+              }}
+            >
               <div>سوالات متداول</div>
               <img src={leftArrow} alt="menu" />
             </div>
             {/* comments */}
-            <div>
+            <div
+              onClick={() => {
+                setModal(true);
+                setStep(3);
+              }}
+            >
               <div>نظرات کاربران</div>
               <img src={leftArrow} alt="menu" />
             </div>
@@ -118,6 +146,71 @@ const Lines = () => {
       ))}
       {/* mobile menu */}
       <MobileMenu />
+      {/* line modal */}
+      <ModalSlide visible={modal} setVisible={setModal} hideCurve hideClose>
+        <div className="lines-modal-body">
+          {/* header */}
+          <div className="lines-modal-title">
+            <img src={closeIcon} alt="close" onClick={() => setModal(false)} />
+            <span className="bold">
+              {step === 0 && "معرفی لاین"}
+              {step === 1 && "پست مرتبط"}
+              {step === 2 && "سوالات متداول"}
+              {step === 3 && "نظر کاربران"}
+            </span>
+          </div>
+          <div className="lines-modal-content"></div>
+          {/* actions */}
+          {modal && (
+            <div className="lines-modal-actions">
+              {step === 3 ? (
+                <div className="lines-modal-reserve-button">
+                  <Button
+                    onClick={() => {
+                      history.push("/queue/create");
+                    }}
+                    className="mv-button"
+                  >
+                    رزرو نوبت
+                  </Button>
+                </div>
+              ) : (
+                <Button
+                  onClick={() => {
+                    setStep(step + 1);
+                  }}
+                  className="mv-button"
+                >
+                  <img src={nextIcon} alt="next" />
+                  <span>
+                    {step === 0 && "پست مرتبط"}
+                    {step === 1 && "سوالات متداول"}
+                    {step === 2 && "نظر کاربران"}
+                  </span>
+                </Button>
+              )}
+              <Button
+                onClick={() => {
+                  if (step === 0) {
+                    setModal(false);
+                  } else {
+                    setStep(step - 1);
+                  }
+                }}
+                className="mv-button"
+              >
+                بازگشت
+              </Button>
+              <div
+                className="lines-modal-actions-reserve-button"
+                onClick={() => history.push("/queue/create")}
+              >
+                <img src={reserveIcon} alt="reserve" />
+              </div>
+            </div>
+          )}
+        </div>
+      </ModalSlide>
     </div>
   );
 };
