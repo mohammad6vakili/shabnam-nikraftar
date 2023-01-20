@@ -42,6 +42,7 @@
         "add successfull payment",
         "add failed payment",
         "add CI/CD",
-        "add routes"
+        "add routes",
+        "add beauty lines"
     ]
 }

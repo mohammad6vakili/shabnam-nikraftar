@@ -21,6 +21,7 @@ import ProfileScores from "./pages/profile/scores";
 import ProfileCourses from "./pages/profile/courses";
 import CreateQueue from "./pages/queue/create_queue";
 import Payment from "./pages/payment/payment";
+import Lines from "./pages/lines/lines";
 
 function App() {
   const history = useHistory();
@@ -64,6 +65,7 @@ function App() {
           <Route path="/profile/courses" component={ProfileCourses} />
           <Route path="/queue/create" component={CreateQueue} />
           <Route path="/payment" component={Payment} />
+          <Route path="/lines" component={Lines} />
         </Switch>
       </div>
     </div>

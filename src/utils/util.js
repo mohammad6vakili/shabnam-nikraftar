@@ -23,11 +23,15 @@ import productOne from "../assets/shop/product-1.svg";
 import productTwo from "../assets/shop/product-2.svg";
 import productThree from "../assets/shop/product-3.svg";
 
+// lines image import
+import lineImage from "../assets/lines/lineImage.svg";
+import scoresImage from "../assets/lines/scores.svg";
+
 export const menuItems = [
   {
     icon: beautyLineIcon,
     title: "لاین های زیبایی",
-    redirectRoute: "/home",
+    redirectRoute: "/lines",
   },
   {
     icon: queueIcon,
@@ -669,5 +673,32 @@ export const factorQueues = [
     time: "۰۹:۳۰  تا ۱۱:۱۰",
     price: 250000,
     discount: 0,
+  },
+];
+
+export const lines = [
+  {
+    id: 1,
+    title: "اکستنشن مو و ابرو",
+    artists: "+۱۰",
+    customers: "+۴۵۰",
+    image: lineImage,
+    score: scoresImage,
+  },
+  {
+    id: 2,
+    title: "اکستنشن مو و ابرو",
+    artists: "+۱۰",
+    customers: "+۴۵۰",
+    image: lineImage,
+    score: scoresImage,
+  },
+  {
+    id: 3,
+    title: "اکستنشن مو و ابرو",
+    artists: "+۱۰",
+    customers: "+۴۵۰",
+    image: lineImage,
+    score: scoresImage,
   },
 ];
