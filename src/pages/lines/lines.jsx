@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { useHistory } from "react-router-dom";
 import FormatHelper from "../../helper/FormatHelper";
-import { lines, postComments } from "../../utils/util";
+import { lines, postComments, questions } from "../../utils/util";
 import ModalSlide from "../../components/modal_slide";
 import MobileMenu from "../../components/mobile_menu";
 import Post from "../../components/post";
@@ -20,6 +20,7 @@ import closeIcon from "../../assets/lines/closeIcon.svg";
 import nextIcon from "../../assets/lines/nextIcon.svg";
 import reserveIcon from "../../assets/lines/reserveIcon.svg";
 import commentsSortIcon from "../../assets/images/postPreviewSortComments.svg";
+import Question from "../../components/question";
 
 const Lines = () => {
   const history = useHistory();
@@ -170,6 +171,14 @@ const Lines = () => {
               <div className="home-posts">
                 {array.map((post, index) => (
                   <Post index={index} />
+                ))}
+              </div>
+            )}
+            {/* Q&A */}
+            {step === 2 && (
+              <div className="lines-modal-questions">
+                {questions.map((question, index) => (
+                  <Question index={index} data={question} />
                 ))}
               </div>
             )}

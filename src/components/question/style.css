@@ -1,0 +1,32 @@
+.question {
+  width: 100%;
+  padding: 12px 8px;
+  background: #f7f7f7;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+.question > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  color: #222222;
+}
+.question > div:nth-child(1) > img {
+  margin-left: 8px;
+}
+.question > div:nth-child(2) {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s;
+  margin-top: 8px;
+  padding-right: 32px;
+  color: #222222;
+  font-size: 12px;
+}
+.answer-open {
+  height: 120px !important;
+  scrollbar-width: none !important;
+  overflow-y: auto !important;
+}
+.answer-open::-webkit-scrollbar {
+  display: none;
+}
