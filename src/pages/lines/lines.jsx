@@ -8,6 +8,7 @@ import FormatHelper from "../../helper/FormatHelper";
 import { lines } from "../../utils/util";
 import ModalSlide from "../../components/modal_slide";
 import MobileMenu from "../../components/mobile_menu";
+import Post from "../../components/post";
 import Header from "../../components/header";
 import Banner from "../../assets/images/headerBanner.svg";
 import leftArrow from "../../assets/lines/leftArrow.svg";
@@ -159,7 +160,15 @@ const Lines = () => {
               {step === 3 && "نظر کاربران"}
             </span>
           </div>
-          <div className="lines-modal-content"></div>
+          <div className="lines-modal-content">
+            {step === 1 && (
+              <div className="home-posts">
+                {array.map((post, index) => (
+                  <Post index={index} />
+                ))}
+              </div>
+            )}
+          </div>
           {/* actions */}
           {modal && (
             <div className="lines-modal-actions">

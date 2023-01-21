@@ -150,6 +150,7 @@
   display: flex;
   align-items: center;
   padding: 16px;
+  z-index: 999999;
 }
 .lines-modal-actions > button {
   border: none;
@@ -193,7 +194,8 @@
 .lines-modal-content {
   width: 100%;
   height: calc(100% - 100px);
-  padding-bottom: 60px;
+  padding-bottom: 80px;
+  margin-top: 16px;
   overflow-y: auto;
   scrollbar-width: none !important;
 }
