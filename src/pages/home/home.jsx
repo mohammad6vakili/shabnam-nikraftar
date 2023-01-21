@@ -79,6 +79,7 @@ const Home = () => {
               >
                 <img src={homeMainCarouselIMage} alt="slider image" />
               </div>
+              <div style={{ fontSize: 10, marginTop: 8 }}>اکستنشن مو</div>
             </SwiperSlide>
           ))}
         </Swiper>

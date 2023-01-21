@@ -5,10 +5,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { useHistory } from "react-router-dom";
 import FormatHelper from "../../helper/FormatHelper";
-import { lines } from "../../utils/util";
+import { lines, postComments } from "../../utils/util";
 import ModalSlide from "../../components/modal_slide";
 import MobileMenu from "../../components/mobile_menu";
 import Post from "../../components/post";
+import PostComment from "../../components/post_comment";
 import Header from "../../components/header";
 import Banner from "../../assets/images/headerBanner.svg";
 import leftArrow from "../../assets/lines/leftArrow.svg";
@@ -23,6 +24,8 @@ const Lines = () => {
   const history = useHistory();
   const [step, setStep] = useState(0);
   const [modal, setModal] = useState(false);
+  const [comments, setComments] = useState(postComments);
+
   const array = [1, 2, 3, 4, 5, 6];
   return (
     <div className="home">
@@ -161,10 +164,20 @@ const Lines = () => {
             </span>
           </div>
           <div className="lines-modal-content">
+            {/* posts */}
             {step === 1 && (
               <div className="home-posts">
                 {array.map((post, index) => (
                   <Post index={index} />
+                ))}
+              </div>
+            )}
+            {/* comments */}
+            {step === 3 && (
+              <div className="lines-modal-comments">
+                <div></div>
+                {comments.map((comment, index) => (
+                  <PostComment comment={comment} index={index} />
                 ))}
               </div>
             )}
