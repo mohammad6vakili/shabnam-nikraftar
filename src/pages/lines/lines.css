@@ -202,6 +202,26 @@
 .lines-modal-content::-webkit-scrollbar {
   display: none !important;
 }
+.lines-modal-comments > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.lines-modal-comments > div:nth-child(1) > button:nth-child(1) {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7 !important;
+  border: none;
+  color: #222222;
+}
+.lines-modal-comments > div:nth-child(1) > button:nth-child(1):focus {
+  color: #222222 !important;
+}
+.lines-modal-comments > div:nth-child(1) > button:nth-child(1) > img {
+  margin-left: 8px;
+}
 
 @media only screen and (max-width: 350px) {
   .lines-line-item > div:nth-child(1) > div:nth-child(2) > img:nth-child(2) {

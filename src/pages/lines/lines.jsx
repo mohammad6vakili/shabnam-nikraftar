@@ -19,6 +19,7 @@ import imageBackground from "../../assets/lines/imageBackground.svg";
 import closeIcon from "../../assets/lines/closeIcon.svg";
 import nextIcon from "../../assets/lines/nextIcon.svg";
 import reserveIcon from "../../assets/lines/reserveIcon.svg";
+import commentsSortIcon from "../../assets/images/postPreviewSortComments.svg";
 
 const Lines = () => {
   const history = useHistory();
@@ -175,7 +176,13 @@ const Lines = () => {
             {/* comments */}
             {step === 3 && (
               <div className="lines-modal-comments">
-                <div></div>
+                <div>
+                  <Button className="mv-button">
+                    <img src={commentsSortIcon} alt="sort" />
+                    <span>مرتب سازی</span>
+                  </Button>
+                  <Button className="mv-button-outline">ثبت نظر شما</Button>
+                </div>
                 {comments.map((comment, index) => (
                   <PostComment comment={comment} index={index} />
                 ))}
