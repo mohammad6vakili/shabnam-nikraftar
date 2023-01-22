@@ -23,6 +23,7 @@ import CreateQueue from "./pages/queue/create_queue";
 import Payment from "./pages/payment/payment";
 import Lines from "./pages/lines/lines";
 import Blogs from "./pages/blog/blogs";
+import BlogView from "./pages/blog/blog-view";
 
 function App() {
   const history = useHistory();
@@ -67,7 +68,8 @@ function App() {
           <Route path="/queue/create" component={CreateQueue} />
           <Route path="/payment" component={Payment} />
           <Route path="/lines" component={Lines} />
-          <Route path="/blog" component={Blogs} />
+          <Route path="/blog" exact component={Blogs} />
+          <Route path="/blog/view" component={BlogView} />
         </Switch>
       </div>
     </div>
