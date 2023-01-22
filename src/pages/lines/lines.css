@@ -222,6 +222,12 @@
 .lines-modal-comments > div:nth-child(1) > button:nth-child(1) > img {
   margin-left: 8px;
 }
+.lines-slider {
+  width: 100%;
+  direction: rtl;
+  padding-right: 24px;
+  margin-top: 16px;
+}
 
 @media only screen and (max-width: 350px) {
   .lines-line-item > div:nth-child(1) > div:nth-child(2) > img:nth-child(2) {
