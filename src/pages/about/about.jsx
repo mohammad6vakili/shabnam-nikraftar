@@ -34,6 +34,11 @@ import locationIcon from "../../assets/about/loaction.svg";
 import phoneIcon from "../../assets/about/phone.svg";
 import mobileIcon from "../../assets/about/mobile.svg";
 import emailIcon from "../../assets/about/email.svg";
+import plusIcon from "../../assets/about/plus.svg";
+import likeIcon from "../../assets/about/likeIcon.svg";
+import commentImageOne from "../../assets/about/commentImage1.svg";
+import commentImageTwo from "../../assets/about/commentImage2.svg";
+import commentImageThree from "../../assets/about/commentImage3.svg";
 
 const About = () => {
   const history = useHistory();
@@ -378,7 +383,69 @@ const About = () => {
               </div>
             )}
             {/* comments */}
-            {step === 4 && <Fragment>step 4</Fragment>}
+            {step === 4 && (
+              <div className="about-comments">
+                <Swiper
+                  style={{
+                    width: "100%",
+                    direction: "rtl",
+                    margin: "2px 0 20px 0",
+                  }}
+                  spaceBetween={10}
+                  slidesPerView={1}
+                >
+                  {array.map((arr, index) => (
+                    <SwiperSlide style={{ padding: 8 }} key={index}>
+                      <div className="about-comments-slider-item">
+                        {/* likes */}
+                        <div>
+                          <div>۱۰۰</div>
+                          <img src={likeIcon} alt="like" />
+                        </div>
+                        {/* title */}
+                        <div>
+                          <div>
+                            <span>
+                              <span className="bold">۹</span>/۱۰
+                            </span>
+                          </div>
+                          <div>
+                            <div className="bold">مهسا امینی</div>
+                            <div>هنرجوی دوره اکستنشن مو و ابرو</div>
+                          </div>
+                        </div>
+                        {/* content */}
+                        <div>
+                          با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای
+                          علی الخصوص طراحان خلاقی فرهنگ پیشرو در زبان فارسی
+                          ایجاد کرد این شرایط سخت تایپ به پایان رسد و شامل حروف
+                          چینی دستاوردهای اصلی است{" "}
+                          <span className="bold" style={{ color: "#40B1D1" }}>
+                            بیشتر
+                          </span>
+                        </div>
+                        {/* voice */}
+                        <audio className="about-comments-voice" controls>
+                          <source
+                            src="https://dl.behmelody.in/1401/Shahrivar/I%20m%20Good%20%28Blue%29%20-%20David%20Guetta%20%20Bebe%20Rexha%20%28128%29.mp3"
+                            type="audio/mp3"
+                          />
+                        </audio>
+                        <div>
+                          <div>
+                            <img src={commentImageOne} alt="image" />
+                          </div>
+                          <div>
+                            <img src={commentImageTwo} alt="image" />
+                            <img src={commentImageThree} alt="image" />
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            )}
             {/* contacts */}
             {step === 5 && (
               <div className="about-contacts">
@@ -430,6 +497,13 @@ const About = () => {
               </div>
             )}
           </div>
+          {/* add comment button */}
+          {step === 4 && (
+            <Button className="about-add-comment-button mv-button">
+              <img src={plusIcon} alt="plus" />
+              <span>ثبت نظر</span>
+            </Button>
+          )}
           {/* actions */}
           {modal && (
             <div className="lines-modal-actions">

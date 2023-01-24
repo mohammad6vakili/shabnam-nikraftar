@@ -59,6 +59,7 @@
         "add certificates tab",
         "add services step",
         "add teachers step",
-        "add contacts step"
+        "add contacts step",
+        "add comments step"
     ]
 }
