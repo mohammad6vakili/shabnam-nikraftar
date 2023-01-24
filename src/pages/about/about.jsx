@@ -19,6 +19,7 @@ import blogImage5 from "../../assets/blog/blogImage5.svg";
 import blogImage6 from "../../assets/blog/blogImage6.svg";
 import certificateImage from "../../assets/about/certificate.svg";
 import certificateBgImage from "../../assets/about/certificateBg.svg";
+import servicesVector from "../../assets/about/servicesVector.svg";
 
 const About = () => {
   const history = useHistory();
@@ -271,7 +272,52 @@ const About = () => {
               </div>
             )}
             {/* our services */}
-            {step === 2 && <Fragment>step 2</Fragment>}
+            {step === 2 && (
+              <div className="about-services">
+                <div>
+                  <Swiper
+                    style={{
+                      width: "100%",
+                      direction: "rtl",
+                      margin: "2px 0 20px 0",
+                    }}
+                    spaceBetween={10}
+                    slidesPerView={1}
+                  >
+                    {array.map((arr, index) => (
+                      <SwiperSlide
+                        key={index}
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          paddingBottom: "24px",
+                        }}
+                      >
+                        <div className="about-services-slider-item">
+                          <img src={servicesVector} alt="services" />
+                          <div className="bold">۱۰</div>
+                          <div>لاین زیبایی</div>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+                <div>
+                  <div>
+                    <div className="bold">۴۰۰</div>
+                    <div>هنرجویان جوان</div>
+                  </div>
+                  <div>
+                    <div className="bold">۵۰</div>
+                    <div style={{ color: "black" }}>آرتیست ماهر</div>
+                  </div>
+                  <div>
+                    <div className="bold">+۵۰۰۰</div>
+                    <div>مشتری ماهانه</div>
+                  </div>
+                </div>
+              </div>
+            )}
             {/* teachers */}
             {step === 3 && <Fragment>step 3</Fragment>}
             {/* comments */}
