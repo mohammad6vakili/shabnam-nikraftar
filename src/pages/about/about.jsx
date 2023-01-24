@@ -20,6 +20,10 @@ import blogImage6 from "../../assets/blog/blogImage6.svg";
 import certificateImage from "../../assets/about/certificate.svg";
 import certificateBgImage from "../../assets/about/certificateBg.svg";
 import servicesVector from "../../assets/about/servicesVector.svg";
+import teacherImage from "../../assets/about/teacher.svg";
+import instagram from "../../assets/about/instagram.svg";
+import facebook from "../../assets/about/facebook.svg";
+import telegram from "../../assets/about/telegram.svg";
 
 const About = () => {
   const history = useHistory();
@@ -319,7 +323,50 @@ const About = () => {
               </div>
             )}
             {/* teachers */}
-            {step === 3 && <Fragment>step 3</Fragment>}
+            {step === 3 && (
+              <div className="about-teachers">
+                <Swiper
+                  style={{
+                    width: "100%",
+                    direction: "rtl",
+                    margin: "2px 0 20px 0",
+                  }}
+                  spaceBetween={24}
+                  slidesPerView={1.5}
+                >
+                  {array.map((arr, index) => (
+                    <SwiperSlide style={{ paddingBottom: 32 }} key={index}>
+                      <div className="about-teachers-slider-item">
+                        <img src={teacherImage} alt="teachers" />
+                        <div className="bold">سمانه حق شناس</div>
+                        <div>۷ سال سابقه کاری</div>
+                        {/* social */}
+                        <div>
+                          <div>
+                            <img src={instagram} alt="instagram" />
+                          </div>
+                          <div>
+                            <img src={facebook} alt="facebook" />
+                          </div>
+                          <div>
+                            <img src={telegram} alt="telegram" />
+                          </div>
+                        </div>
+                        <div>
+                          <div>تخصص</div>
+                        </div>
+                        <div>
+                          <div>رنگ مو و ابرو</div>
+                          <div>لاک ناخن</div>
+                          <div>هیرکات</div>
+                          <div>پاکسازی پوست</div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            )}
             {/* comments */}
             {step === 4 && <Fragment>step 4</Fragment>}
             {/* contacts */}
