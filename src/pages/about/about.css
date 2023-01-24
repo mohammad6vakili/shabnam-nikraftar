@@ -318,6 +318,7 @@
 }
 .about-comments-voice {
   margin: 16px 0;
+  width: 100%;
 }
 .about-comments-slider-item > div:nth-child(5) {
   display: flex;

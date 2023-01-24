@@ -60,6 +60,7 @@
         "add services step",
         "add teachers step",
         "add contacts step",
-        "add comments step"
+        "add comments step",
+        "fix voice width"
     ]
 }
