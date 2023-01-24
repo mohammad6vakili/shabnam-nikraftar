@@ -24,6 +24,16 @@ import teacherImage from "../../assets/about/teacher.svg";
 import instagram from "../../assets/about/instagram.svg";
 import facebook from "../../assets/about/facebook.svg";
 import telegram from "../../assets/about/telegram.svg";
+import map from "../../assets/about/map.svg";
+import mapBg from "../../assets/about/mapBg.svg";
+import telegramIcon from "../../assets/about/telegramContact.svg";
+import facebookIcon from "../../assets/about/facebookContact.svg";
+import youtubeIcon from "../../assets/about/youtubeContact.svg";
+import instagramIcon from "../../assets/about/instagramContact.svg";
+import locationIcon from "../../assets/about/loaction.svg";
+import phoneIcon from "../../assets/about/phone.svg";
+import mobileIcon from "../../assets/about/mobile.svg";
+import emailIcon from "../../assets/about/email.svg";
 
 const About = () => {
   const history = useHistory();
@@ -370,7 +380,55 @@ const About = () => {
             {/* comments */}
             {step === 4 && <Fragment>step 4</Fragment>}
             {/* contacts */}
-            {step === 5 && <Fragment>step 5</Fragment>}
+            {step === 5 && (
+              <div className="about-contacts">
+                <div>
+                  <div>
+                    <img src={telegramIcon} alt="telegram" />
+                    <img src={facebookIcon} alt="facebook" />
+                    <img src={youtubeIcon} alt="youtube" />
+                    <img src={instagramIcon} alt="instagram" />
+                  </div>
+                  <div>
+                    <img src={mapBg} alt="background" />
+                    <img src={map} alt="map" />
+                  </div>
+                </div>
+                <div>
+                  {/* address */}
+                  <div>
+                    <div>
+                      <img src={locationIcon} alt="address" />
+                    </div>
+                    <div>
+                      اهواز - پادادشهر - خ جواد الائمه نبش 17 شرقی- ساختمان
+                      ارسلان - طبقه دوم- واحد سوم
+                    </div>
+                  </div>
+                  {/* phone */}
+                  <div>
+                    <div>
+                      <img src={phoneIcon} alt="phone" />
+                    </div>
+                    <div>۰۶۱۳۵۷۲۰۸۰۹ - ۰۶۱۳۵۷۲۰۷۹۳</div>
+                  </div>
+                  {/* mobile */}
+                  <div>
+                    <div>
+                      <img src={mobileIcon} alt="mobile" />
+                    </div>
+                    <div>۰۹۱۶۳۱۱۴۴۶۹</div>
+                  </div>
+                  {/* email */}
+                  <div>
+                    <div>
+                      <img src={emailIcon} alt="email" />
+                    </div>
+                    <div>info@shabnamnikraftar.com</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           {/* actions */}
           {modal && (
