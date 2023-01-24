@@ -228,11 +228,19 @@
   padding-right: 24px;
   margin-top: 16px;
 }
+.lines-slider img {
+  width: 160px !important;
+}
 
 @media only screen and (max-width: 350px) {
   .lines-line-item > div:nth-child(1) > div:nth-child(2) > img:nth-child(2) {
     left: -15px !important;
     top: -13px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .lines-slider img {
+    width: 130px !important;
   }
 }
 @media only screen and (max-width: 400px) {
