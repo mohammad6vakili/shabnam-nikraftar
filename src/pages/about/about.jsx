@@ -2,13 +2,8 @@ import React, { useState, Fragment } from "react";
 import "./about.css";
 import { Button } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper";
 import { useHistory } from "react-router-dom";
-import { lines, postComments, questions } from "../../utils/util";
-import Post from "../../components/post";
-import Question from "../../components/question";
 import Header from "../../components/header";
-import PostComment from "../../components/post_comment";
 import MobileMenu from "../../components/mobile_menu";
 import ModalSlide from "../../components/modal_slide";
 import shabnamImage from "../../assets/about/shabnam.svg";
@@ -16,20 +11,19 @@ import imageBackground from "../../assets/lines/imageBackground.svg";
 import leftArrow from "../../assets/lines/leftArrow.svg";
 import closeIcon from "../../assets/lines/closeIcon.svg";
 import nextIcon from "../../assets/lines/nextIcon.svg";
-import reserveIcon from "../../assets/lines/reserveIcon.svg";
-import commentsSortIcon from "../../assets/images/postPreviewSortComments.svg";
 import playVideoIcon from "../../assets/blog/playVideo.svg";
 import blogImage1 from "../../assets/blog/blogImage1.svg";
 import blogVideo from "../../assets/blog/blogVideo.svg";
 import blogImage4 from "../../assets/blog/blogImage4.svg";
 import blogImage5 from "../../assets/blog/blogImage5.svg";
 import blogImage6 from "../../assets/blog/blogImage6.svg";
+import certificateImage from "../../assets/about/certificate.svg";
+import certificateBgImage from "../../assets/about/certificateBg.svg";
 
 const About = () => {
   const history = useHistory();
   const [modal, setModal] = useState(false);
   const [step, setStep] = useState(0);
-  const [comments, setComments] = useState(postComments);
 
   const array = [1, 2, 3, 4, 5, 6];
 
@@ -243,7 +237,39 @@ const About = () => {
               </Fragment>
             )}
             {/* certificates */}
-            {step === 1 && <Fragment>step 1</Fragment>}
+            {step === 1 && (
+              <div className="about-certificates">
+                <div>
+                  <Swiper
+                    style={{
+                      width: "100%",
+                      direction: "rtl",
+                      margin: "2px 0 20px 0",
+                    }}
+                    spaceBetween={10}
+                    slidesPerView={1}
+                  >
+                    {array.map((arr, index) => (
+                      <SwiperSlide key={index}>
+                        <div className="about-certificates-slider-item">
+                          <img src={certificateBgImage} alt="certificate" />
+                          <img src={certificateImage} alt="certificate" />
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+                <div>
+                  <div className="bold">برترین سالن زیبایی استان</div>
+                  <div>در سال ۱۴۰۲</div>
+                  <div>
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                    با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه
+                    و مجله در ستون و سطرآنچنان که لازم است.
+                  </div>
+                </div>
+              </div>
+            )}
             {/* our services */}
             {step === 2 && <Fragment>step 2</Fragment>}
             {/* teachers */}
