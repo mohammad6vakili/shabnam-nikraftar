@@ -24,6 +24,7 @@ import Payment from "./pages/payment/payment";
 import Lines from "./pages/lines/lines";
 import Blogs from "./pages/blog/blogs";
 import BlogView from "./pages/blog/blog-view";
+import Collaborate from "./pages/collaborate/collaborate";
 
 function App() {
   const history = useHistory();
@@ -70,6 +71,7 @@ function App() {
           <Route path="/lines" component={Lines} />
           <Route path="/blog" exact component={Blogs} />
           <Route path="/blog/view" component={BlogView} />
+          <Route path="/collaborate" component={Collaborate} />
         </Switch>
       </div>
     </div>
