@@ -67,6 +67,7 @@
         "add comments and Q&A",
         "add intro step",
         "add sessions step ui",
-        "add steps wizard"
+        "add steps wizard",
+        "add first step form"
     ]
 }

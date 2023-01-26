@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import "./buy-course.css";
+import { Button, Input } from "antd";
 import { useHistory } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import FormatHelper from "../../helper/FormatHelper";
@@ -20,13 +21,17 @@ const BuyCourse = () => {
         <div>۳/{FormatHelper.toPersianString(step)}</div>
       </div>
       <div className="buy-course-body">
+        {/* steps slider */}
         <div>
           <Swiper
             style={{ padding: "0 24px" }}
             spaceBetween={0}
             slidesPerView={2}
           >
-            <SwiperSlide style={{ paddingBottom: 30 }}>
+            <SwiperSlide
+              onClick={() => setStep(1)}
+              style={{ paddingBottom: 30 }}
+            >
               <div className="buy-course-step-slide">
                 <img src={personalIcon} alt="step" />
                 <div>مشخصات هنرجو</div>
@@ -51,7 +56,10 @@ const BuyCourse = () => {
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide style={{ paddingBottom: 30 }}>
+            <SwiperSlide
+              onClick={() => setStep(2)}
+              style={{ paddingBottom: 30 }}
+            >
               <div className="buy-course-step-slide">
                 <img src={docsIcon} alt="step" />
                 <div>آپلود مدارک</div>
@@ -69,7 +77,10 @@ const BuyCourse = () => {
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide style={{ paddingBottom: 30 }}>
+            <SwiperSlide
+              onClick={() => setStep(3)}
+              style={{ paddingBottom: 30 }}
+            >
               <div className="buy-course-step-slide">
                 <img src={factorIcon} alt="step" />
                 <div>فاکتور نهایی</div>
@@ -96,7 +107,47 @@ const BuyCourse = () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div>2</div>
+        {/* form */}
+        <div>
+          {step === 1 && (
+            <Fragment>
+              {/* first name */}
+              <div className="buy-course-form-field">
+                <div>نام هنرجو</div>
+                <div>
+                  <Input className="mv-input" />
+                </div>
+              </div>
+              {/* last name */}
+              <div className="buy-course-form-field">
+                <div>نام خانوادگی هنرجو</div>
+                <div>
+                  <Input className="mv-input" />
+                </div>
+              </div>
+              {/* national code */}
+              <div className="buy-course-form-field">
+                <div>کد ملی</div>
+                <div>
+                  <Input className="mv-input" />
+                </div>
+              </div>
+              {/* mobile */}
+              <div className="buy-course-form-field">
+                <div>شماره موبایل</div>
+                <div>
+                  <Input className="mv-input" />
+                </div>
+              </div>
+              <Button
+                onClick={() => setStep(2)}
+                className="mv-button buy-course-next-button"
+              >
+                مرحله بعد
+              </Button>
+            </Fragment>
+          )}
+        </div>
       </div>
     </div>
   );
