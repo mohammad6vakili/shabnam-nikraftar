@@ -27,7 +27,8 @@ import mapBg from "../../assets/about/mapBg.svg";
 import telegramIcon from "../../assets/about/telegramContact.svg";
 import facebookIcon from "../../assets/about/facebookContact.svg";
 import youtubeIcon from "../../assets/about/youtubeContact.svg";
-import instagramIcon from "../../assets/about/instagramContact.svg";
+import instagramIcon from "../../assets/courses/instagram.svg";
+import whatsappIcon from "../../assets/courses/whatsapp.svg";
 import locationIcon from "../../assets/about/loaction.svg";
 import phoneIcon from "../../assets/about/phone.svg";
 import mobileIcon from "../../assets/about/mobile.svg";
@@ -37,6 +38,10 @@ import commentImageTwo from "../../assets/about/commentImage2.svg";
 import commentImageThree from "../../assets/about/commentImage3.svg";
 import nextIcon from "../../assets/lines/nextIcon.svg";
 import basketIcon from "../../assets/courses/basket.svg";
+import hatIcon from "../../assets/courses/hat.svg";
+import calendarIcon from "../../assets/courses/calendar.svg";
+import clockIcon from "../../assets/courses/clock.svg";
+import coinIcon from "../../assets/courses/coin.svg";
 
 const ViewCourse = () => {
   const history = useHistory();
@@ -208,6 +213,89 @@ const ViewCourse = () => {
             </span>
           </div>
           <div className="lines-modal-content">
+            {step === 0 && (
+              <div className="view-course-intro">
+                {/* video */}
+                <div>
+                  <img src={blogVideo} alt="video" />
+                  <div>
+                    <img src={playVideoIcon} alt="play" />
+                  </div>
+                </div>
+                {/* description */}
+                <div>
+                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و
+                  با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و
+                  مجله در ستون و سطرآنچنان که لازم است کتابهای زیادی در شصت و سه
+                  درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
+                  طلبد{" "}
+                  <div
+                    style={{
+                      color: "#40B1D1",
+                      display: "inline",
+                      marginRight: 2,
+                    }}
+                    className="bold"
+                  >
+                    بیشتر
+                  </div>
+                </div>
+                <div>
+                  {/* teacher */}
+                  <div>
+                    <div>
+                      <img src={hatIcon} alt="teacher" />
+                    </div>
+                    <div>
+                      <div className="bold">سمانه درخشانی</div>
+                      <div>مدرس دوره</div>
+                    </div>
+                    <div>
+                      <img src={instagramIcon} alt="instagram" />
+                      <img src={whatsappIcon} alt="whatsapp" />
+                    </div>
+                  </div>
+                  {/* date */}
+                  <div>
+                    <div>
+                      <img src={calendarIcon} alt="date" />
+                    </div>
+                    <div>
+                      <div>
+                        <div className="bold">۲۰ آبان</div>
+                        <div>الی</div>
+                        <div className="bold">۱۰ بهمن</div>
+                      </div>
+                      <div>تاریخ برگزاری</div>
+                    </div>
+                  </div>
+                  {/* time */}
+                  <div>
+                    <div>
+                      <img src={clockIcon} alt="time" />
+                    </div>
+                    <div>
+                      <div>
+                        <div className="bold">شنبه ها ۱۶ تا ۱۸</div>
+                        <div>|</div>
+                        <div className="bold">سه شنبه ها ۱۷ تا ۱۹</div>
+                      </div>
+                      <div>روز برگزاری</div>
+                    </div>
+                  </div>
+                  {/* sessions */}
+                  <div>
+                    <div>
+                      <img src={coinIcon} alt="sessions" />
+                    </div>
+                    <div>
+                      <div className="bold">۱۰ جلسه حضوری</div>
+                      <div>مدرس دوره</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
             {/* comments */}
             {step === 2 && (
               <div className="about-comments">
