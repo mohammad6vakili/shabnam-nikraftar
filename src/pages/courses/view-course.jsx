@@ -1,19 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import "./view-course.css";
 import { Button } from "antd";
 import { useHistory } from "react-router-dom";
+import { questions } from "../../utils/util";
 import { Swiper, SwiperSlide } from "swiper/react";
+import ModalSlide from "../../components/modal_slide";
+import Question from "../../components/question";
 import shareIcon from "../../assets/shop/share.svg";
 import rightArrowIcon from "../../assets/shop/right-arrow.svg";
 import leftArrowIcon from "../../assets/shop/left-arrow.svg";
 import likeIcon from "../../assets/images/postLike.svg";
 import unlikeIcon from "../../assets/images/postUnlike.svg";
 import courseSlider from "../../assets/courses/courseSlider.svg";
+import closeIcon from "../../assets/lines/closeIcon.svg";
+import blogImage1 from "../../assets/blog/blogImage1.svg";
+import blogVideo from "../../assets/blog/blogVideo.svg";
+import playVideoIcon from "../../assets/blog/playVideo.svg";
+import blogImage4 from "../../assets/blog/blogImage4.svg";
+import blogImage5 from "../../assets/blog/blogImage5.svg";
+import blogImage6 from "../../assets/blog/blogImage6.svg";
+import certificateImage from "../../assets/about/certificate.svg";
+import certificateBgImage from "../../assets/about/certificateBg.svg";
+import servicesVector from "../../assets/about/servicesVector.svg";
+import map from "../../assets/about/map.svg";
+import mapBg from "../../assets/about/mapBg.svg";
+import telegramIcon from "../../assets/about/telegramContact.svg";
+import facebookIcon from "../../assets/about/facebookContact.svg";
+import youtubeIcon from "../../assets/about/youtubeContact.svg";
+import instagramIcon from "../../assets/about/instagramContact.svg";
+import locationIcon from "../../assets/about/loaction.svg";
+import phoneIcon from "../../assets/about/phone.svg";
+import mobileIcon from "../../assets/about/mobile.svg";
+import emailIcon from "../../assets/about/email.svg";
+import commentImageOne from "../../assets/about/commentImage1.svg";
+import commentImageTwo from "../../assets/about/commentImage2.svg";
+import commentImageThree from "../../assets/about/commentImage3.svg";
+import nextIcon from "../../assets/lines/nextIcon.svg";
+import basketIcon from "../../assets/courses/basket.svg";
 
 const ViewCourse = () => {
   const history = useHistory();
-  const [liked, setLiked] = useState(false);
   const array = [1, 2, 3, 4, 5, 6];
+
+  const [liked, setLiked] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [step, setStep] = useState(0);
+
   return (
     <div className="view-product">
       {/* action */}
@@ -39,7 +71,7 @@ const ViewCourse = () => {
           <div>
             <img
               onClick={() => {
-                history.push("/courses bvbg0-b 0 v0zx");
+                history.push("/courses");
               }}
               src={rightArrowIcon}
               alt="back"
@@ -62,7 +94,7 @@ const ViewCourse = () => {
             />
           </div>
         </div>
-        <Swiper slidesPerView={2.3}>
+        <Swiper style={{ paddingRight: 16 }} slidesPerView={2.3}>
           {array.map((item, index) => (
             <SwiperSlide key={index}>
               <img
@@ -124,24 +156,182 @@ const ViewCourse = () => {
         </div>
         {/* menus */}
         <div className="view-product-menus">
-          <div>
+          <div
+            onClick={() => {
+              setModal(true);
+              setStep(0);
+            }}
+          >
             <span className="bold">معرفی دوره</span>
             <img src={leftArrowIcon} alt="open menu" />
           </div>
-          <div>
+          <div
+            onClick={() => {
+              setModal(true);
+              setStep(1);
+            }}
+          >
             <span className="bold">معرفی جلسات برگزاری</span>
             <img src={leftArrowIcon} alt="open menu" />
           </div>
-          <div>
+          <div
+            onClick={() => {
+              setModal(true);
+              setStep(2);
+            }}
+          >
             <span className="bold">نظر هنرجویان</span>
             <img src={leftArrowIcon} alt="open menu" />
           </div>
-          <div style={{ borderBottom: "none" }}>
+          <div
+            onClick={() => {
+              setModal(true);
+              setStep(3);
+            }}
+            style={{ borderBottom: "none" }}
+          >
             <span className="bold">سوالات متداول</span>
             <img src={leftArrowIcon} alt="open menu" />
           </div>
         </div>
       </div>
+      <ModalSlide visible={modal} setVisible={setModal} hideCurve hideClose>
+        <div className="lines-modal-body">
+          {/* header */}
+          <div className="lines-modal-title">
+            <img src={closeIcon} alt="close" onClick={() => setModal(false)} />
+            <span className="bold">
+              {step === 0 && "معرفی دوره"}
+              {step === 1 && "معرفی جلسات برگزاری"}
+              {step === 2 && "نظر هنرجویان ما"}
+              {step === 3 && "سوالات متداول"}
+            </span>
+          </div>
+          <div className="lines-modal-content">
+            {/* comments */}
+            {step === 2 && (
+              <div className="about-comments">
+                <Swiper
+                  style={{
+                    width: "100%",
+                    direction: "rtl",
+                    margin: "2px 0 20px 0",
+                  }}
+                  spaceBetween={10}
+                  slidesPerView={1}
+                >
+                  {array.map((arr, index) => (
+                    <SwiperSlide style={{ padding: 8 }} key={index}>
+                      <div className="about-comments-slider-item">
+                        {/* likes */}
+                        <div>
+                          <div>۱۰۰</div>
+                          <img src={likeIcon} alt="like" />
+                        </div>
+                        {/* title */}
+                        <div>
+                          <div>
+                            <span>
+                              <span className="bold">۹</span>/۱۰
+                            </span>
+                          </div>
+                          <div>
+                            <div className="bold">مهسا امینی</div>
+                            <div>هنرجوی دوره اکستنشن مو و ابرو</div>
+                          </div>
+                        </div>
+                        {/* content */}
+                        <div>
+                          با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای
+                          علی الخصوص طراحان خلاقی فرهنگ پیشرو در زبان فارسی
+                          ایجاد کرد این شرایط سخت تایپ به پایان رسد و شامل حروف
+                          چینی دستاوردهای اصلی است{" "}
+                          <span className="bold" style={{ color: "#40B1D1" }}>
+                            بیشتر
+                          </span>
+                        </div>
+                        {/* voice */}
+                        <audio className="about-comments-voice" controls>
+                          <source
+                            src="https://dl.behmelody.in/1401/Shahrivar/I%20m%20Good%20%28Blue%29%20-%20David%20Guetta%20%20Bebe%20Rexha%20%28128%29.mp3"
+                            type="audio/mp3"
+                          />
+                        </audio>
+                        <div>
+                          <div>
+                            <img src={commentImageOne} alt="image" />
+                          </div>
+                          <div>
+                            <img src={commentImageTwo} alt="image" />
+                            <img src={commentImageThree} alt="image" />
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            )}
+            {/* Q&A */}
+            {step === 3 && (
+              <div className="lines-modal-questions">
+                {questions.map((question, index) => (
+                  <Question index={index} data={question} />
+                ))}
+              </div>
+            )}
+          </div>
+          {/* add comment button */}
+          {modal && (
+            <Button className="courses-card-button mv-button">
+              <img src={basketIcon} alt="basket" />
+            </Button>
+          )}
+          {/* actions */}
+          {modal && (
+            <div className="lines-modal-actions">
+              {step === 3 ? (
+                <div className="lines-modal-reserve-button">
+                  <Button
+                    onClick={() => {
+                      history.push("/queue/create");
+                    }}
+                    className="mv-button"
+                  >
+                    خرید دوره
+                  </Button>
+                </div>
+              ) : (
+                <Button
+                  onClick={() => {
+                    setStep(step + 1);
+                  }}
+                  className="mv-button"
+                >
+                  <img src={nextIcon} alt="next" />
+                  <span>
+                    {step === 0 && "معرفی جلسات برگزاری"}
+                    {step === 1 && "نظر هنرجویان"}
+                    {step === 2 && "سوالات متداول"}
+                  </span>
+                </Button>
+              )}
+              <Button
+                onClick={() => {
+                  if (step === 0) {
+                    setModal(false);
+                  } else {
+                    setStep(step - 1);
+                  }
+                }}
+                className="mv-button"
+              >
+                بازگشت
+              </Button>
+            </div>
+          )}
+        </div>
+      </ModalSlide>
     </div>
   );
 };
