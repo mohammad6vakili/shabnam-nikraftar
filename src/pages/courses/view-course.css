@@ -113,3 +113,44 @@
 .view-course-intro > div:nth-child(3) > div > div:nth-child(3) > img:active {
   opacity: 0.5;
 }
+.courses-sessions {
+  width: 100%;
+}
+.courses-sessions > div {
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f7f7f7;
+}
+.courses-sessions > div > div:nth-child(1) {
+  width: 40px;
+  height: 48px;
+  background: #f7f7f7;
+  border-radius: 40px 40px 16px 0px;
+  margin-left: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: #40b1d1;
+}
+.courses-sessions > div > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  color: #3b3b3b;
+}
+.courses-sessions > div > div:nth-child(2) > div:nth-child(1) {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+.courses-sessions
+  > div
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div:nth-child(2) {
+  margin-right: 5px;
+}
+.courses-sessions > div > div:nth-child(2) > div:nth-child(2) {
+  font-size: 12px;
+}

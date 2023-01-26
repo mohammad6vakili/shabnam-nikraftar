@@ -4,6 +4,7 @@ import { Button } from "antd";
 import { useHistory } from "react-router-dom";
 import { questions } from "../../utils/util";
 import { Swiper, SwiperSlide } from "swiper/react";
+import FormatHelper from "../../helper/FormatHelper";
 import ModalSlide from "../../components/modal_slide";
 import Question from "../../components/question";
 import shareIcon from "../../assets/shop/share.svg";
@@ -13,26 +14,10 @@ import likeIcon from "../../assets/images/postLike.svg";
 import unlikeIcon from "../../assets/images/postUnlike.svg";
 import courseSlider from "../../assets/courses/courseSlider.svg";
 import closeIcon from "../../assets/lines/closeIcon.svg";
-import blogImage1 from "../../assets/blog/blogImage1.svg";
 import blogVideo from "../../assets/blog/blogVideo.svg";
 import playVideoIcon from "../../assets/blog/playVideo.svg";
-import blogImage4 from "../../assets/blog/blogImage4.svg";
-import blogImage5 from "../../assets/blog/blogImage5.svg";
-import blogImage6 from "../../assets/blog/blogImage6.svg";
-import certificateImage from "../../assets/about/certificate.svg";
-import certificateBgImage from "../../assets/about/certificateBg.svg";
-import servicesVector from "../../assets/about/servicesVector.svg";
-import map from "../../assets/about/map.svg";
-import mapBg from "../../assets/about/mapBg.svg";
-import telegramIcon from "../../assets/about/telegramContact.svg";
-import facebookIcon from "../../assets/about/facebookContact.svg";
-import youtubeIcon from "../../assets/about/youtubeContact.svg";
 import instagramIcon from "../../assets/courses/instagram.svg";
 import whatsappIcon from "../../assets/courses/whatsapp.svg";
-import locationIcon from "../../assets/about/loaction.svg";
-import phoneIcon from "../../assets/about/phone.svg";
-import mobileIcon from "../../assets/about/mobile.svg";
-import emailIcon from "../../assets/about/email.svg";
 import commentImageOne from "../../assets/about/commentImage1.svg";
 import commentImageTwo from "../../assets/about/commentImage2.svg";
 import commentImageThree from "../../assets/about/commentImage3.svg";
@@ -45,7 +30,7 @@ import coinIcon from "../../assets/courses/coin.svg";
 
 const ViewCourse = () => {
   const history = useHistory();
-  const array = [1, 2, 3, 4, 5, 6];
+  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const [liked, setLiked] = useState(false);
   const [modal, setModal] = useState(false);
@@ -213,6 +198,7 @@ const ViewCourse = () => {
             </span>
           </div>
           <div className="lines-modal-content">
+            {/* intro */}
             {step === 0 && (
               <div className="view-course-intro">
                 {/* video */}
@@ -294,6 +280,25 @@ const ViewCourse = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            )}
+            {/* sessions */}
+            {step === 1 && (
+              <div className="courses-sessions">
+                {array.map((arr, index) => (
+                  <div key={index}>
+                    <div>{FormatHelper.toPersianString(index + 1)}</div>
+                    <div>
+                      <div>
+                        <div className="bold" style={{ color: "black" }}>
+                          جلسه اول
+                        </div>
+                        <div>- ۲۰ آذر ۱۴۰۱</div>
+                      </div>
+                      <div>معرفی دوره و آشنایی با هنرجویان</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
             {/* comments */}
