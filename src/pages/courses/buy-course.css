@@ -201,6 +201,56 @@
   border: 1px solid #f54851 !important;
   color: #f54851 !important;
 }
+.buy-course-factor {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #f7f7f7;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+.buy-course-factor > div:nth-child(2n + 1) {
+  background: #f7f7f7;
+}
+.buy-course-factor > div {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+}
+.buy-course-factor > div:nth-child(1) {
+  border-radius: 16px 16px 0 0;
+}
+.buy-course-factor > div:last-child {
+  border-radius: 0 0 16px 16px;
+}
+.buy-course-factor > div > div:nth-child(1) {
+  min-width: 75px;
+  font-size: 12px;
+}
+.buy-course-factor > div > div:nth-child(2) {
+  background: #e1e1e1;
+  margin-left: 16px;
+  width: 1px;
+  height: 20px;
+}
+.buy-course-factor-action {
+  margin-top: auto;
+  background: #051115;
+  border-radius: 24px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+.buy-course-factor-action > button:nth-child(1) {
+  border: none !important;
+}
+.buy-course-factor-action > button:nth-child(2) {
+  background-color: transparent !important;
+  width: 100px;
+  margin-right: 16px;
+}
 
 @media only screen and (max-width: 375px) {
   .buy-course-form-field > div:nth-child(1) {

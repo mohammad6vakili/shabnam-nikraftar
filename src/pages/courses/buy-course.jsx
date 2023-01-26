@@ -269,6 +269,65 @@ const BuyCourse = () => {
               </Button>
             </Fragment>
           )}
+          {/* step 3 */}
+          {step === 3 && (
+            <Fragment>
+              <div className="buy-course-factor">
+                <div>
+                  <div>نام دوره</div>
+                  <div></div>
+                  <div className="bold">
+                    دوره پیشرفته آموزش حرفه ای اکستنشن مو و ابرو
+                  </div>
+                </div>
+                <div>
+                  <div>مدرس دوره</div>
+                  <div></div>
+                  <div className="bold">سمانه درخشانی</div>
+                </div>
+                <div>
+                  <div>تاریخ برگزاری</div>
+                  <div></div>
+                  <div className="bold">۲۰ آبان الی ۱۰ بهمن</div>
+                </div>
+                <div>
+                  <div>روز برگزاری</div>
+                  <div></div>
+                  <div>
+                    <div className="bold">شنبه‌ها ۱۶ تا ۱۸</div>
+                    <div className="bold">سه شنبه‌ها ۱۷ تا ۱۹</div>
+                  </div>
+                </div>
+                <div>
+                  <div>مبلغ دوره</div>
+                  <div></div>
+                  <div className="bold">۷,۰۰۰,۰۰۰ تومان</div>
+                </div>
+                <div>
+                  <div>تخفیف دوره</div>
+                  <div></div>
+                  <div className="bold">۴۹۰,۰۰۰ تومان</div>
+                </div>
+                <div>
+                  <div>مبلغ پرداختی</div>
+                  <div></div>
+                  <div className="bold">
+                    <span
+                      className="bold"
+                      style={{ color: "#40B1D1", fontSize: 17 }}
+                    >
+                      ۶,۵۱۰,۰۰۰
+                    </span>{" "}
+                    تومان
+                  </div>
+                </div>
+              </div>
+              <div className="buy-course-factor-action">
+                <Button className="mv-button">پرداخت هزینه</Button>
+                <Button className="mv-button">کد تخفیف</Button>
+              </div>
+            </Fragment>
+          )}
         </div>
       </div>
     </div>
