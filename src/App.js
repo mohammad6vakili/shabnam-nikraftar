@@ -26,6 +26,7 @@ import Blogs from "./pages/blog/blogs";
 import BlogView from "./pages/blog/blog-view";
 import Collaborate from "./pages/collaborate/collaborate";
 import About from "./pages/about/about";
+import Courses from "./pages/courses/courses";
 
 function App() {
   const history = useHistory();
@@ -74,6 +75,7 @@ function App() {
           <Route path="/blog/view" component={BlogView} />
           <Route path="/collaborate" component={Collaborate} />
           <Route path="/about" component={About} />
+          <Route path="/courses" component={Courses} />
         </Switch>
       </div>
     </div>

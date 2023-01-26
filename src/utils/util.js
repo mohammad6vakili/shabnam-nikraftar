@@ -36,7 +36,7 @@ export const menuItems = [
   {
     icon: queueIcon,
     title: "رزرو نوبت",
-    redirectRoute: "/home",
+    redirectRoute: "/queue/create",
   },
   {
     icon: coursesIcon,

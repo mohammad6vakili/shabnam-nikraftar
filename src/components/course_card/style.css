@@ -1,0 +1,58 @@
+.course-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 8px;
+}
+.course-card > div:nth-child(1) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.course-card > div:nth-child(1) > img:nth-child(1) {
+  margin-left: auto;
+}
+.course-card > div:nth-child(1) > img:nth-child(2),
+.course-card > div:nth-child(1) > img:nth-child(1) {
+  width: 49%;
+}
+.course-card > div:nth-child(1) > img:nth-child(3) {
+  position: absolute;
+  bottom: -25px;
+}
+.course-card > div:nth-child(2) {
+  color: black;
+  margin-bottom: 6px;
+  padding-right: 8px;
+}
+.course-card > div:nth-child(3) {
+  font-size: 13px;
+  color: #626262;
+  padding-right: 8px;
+}
+.course-card > div:nth-child(4) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px;
+}
+.course-card > div:nth-child(4) > div:nth-child(1) {
+  color: #626262;
+}
+.course-card > div:nth-child(4) > div:nth-child(1) > span:nth-child(1) {
+  color: #40b1d1;
+  margin-left: 4px;
+  font-size: 18px;
+}
+.course-card > div:nth-child(4) > div:nth-child(2) {
+  color: #f54851;
+  background: #ffe2e4;
+  border-radius: 128px;
+  width: 39px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
