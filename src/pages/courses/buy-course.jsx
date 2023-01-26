@@ -8,10 +8,30 @@ import backIcon from "../../assets/courses/backButton.svg";
 import personalIcon from "../../assets/courses/personalTab.svg";
 import docsIcon from "../../assets/courses/docsTab.svg";
 import factorIcon from "../../assets/courses/factorTab.svg";
+import alertIcon from "../../assets/courses/alert.svg";
 
 const BuyCourse = () => {
   const history = useHistory();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
+  const [inputOne, setInputOne] = useState(null);
+  const [inputTwo, setInputTwo] = useState(null);
+  const [inputThree, setInputThree] = useState(null);
+  const [fileOne, setFileOne] = useState(null);
+  const [fileTwo, setFileTwo] = useState(null);
+  const [fileThree, setFileThree] = useState(null);
+
+  const uploadOne = (e) => {
+    setFileOne(e.target.files[0]);
+  };
+
+  const uploadTwo = (e) => {
+    setFileTwo(e.target.files[0]);
+  };
+
+  const uploadThree = (e) => {
+    setFileThree(e.target.files[0]);
+  };
+
   return (
     <div className="buy-course">
       {/* header */}
@@ -109,6 +129,7 @@ const BuyCourse = () => {
         </div>
         {/* form */}
         <div>
+          {/* step 1 */}
           {step === 1 && (
             <Fragment>
               {/* first name */}
@@ -139,8 +160,109 @@ const BuyCourse = () => {
                   <Input className="mv-input" />
                 </div>
               </div>
+              {/* next button */}
               <Button
                 onClick={() => setStep(2)}
+                className="mv-button buy-course-next-button"
+              >
+                مرحله بعد
+              </Button>
+            </Fragment>
+          )}
+          {/* step 2 */}
+          {step === 2 && (
+            <Fragment>
+              {/* alert box */}
+              <div className="buy-course-alert">
+                <div>
+                  <img src={alertIcon} alt="alert" />
+                </div>
+                <div>فایل به صورت JPG, PNG و حجم آن کمتر از ۱M</div>
+              </div>
+              {/* upload one */}
+              <div className="buy-course-upload">
+                <div>آپلود کارت ملی</div>
+                <div>
+                  <div>{fileOne?.name?.substring(0, 25)}</div>
+                  <Button
+                    onClick={() => {
+                      if (fileOne) {
+                        setFileOne(null);
+                      } else {
+                        inputOne.click();
+                      }
+                    }}
+                    className="mv-button-outline-white"
+                    id={fileOne ? "buy-course-remove-file-button" : null}
+                  >
+                    {fileOne ? "حذف کردن" : "آپلود فایل"}
+                  </Button>
+                  <input
+                    onChange={uploadOne}
+                    type="file"
+                    name="filefield"
+                    style={{ display: "none" }}
+                    ref={(fileInput) => setInputOne(fileInput)}
+                  />
+                </div>
+              </div>
+              {/* upload two */}
+              <div className="buy-course-upload">
+                <div>آپلود عکس هنرجو</div>
+                <div>
+                  <div>{fileTwo?.name?.substring(0, 25)}</div>
+                  <Button
+                    onClick={() => {
+                      if (fileTwo) {
+                        setFileTwo(null);
+                      } else {
+                        inputTwo.click();
+                      }
+                    }}
+                    className="mv-button-outline-white"
+                    id={fileTwo ? "buy-course-remove-file-button" : null}
+                  >
+                    {fileTwo ? "حذف کردن" : "آپلود فایل"}
+                  </Button>
+                  <input
+                    onChange={uploadTwo}
+                    type="file"
+                    name="filefield"
+                    style={{ display: "none" }}
+                    ref={(fileInput) => setInputTwo(fileInput)}
+                  />
+                </div>
+              </div>
+              {/* upload three */}
+              <div className="buy-course-upload">
+                <div>آپلودشناسنامه (صفحه اول)</div>
+                <div>
+                  <div>{fileThree?.name?.substring(0, 25)}</div>
+                  <Button
+                    onClick={() => {
+                      if (fileThree) {
+                        setFileThree(null);
+                      } else {
+                        inputThree.click();
+                      }
+                    }}
+                    className="mv-button-outline-white"
+                    id={fileThree ? "buy-course-remove-file-button" : null}
+                  >
+                    {fileThree ? "حذف کردن" : "آپلود فایل"}
+                  </Button>
+                  <input
+                    onChange={uploadThree}
+                    type="file"
+                    name="filefield"
+                    style={{ display: "none" }}
+                    ref={(fileInput) => setInputThree(fileInput)}
+                  />
+                </div>
+              </div>
+              {/* next button */}
+              <Button
+                onClick={() => setStep(3)}
                 className="mv-button buy-course-next-button"
               >
                 مرحله بعد

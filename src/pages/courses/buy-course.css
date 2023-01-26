@@ -144,9 +144,72 @@
 .buy-course-form-field-half > div {
   width: 45%;
 }
+.buy-course-alert {
+  width: 100%;
+  height: 64px;
+  background: #fffaec;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 24px;
+}
+.buy-course-alert > div:nth-child(1) {
+  margin-left: 8px;
+  min-width: 40px;
+  min-height: 48px;
+  background: #fbc12e;
+  border-radius: 40px 40px 16px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buy-course-alert > div:nth-child(2) {
+  color: #626262;
+  font-size: 14px;
+}
+.buy-course-upload {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.buy-course-upload > div:nth-child(1) {
+  padding-right: 16px;
+  margin-bottom: 8px;
+  color: #3b3b3b;
+}
+.buy-course-upload > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+}
+.buy-course-upload > div:nth-child(2) > div {
+  margin-left: 8px;
+  width: 80%;
+  background: #f7f7f7;
+  border: 1px solid #e1e1e1;
+  border-radius: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+}
+.buy-course-upload > div:nth-child(2) > button {
+  width: 88px;
+}
+#buy-course-remove-file-button {
+  border: 1px solid #f54851 !important;
+  color: #f54851 !important;
+}
 
 @media only screen and (max-width: 375px) {
   .buy-course-form-field > div:nth-child(1) {
     font-size: 12px;
+  }
+  .buy-course-alert > div:nth-child(2) {
+    font-size: 12px;
+  }
+  .buy-course-upload > div:nth-child(2) > div {
+    height: 40px;
   }
 }
