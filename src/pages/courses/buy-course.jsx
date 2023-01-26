@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef, useCallback } from "react";
 import "./buy-course.css";
 import { Button, Input } from "antd";
 import { useHistory } from "react-router-dom";
+import ModalSlide from "../../components/modal_slide";
 import { Swiper, SwiperSlide } from "swiper/react";
 import FormatHelper from "../../helper/FormatHelper";
 import backIcon from "../../assets/courses/backButton.svg";
@@ -9,16 +10,32 @@ import personalIcon from "../../assets/courses/personalTab.svg";
 import docsIcon from "../../assets/courses/docsTab.svg";
 import factorIcon from "../../assets/courses/factorTab.svg";
 import alertIcon from "../../assets/courses/alert.svg";
+import melliBank from "../../assets/profile/melliBank.svg";
+import samanBank from "../../assets/profile/samanBank.svg";
 
 const BuyCourse = () => {
   const history = useHistory();
-  const [step, setStep] = useState(2);
+  const sliderRef = useRef(null);
+  const [step, setStep] = useState(1);
   const [inputOne, setInputOne] = useState(null);
   const [inputTwo, setInputTwo] = useState(null);
   const [inputThree, setInputThree] = useState(null);
   const [fileOne, setFileOne] = useState(null);
   const [fileTwo, setFileTwo] = useState(null);
   const [fileThree, setFileThree] = useState(null);
+  const [modal, setModal] = useState(false);
+  const [method, setMethod] = useState(0);
+  const [portActive, setPortActive] = useState(0);
+
+  const handlePrev = useCallback(() => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slidePrev();
+  }, []);
+
+  const handleNext = useCallback(() => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slideNext();
+  }, []);
 
   const uploadOne = (e) => {
     setFileOne(e.target.files[0]);
@@ -47,9 +64,16 @@ const BuyCourse = () => {
             style={{ padding: "0 24px" }}
             spaceBetween={0}
             slidesPerView={2}
+            ref={sliderRef}
           >
+            {/* step 1 */}
             <SwiperSlide
-              onClick={() => setStep(1)}
+              onClick={() => {
+                setStep(1);
+                if (step > 1) {
+                  handlePrev();
+                }
+              }}
               style={{ paddingBottom: 30 }}
             >
               <div className="buy-course-step-slide">
@@ -76,8 +100,17 @@ const BuyCourse = () => {
                 </div>
               </div>
             </SwiperSlide>
+            {/* step 2 */}
             <SwiperSlide
-              onClick={() => setStep(2)}
+              onClick={() => {
+                setStep(2);
+                if (step === 3) {
+                  handlePrev();
+                }
+                if (step === 1) {
+                  handleNext();
+                }
+              }}
               style={{ paddingBottom: 30 }}
             >
               <div className="buy-course-step-slide">
@@ -97,8 +130,12 @@ const BuyCourse = () => {
                 </div>
               </div>
             </SwiperSlide>
+            {/* step 3 */}
             <SwiperSlide
-              onClick={() => setStep(3)}
+              onClick={() => {
+                setStep(3);
+                handleNext();
+              }}
               style={{ paddingBottom: 30 }}
             >
               <div className="buy-course-step-slide">
@@ -162,7 +199,10 @@ const BuyCourse = () => {
               </div>
               {/* next button */}
               <Button
-                onClick={() => setStep(2)}
+                onClick={() => {
+                  setStep(2);
+                  handleNext();
+                }}
                 className="mv-button buy-course-next-button"
               >
                 مرحله بعد
@@ -262,7 +302,10 @@ const BuyCourse = () => {
               </div>
               {/* next button */}
               <Button
-                onClick={() => setStep(3)}
+                onClick={() => {
+                  setStep(3);
+                  handleNext();
+                }}
                 className="mv-button buy-course-next-button"
               >
                 مرحله بعد
@@ -323,12 +366,81 @@ const BuyCourse = () => {
                 </div>
               </div>
               <div className="buy-course-factor-action">
-                <Button className="mv-button">پرداخت هزینه</Button>
+                <Button
+                  onClick={() => {
+                    setModal(true);
+                    handleNext();
+                  }}
+                  className="mv-button"
+                >
+                  پرداخت هزینه
+                </Button>
                 <Button className="mv-button">کد تخفیف</Button>
               </div>
             </Fragment>
           )}
         </div>
+        <ModalSlide visible={modal} setVisible={setModal}>
+          {/* header */}
+          <div className="queue-create-factor-modal-header">
+            <span className="bold">انتخاب روش پرداخت</span>
+          </div>
+          <div className="queue-create-port">
+            <div>
+              <div onClick={() => setMethod(0)}>
+                <div className={method === 0 ? "method-selected" : ""}>
+                  {method === 0 && <div></div>}
+                </div>
+                <div>
+                  <div style={{ color: "black" }}>پرداخت از طریق کیف پول</div>
+                  <div>موجودی کافی نیست</div>
+                </div>
+                <div>
+                  <span style={{ color: "#40b1d1", marginLeft: 3 }}>
+                    ۲۵,۰۰۰
+                  </span>
+                  <span>تومان</span>
+                </div>
+              </div>
+              <div onClick={() => setMethod(1)}>
+                <div className={method === 1 ? "method-selected" : ""}>
+                  <div>{method === 1 && <div></div>}</div>
+                </div>
+                <div style={{ color: "black" }}>پرداخت از طریق درگاه بانکی</div>
+              </div>
+              <div className="queue-create-port-ports">
+                <div
+                  className={portActive === 0 ? "port-active" : ""}
+                  onClick={() => {
+                    setPortActive(0);
+                  }}
+                >
+                  <img src={melliBank} alt="port" />
+                </div>
+                <div
+                  className={portActive === 1 ? "port-active" : ""}
+                  onClick={() => {
+                    setPortActive(1);
+                  }}
+                >
+                  <img src={samanBank} alt="port" />
+                </div>
+              </div>
+            </div>
+            {/* actionbar */}
+            {modal && (
+              <div className="queue-create-factor-actions">
+                <span></span>
+                <div>
+                  <Button className="mv-button">پرداخت هزینه</Button>
+                  <Button onClick={() => setModal(false)} className="mv-button">
+                    بازگشت
+                  </Button>
+                </div>
+              </div>
+            )}
+          </div>
+        </ModalSlide>
       </div>
     </div>
   );

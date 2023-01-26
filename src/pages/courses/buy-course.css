@@ -251,6 +251,14 @@
   width: 100px;
   margin-right: 16px;
 }
+.buy-course-modal-header {
+  border-bottom: 1px solid #e1e1e1;
+  height: 48px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media only screen and (max-width: 375px) {
   .buy-course-form-field > div:nth-child(1) {
