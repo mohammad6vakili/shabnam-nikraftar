@@ -66,6 +66,7 @@
         "add view course",
         "add comments and Q&A",
         "add intro step",
-        "add sessions step ui"
+        "add sessions step ui",
+        "add steps wizard"
     ]
 }

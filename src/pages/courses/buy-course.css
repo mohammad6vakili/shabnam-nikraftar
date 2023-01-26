@@ -1,0 +1,106 @@
+.buy-course {
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f7f7;
+  overflow-y: auto;
+  scrollbar-width: none !important;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  padding-top: 8px;
+}
+.buy-course::-webkit-scrollbar {
+  display: none !important;
+}
+.buy-course-header {
+  width: calc(100% - 16px);
+  margin-right: 8px;
+  background: #051115;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 70px;
+  color: white;
+  margin-bottom: 8px;
+}
+.buy-course-header > img {
+  transition: opacity 0.3s;
+}
+.buy-course-header > img:active {
+  opacity: 0.5;
+}
+.buy-course-header > div:nth-child(3) {
+  direction: ltr;
+}
+.buy-course-body {
+  width: 100%;
+  height: calc(100vh - 86px);
+}
+.buy-course-body > div:nth-child(1) {
+  width: 100%;
+  height: 35%;
+  border: 1px solid red;
+}
+.buy-course-body > div:nth-child(2) {
+  width: 100%;
+  height: 65%;
+  border: 1px solid red;
+}
+.buy-course-step-slide {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buy-course-step-slide > img:nth-child(1) {
+  margin-bottom: 16px;
+}
+.buy-course-step-slide > div:nth-child(2) {
+  font-size: 16px;
+}
+.buy-course-step-slide > div:nth-child(3) {
+  width: 100%;
+  height: 2px;
+  margin-top: 24px;
+  background-color: #e1e1e1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.buy-course-step-slide > div:nth-child(3) > div {
+  width: 32px;
+  height: 32px;
+  background: #f7f7f7;
+  border: 1.5px solid #e1e1e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  position: absolute;
+  bottom: -16px;
+  z-index: 9999999999;
+  color: black;
+  border-radius: 32px;
+}
+.buy-course-radio-selected {
+  width: 24px !important;
+  height: 24px !important;
+  background: #23cb52 !important;
+  border: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buy-course-radio-selected > div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f7f7f7;
+}
+.buy-course-line-selected {
+  background: #23cb52 !important;
+  height: 3px !important;
+  transition: background 0.3s;
+}

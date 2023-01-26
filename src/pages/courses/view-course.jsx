@@ -40,7 +40,12 @@ const ViewCourse = () => {
     <div className="view-product">
       {/* action */}
       <div className="view-product-action">
-        <Button className="mv-button">خرید دوره</Button>
+        <Button
+          onClick={() => history.push("/courses/buy")}
+          className="mv-button"
+        >
+          خرید دوره
+        </Button>
         <div style={{ alignItems: "flex-end" }}>
           <span>۴۵،۰۰۰ تومان</span>
           <span>
@@ -376,7 +381,10 @@ const ViewCourse = () => {
           </div>
           {/* add comment button */}
           {modal && (
-            <Button className="courses-card-button mv-button">
+            <Button
+              onClick={() => history.push("/courses/buy")}
+              className="courses-card-button mv-button"
+            >
               <img src={basketIcon} alt="basket" />
             </Button>
           )}
@@ -386,9 +394,7 @@ const ViewCourse = () => {
               {step === 3 ? (
                 <div className="lines-modal-reserve-button">
                   <Button
-                    onClick={() => {
-                      history.push("/queue/create");
-                    }}
+                    onClick={() => history.push("/courses/buy")}
                     className="mv-button"
                   >
                     خرید دوره

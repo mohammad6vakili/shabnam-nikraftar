@@ -28,6 +28,7 @@ import Collaborate from "./pages/collaborate/collaborate";
 import About from "./pages/about/about";
 import Courses from "./pages/courses/courses";
 import ViewCourse from "./pages/courses/view-course";
+import BuyCourse from "./pages/courses/buy-course";
 
 function App() {
   const history = useHistory();
@@ -78,6 +79,7 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/courses" exact component={Courses} />
           <Route path="/courses/view" component={ViewCourse} />
+          <Route path="/courses/buy" component={BuyCourse} />
         </Switch>
       </div>
     </div>
