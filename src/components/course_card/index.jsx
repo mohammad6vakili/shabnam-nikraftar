@@ -1,12 +1,14 @@
 import React from "react";
 import "./style.css";
+import { useHistory } from "react-router-dom";
 import avatarOne from "../../assets/courses/avatarOne.svg";
 import avatarTwo from "../../assets/courses/avatarTwo.svg";
 import avatarThree from "../../assets/courses/avatarThree.svg";
 
 const CourseCard = ({}) => {
+  const history = useHistory();
   return (
-    <div className="course-card">
+    <div className="course-card" onClick={() => history.push("/courses/view")}>
       <div>
         <img src={avatarOne} alt="course image" />
         <img src={avatarTwo} alt="course image" />

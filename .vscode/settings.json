@@ -62,6 +62,7 @@
         "add contacts step",
         "add comments step",
         "fix voice width",
-        "add courses main"
+        "add courses main",
+        "add view course"
     ]
 }
