@@ -74,6 +74,7 @@
         "add factor step form",
         "add payment modal",
         "redirect to home on app load",
-        "app redirect"
+        "app redirect",
+        "add branches"
     ]
 }

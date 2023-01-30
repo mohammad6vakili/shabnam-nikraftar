@@ -17,6 +17,8 @@ const Queue = () => {
   const userQueue = useSelector((state) => state.user.userQueue);
 
   const [privacyModal, setPrivacyModal] = useState(false);
+  const [branchModal, setBranchModal] = useState(false);
+  const [selectedBranch, setSelectedBranch] = useState(1);
 
   return (
     <div className="queue">
@@ -99,6 +101,46 @@ const Queue = () => {
           </div>
         )}
       </ModalSlide>
+      {/* branch modal */}
+      <ModalSlide visible={branchModal} setVisible={setBranchModal}>
+        {/* title */}
+        <div className="queue-privacy-title bold">انتخاب شعبه</div>
+        {/* branches */}
+        <div className="queue-branches">
+          <div
+            onClick={() => setSelectedBranch(1)}
+            className={selectedBranch == 1 ? "queue-branch-selected" : null}
+          >
+            <div>{selectedBranch == 1 && <div></div>}</div>
+            <div>
+              <div className="bold">شعبه تهران</div>
+              <div>تهران / یوسف آباد</div>
+            </div>
+          </div>
+          <div
+            onClick={() => setSelectedBranch(2)}
+            className={selectedBranch == 2 ? "queue-branch-selected" : null}
+          >
+            <div>{selectedBranch == 2 && <div></div>}</div>
+            <div>
+              <div className="bold">شعبه اهواز</div>
+              <div>اهواز / وفایی</div>
+            </div>
+          </div>
+        </div>
+        {/* action */}
+        <div className="queue-branches-action">
+          <Button
+            onClick={() => history.push("/queue/create")}
+            className="mv-button"
+          >
+            رزرو نوبت
+          </Button>
+          <Button onClick={() => setBranchModal(false)} className="mv-button">
+            بازگشت
+          </Button>
+        </div>
+      </ModalSlide>
       {/* header */}
       <Header>
         <div className="queue-header-banner">
@@ -122,10 +164,7 @@ const Queue = () => {
               <img src={emptyIcon} alt="empty" />
             </div>
             <div>متاسفانه، نوبتی برای شما ثبت نشده است.</div>
-            <Button
-              onClick={() => history.push("/queue/create")}
-              className="mv-button"
-            >
+            <Button onClick={() => setBranchModal(true)} className="mv-button">
               ثبت‌ نوبت جدید
             </Button>
           </div>
@@ -153,10 +192,7 @@ const Queue = () => {
                 <img src={editIcon} alt="edit" />
               </div>
             ))}
-            <Button
-              onClick={() => history.push("/queue/create")}
-              className="mv-button"
-            >
+            <Button onClick={() => setBranchModal(true)} className="mv-button">
               <img src={addIcon} alt="add" />
               <span>نوبت جدید</span>
             </Button>
