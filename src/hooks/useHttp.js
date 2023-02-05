@@ -8,17 +8,14 @@ const useHttp = () => {
 
   const HttpService = axios.create({
     baseURL: Env.base_url,
-    // headers: {
-    //   // Authorization: "Bearer " + localStorage.getItem("token"),
-    //   "Content-Type": "application/json",
-    //   Accept: "application/json",
-    // },
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
   });
 
   HttpService.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
   HttpService.defaults.headers.common.Accept = "application/json";
-  HttpService.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-  HttpService.defaults.withCredentials = true;
 
   HttpService.interceptors.response.use(
     (response) => response,

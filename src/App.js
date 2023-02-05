@@ -34,11 +34,11 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    // if (localStorage.getItem("token")) {
-    history.push("/home");
-    // } else {
-    // history.push("/");
-    // }
+    if (localStorage.getItem("token")) {
+      history.push("/home");
+    } else {
+      history.push("/");
+    }
     setRTLTextPlugin(
       "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js"
     );

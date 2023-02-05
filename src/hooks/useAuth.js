@@ -19,19 +19,17 @@ const useAuth = () => {
   const getVerificationCode = async () => {
     try {
       setLoading(true);
-      const response = await HttpService.post("api/auth", {
-        username: FormatHelper.toEnglishString(mobile),
+      const response = await HttpService.post("api/login-register", {
+        id: FormatHelper.toEnglishString(mobile),
       });
       if (response.status === 200) {
         setLoading(false);
         setIsTimeout(true);
         setTimeout(Date.now() + 120000);
         setStep(1);
-        if (response?.data?.data?.sent_before === false) {
-          toast.success(response?.data?.message);
-        } else {
-          toast.info(response?.data?.message);
-        }
+        toast.success("کد تایید با موفقیت ارسال شد");
+      } else {
+        toast.error("مشکلی پیش آمده است");
       }
     } catch ({ err, response }) {
       setLoading(false);
@@ -43,20 +41,19 @@ const useAuth = () => {
     code.map((co) => {
       newCode += co;
     });
-    console.log(newCode);
     try {
       setLoading(true);
-      const response = await HttpService.post("api/auth", {
-        username: FormatHelper.toEnglishString(mobile),
-        code: newCode,
+      const response = await HttpService.post("api/login-Confirm", {
+        id: FormatHelper.toEnglishString(mobile),
+        otp: newCode,
       });
       setLoading(false);
-      if (response.data.ok === false) {
-        toast.error(response.data.message);
-      } else {
-        toast.success(response.data.message);
-        localStorage.setItem("token", response.data.data.token);
+      if (response.status == 200) {
+        toast.success("با موفقیت وارد شدید");
+        localStorage.setItem("token", response.data.token);
         setStep(2);
+      } else {
+        toast.error("کد وارد شده صحیح نیست");
       }
     } catch ({ err, response }) {
       setLoading(false);

@@ -75,6 +75,7 @@
         "add payment modal",
         "redirect to home on app load",
         "app redirect",
-        "add branches"
+        "add branches",
+        "change auth requests"
     ]
 }
