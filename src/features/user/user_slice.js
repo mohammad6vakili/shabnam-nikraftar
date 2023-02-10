@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { userQueue } from "../../utils/util";
 
 const initialState = {
-  userQueue: userQueue,
+  userQueue: localStorage.getItem("userQueue")
+    ? JSON.parse(localStorage.getItem("userQueue"))
+    : [],
+  selectedBranch: null,
 };
 
 export const userReducer = createSlice({
@@ -10,7 +13,13 @@ export const userReducer = createSlice({
   initialState,
   reducers: {
     setUserQueue: (state, action) => {
-      state.userQueue.push(action.payload);
+      let array = [...state.userQueue];
+      array.push(action.payload);
+      state.userQueue = array;
+      localStorage.setItem("userQueue", JSON.stringify(array));
+    },
+    setSelectedBranch: (state, action) => {
+      state.selectedBranch = action.payload;
     },
   },
 });

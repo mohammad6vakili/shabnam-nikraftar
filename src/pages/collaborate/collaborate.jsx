@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./collaborate.css";
-import { Input, Button } from "antd";
+import { Input, Button, message } from "antd";
 import collaborateImage from "../../assets/images/collaborate.svg";
 import { useHistory } from "react-router-dom";
 import Header from "../../components/header";
@@ -120,7 +120,7 @@ const Collaborate = () => {
           <Button
             onClick={() => {
               history.push("/home");
-              toast.success("اطلاعات شما با موفقیت ارسال شد");
+              message.success("اطلاعات شما با موفقیت ارسال شد");
             }}
             className="mv-button"
           >

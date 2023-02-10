@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./create_queue.css";
 import { useHistory } from "react-router-dom";
-import { beautyLines, dates, times, factorQueues } from "../../utils/util";
+import {
+  beautyLines,
+  dates,
+  times,
+  factorQueues,
+  lines,
+} from "../../utils/util";
+import { message } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useDispatch } from "react-redux";
+import { setUserQueue } from "../../features/user/user_slice";
 import SelectModal from "../../components/select_modal";
 import ModalSlide from "../../components/modal_slide";
 import backIcon from "../../assets/queue/backButton.svg";
 import beautyIcon from "../../assets/queue/beautyTab.svg";
 import melliBank from "../../assets/profile/melliBank.svg";
 import samanBank from "../../assets/profile/samanBank.svg";
+import Env from "../../constant/env.json";
 import cansulateIcon from "../../assets/queue/cansulateTab.svg";
 import FormatHelper from "../../helper/FormatHelper";
-import { toast } from "react-toastify";
 import { Input, Button } from "antd";
+import axios from "axios";
 
 const CreateQueue = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const [tab, setTab] = useState(0);
   const [line, setLine] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
   const [radioSelected, setRadioSelected] = useState(false);
   const [remoteCansulate, setRemoteCansulate] = useState(0);
   const [factorModal, setFactorModal] = useState(false);
@@ -28,6 +38,57 @@ const CreateQueue = () => {
   const [portModal, setPortModal] = useState(false);
   const [method, setMethod] = useState(0);
   const [portActive, setPortActive] = useState(0);
+  const [formData, setFormData] = useState({
+    type: "",
+    line: "",
+    date: "",
+    time: "",
+    name: "",
+    family: "",
+    mobile: "",
+  });
+
+  const handleReserveSubmit = () => {
+    if (formData?.line?.length === 0) {
+      message.warning("لطفا لاین زیبایی خود را انتخاب کنید");
+    } else if (formData?.date?.length === 0) {
+      message.warning("لطفا تاریخ مورد نظر را انتخاب کنید");
+    } else if (formData?.time?.length === 0) {
+      message.warning("لطفا زمان مورد نظر را انتخاب کنید");
+    } else if (formData?.name?.length === 0) {
+      message.warning("لطفا نام خود را وارد کنید");
+    } else if (formData?.family?.length === 0) {
+      message.warning("لطفا نام خانوادگی را وارد کنید");
+    } else if (formData?.mobile?.length === 0) {
+      message.warning("لطفا شماره موبایل خود را وارد کنید");
+    } else {
+      setFactorModal(true);
+      console.log(formData);
+    }
+  };
+
+  const initPayment = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post(Env.base_url + "api/payment/send");
+      setLoading(false);
+      window.location.replace(response?.data?.data?.url);
+    } catch ({ err, response }) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setFormData({ ...formData, line: line });
+  }, [line]);
+
+  useEffect(() => {
+    if (tab === 0) {
+      setFormData({ ...formData, type: "نوبت آرایشی" });
+    } else {
+      setFormData({ ...formData, type: "نوبت مشاوره" });
+    }
+  }, [tab]);
 
   return (
     <div className="queue-create">
@@ -139,15 +200,15 @@ const CreateQueue = () => {
                   <div
                     onClick={() => {
                       if (date.closed === false) {
-                        setSelectedDate(date.id);
+                        setFormData({ ...formData, date: date.id });
                       } else {
-                        toast.warning(
+                        message.warning(
                           "متاسفانه در روزهای تعطیل خدمت رسانی نداریم"
                         );
                       }
                     }}
                     id={
-                      selectedDate === date.id
+                      formData.date === date.id
                         ? "queue-create-date-item-selected"
                         : null
                     }
@@ -187,10 +248,10 @@ const CreateQueue = () => {
                 <SwiperSlide key={index}>
                   <div
                     onClick={() => {
-                      setSelectedTime(time.id);
+                      setFormData({ ...formData, time: time.id });
                     }}
                     className={`queue-create-time-item ${
-                      time.id === selectedTime
+                      time.id === formData.time
                         ? "queue-create-time-item-selected"
                         : ""
                     }`}
@@ -228,24 +289,41 @@ const CreateQueue = () => {
         {/* name */}
         <div className="queue-create-form-field">
           <div>نام زیباجو</div>
-          <Input className="mv-input" />
+          <Input
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="mv-input"
+          />
         </div>
         {/* family */}
         <div className="queue-create-form-field">
           <div>نام خانوادگی زیباجو</div>
-          <Input className="mv-input" />
+          <Input
+            value={formData.family}
+            onChange={(e) =>
+              setFormData({ ...formData, family: e.target.value })
+            }
+            className="mv-input"
+          />
         </div>
         {/* mobile */}
         <div className="queue-create-form-field">
           <div>شماره موبایل</div>
-          <Input inputMode="tel" className="mv-input" />
+          <Input
+            value={formData.mobile}
+            onChange={(e) =>
+              setFormData({ ...formData, mobile: e.target.value })
+            }
+            inputMode="tel"
+            className="mv-input"
+          />
         </div>
         {/* action area */}
         <div className="queue-create-action-area">
-          <Button onClick={() => setFactorModal(true)} className="mv-button">
+          <Button onClick={handleReserveSubmit} className="mv-button">
             پرداخت
           </Button>
-          <Button onClick={() => setFactorModal(true)} className="mv-button">
+          <Button onClick={handleReserveSubmit} className="mv-button">
             افزودن و نوبت جدید
           </Button>
         </div>
@@ -261,80 +339,100 @@ const CreateQueue = () => {
             </span>
           </div>
           {/* queues */}
-          {factorQueues.map((queue, index) => (
-            <div className="queue-create-factor-queue" key={index}>
+          <div className="queue-create-factor-queue">
+            <div>
+              {/* <div>{FormatHelper.toPersianString(index + 1)}</div> */}
+              <Button className="mv-button-outline">ویرایش نوبت</Button>
+            </div>
+            <div>
+              {/* type */}
               <div>
-                <div>{FormatHelper.toPersianString(index + 1)}</div>
-                <Button className="mv-button-outline">ویرایش نوبت</Button>
+                <div>نوع رزرو</div>
+                <div></div>
+                <div className="bold">{formData.type}</div>
               </div>
+              {/* beauty line */}
               <div>
-                {/* type */}
-                <div>
-                  <div>نوع رزرو</div>
-                  <div></div>
-                  <div className="bold">{queue.type}</div>
+                <div>لاین زیبایی</div>
+                <div></div>
+                <div className="bold">{formData.line}</div>
+              </div>
+              {/* name */}
+              <div>
+                <div>نام زیباجو</div>
+                <div></div>
+                <div className="bold">{formData.name}</div>
+              </div>
+              {/* date time */}
+              <div>
+                <div>تاریخ رزرو</div>
+                <div></div>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <span className="bold">
+                    {dates.map((dd) => {
+                      if (dd.id === formData.date) {
+                        return dd.full_title;
+                      }
+                    })}
+                  </span>
+                  <span className="bold">
+                    {times.map((tt) => {
+                      if (tt.id === formData.time) {
+                        return (
+                          FormatHelper.toPersianString(tt.from) +
+                          " تا " +
+                          FormatHelper.toPersianString(tt.to)
+                        );
+                      }
+                    })}
+                  </span>
                 </div>
-                {/* beauty line */}
+              </div>
+              {/* price */}
+              <div>
+                <div>پ پرداخت</div>
+                <div></div>
                 <div>
-                  <div>لاین زیبایی</div>
-                  <div></div>
-                  <div className="bold">{queue.beautyLine}</div>
+                  <span
+                    className="bold"
+                    style={{ color: "#40B1D1", fontSize: 16, marginLeft: 3 }}
+                  >
+                    {FormatHelper.toPersianString(
+                      FormatHelper.numberSeperator(590000)
+                    )}
+                  </span>
+                  <span>تومان</span>
                 </div>
-                {/* name */}
+              </div>
+              {/* discount */}
+              <div>
+                <div>تخفیف</div>
+                <div></div>
                 <div>
-                  <div>نام زیباجو</div>
-                  <div></div>
-                  <div className="bold">{queue.name}</div>
+                  <span className="bold" style={{ marginLeft: 3 }}>
+                    ۰
+                  </span>{" "}
+                  تومان
                 </div>
-                {/* date time */}
+              </div>
+              {/* final price */}
+              <div>
+                <div>مبلغ نهایی</div>
+                <div></div>
                 <div>
-                  <div>تاریخ رزرو</div>
-                  <div></div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <span className="bold">
-                      {FormatHelper.toPersianString(queue.date)}
-                    </span>
-                    <span className="bold">
-                      {FormatHelper.toPersianString(queue.time)}
-                    </span>
-                  </div>
-                </div>
-                {/* price */}
-                <div>
-                  <div>پ پرداخت</div>
-                  <div></div>
-                  <div>
-                    <span
-                      className="bold"
-                      style={{ color: "#40B1D1", fontSize: 16, marginLeft: 3 }}
-                    >
-                      {FormatHelper.toPersianString(
-                        FormatHelper.numberSeperator(queue.price)
-                      )}
-                    </span>
-                    <span>تومان</span>
-                  </div>
-                </div>
-                {/* discount */}
-                <div>
-                  <div>تخفیف</div>
-                  <div></div>
-                  <div>
-                    <span className="bold" style={{ marginLeft: 3 }}>
-                      ۰
-                    </span>{" "}
-                    تومان
-                  </div>
-                </div>
-                {/* final price */}
-                <div>
-                  <div>مبلغ نهایی</div>
-                  <div></div>
-                  <div>-----------------</div>
+                  <span
+                    className="bold"
+                    style={{ color: "#40B1D1", fontSize: 16, marginLeft: 3 }}
+                  >
+                    {FormatHelper.toPersianString(
+                      FormatHelper.numberSeperator(590000)
+                    )}
+                  </span>
+                  <span>تومان</span>
                 </div>
               </div>
             </div>
-          ))}
+          </div>
           {/* actionbar */}
           {factorModal && (
             <div className="queue-create-factor-actions">
@@ -352,7 +450,10 @@ const CreateQueue = () => {
               </div>
               <div>
                 <Button
-                  onClick={() => setPortModal(true)}
+                  onClick={() => {
+                    setPortModal(true);
+                    dispatch(setUserQueue(formData));
+                  }}
                   className="mv-button"
                 >
                   پرداخت هزینه
@@ -413,7 +514,7 @@ const CreateQueue = () => {
                 <div>موجودی کافی نیست</div>
               </div>
               <div>
-                <span style={{ color: "#40b1d1", marginLeft: 3 }}>۲۵,۰۰۰</span>
+                <span style={{ color: "#40b1d1", marginLeft: 3 }}>۰</span>
                 <span>تومان</span>
               </div>
             </div>
@@ -448,7 +549,8 @@ const CreateQueue = () => {
               <span></span>
               <div>
                 <Button
-                  onClick={() => history.push("/payment")}
+                  loading={loading}
+                  onClick={initPayment}
                   className="mv-button"
                 >
                   پرداخت هزینه

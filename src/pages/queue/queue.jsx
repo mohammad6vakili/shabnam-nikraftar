@@ -3,6 +3,7 @@ import "./queue.css";
 import { Button } from "antd";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { dates, times } from "../../utils/util";
 import FormatHelper from "../../helper/FormatHelper";
 import MobileMenu from "../../components/mobile_menu";
 import Header from "../../components/header";
@@ -179,11 +180,29 @@ const Queue = () => {
                   {FormatHelper.toPersianString(index + 1)}
                 </div>
                 <div>
-                  <div className="bold">{queue.title}</div>
+                  <div className="bold">{queue.line}</div>
                   <div>
-                    <div>{queue.date}</div>
-                    <div></div>
-                    <div>{queue.time}</div>
+                    <div>
+                      {dates.map((dd) => {
+                        if (dd.id == queue.date) {
+                          return (
+                            dd.full_title +
+                            " " +
+                            FormatHelper.toPersianString(dd.date) +
+                            " " +
+                            dd.month
+                          );
+                        }
+                      })}
+                    </div>
+                    <div style={{ margin: "0 3px" }}>|</div>
+                    <div>
+                      {times.map((tt) => {
+                        if (tt.id == queue.time) {
+                          return "ساعت " + tt.from + " تا " + tt.to;
+                        }
+                      })}
+                    </div>
                   </div>
                   {queue.isPayed === false && (
                     <Button className="mv-button-outline">پرداخت نشده</Button>

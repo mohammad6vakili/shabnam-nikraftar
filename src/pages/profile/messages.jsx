@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import "./messages.css";
-import { Button, Input } from "antd";
+import { Button, Input, message } from "antd";
 import { useHistory } from "react-router-dom";
 import ProfileHeader from "../../components/profile_header";
 import ModalSlide from "../../components/modal_slide";
@@ -109,7 +109,7 @@ const ProfileMessages = () => {
               <Button
                 onClick={() => {
                   setAddModal(false);
-                  toast.success("پیام با موفقیت ارسال شد.");
+                  message.success("پیام با موفقیت ارسال شد.");
                 }}
                 className="mv-button"
               >

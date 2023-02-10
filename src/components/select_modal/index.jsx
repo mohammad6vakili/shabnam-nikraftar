@@ -14,16 +14,16 @@ const SelectModal = ({ value, setValue, data, placeHolder }) => {
               className="select-modal-option"
               onClick={() => {
                 setIsModal(false);
-                setValue(dd.value);
+                setValue(dd.title);
               }}
               key={index}
             >
               <div
                 className={
-                  value === dd.value ? "select-modal-option-selected" : null
+                  value === dd.title ? "select-modal-option-selected" : null
                 }
               >
-                {value === dd.value && <div></div>}
+                {value === dd.title && <div></div>}
               </div>
               <div>{dd.title}</div>
             </div>
@@ -32,13 +32,7 @@ const SelectModal = ({ value, setValue, data, placeHolder }) => {
       </ModalSlide>
       <div className="select-modal" onClick={() => setIsModal(!isModal)}>
         {value ? (
-          <span>
-            {data.map((da) => {
-              if (da.value === value) {
-                return da.title;
-              }
-            })}
-          </span>
+          <span>{value}</span>
         ) : (
           <span style={{ color: "#626262" }}>{placeHolder}</span>
         )}

@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./addresses.css";
-import { Button, Input, Radio } from "antd";
+import { Button, Input, Radio, message } from "antd";
 import { useHistory } from "react-router-dom";
 import { addresses, provinces } from "../../utils/util";
 import ReactMapGL, { Marker } from "react-map-gl";
@@ -278,7 +278,7 @@ const Addresses = () => {
                     setAddStep(1);
                   } else if (addStep === 1) {
                     setAddModal(false);
-                    toast.success("آدرس با موفقیت افزوده شد.");
+                    message.success("آدرس با موفقیت افزوده شد.");
                   }
                 }}
                 className="mv-button"

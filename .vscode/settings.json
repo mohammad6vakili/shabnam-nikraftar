@@ -76,6 +76,7 @@
         "redirect to home on app load",
         "app redirect",
         "add branches",
-        "change auth requests"
+        "change auth requests",
+        "add local reservation"
     ]
 }

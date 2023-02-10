@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./account.css";
-import { Button, Input } from "antd";
+import { Button, Input, message } from "antd";
 import { useHistory } from "react-router-dom";
 import ProfileHeader from "../../components/profile_header";
 import PostPreview from "../../components/post_preview";
@@ -148,7 +148,7 @@ const Account = () => {
           style={{ marginTop: 24 }}
           onClick={() => {
             history.push("/profile");
-            toast.success("اطلاعات با موفقیت ثبت شد.");
+            message.success("اطلاعات با موفقیت ثبت شد.");
           }}
           className="mv-button"
         >

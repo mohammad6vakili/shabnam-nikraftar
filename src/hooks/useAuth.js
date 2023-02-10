@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Env from "../constant/env.json";
 import { toast } from "react-toastify";
+import { message } from "antd";
 import { useHistory } from "react-router-dom";
 import useHttp from "../hooks/useHttp";
 import FormatHelper from "../helper/FormatHelper";
@@ -27,9 +28,9 @@ const useAuth = () => {
         setIsTimeout(true);
         setTimeout(Date.now() + 120000);
         setStep(1);
-        toast.success("کد تایید با موفقیت ارسال شد");
+        message.success("کد تایید با موفقیت ارسال شد");
       } else {
-        toast.error("مشکلی پیش آمده است");
+        message.error("مشکلی پیش آمده است");
       }
     } catch ({ err, response }) {
       setLoading(false);
@@ -49,11 +50,11 @@ const useAuth = () => {
       });
       setLoading(false);
       if (response.status == 200) {
-        toast.success("با موفقیت وارد شدید");
+        message.success("با موفقیت وارد شدید");
         localStorage.setItem("token", response.data.token);
         setStep(2);
       } else {
-        toast.error("کد وارد شده صحیح نیست");
+        message.error("کد وارد شده صحیح نیست");
       }
     } catch ({ err, response }) {
       setLoading(false);
@@ -62,7 +63,7 @@ const useAuth = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    toast.error("شما از برنامه خارج شدید.");
+    message.error("شما از برنامه خارج شدید.");
     setTimeout(() => {
       window.location.replace("/");
     }, 1000);

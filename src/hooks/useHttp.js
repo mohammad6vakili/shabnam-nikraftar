@@ -1,6 +1,7 @@
 import axios from "axios";
 import Env from "../constant/env.json";
 import { toast } from "react-toastify";
+import { message } from "antd";
 import { useHistory } from "react-router-dom";
 
 const useHttp = () => {
@@ -26,14 +27,14 @@ const useHttp = () => {
       if (response.status === 401) {
         localStorage.removeItem("token");
         history.push("/");
-        toast.error("شما از برنامه خارج شدید.");
+        message.error("شما از برنامه خارج شدید.");
       } else if (response.status === 422) {
-        toast.error(response.data.message);
+        message.error(response.data.message);
       } else {
         if (response?.data?.message) {
-          toast.error(response?.data?.message);
+          message.error(response?.data?.message);
         } else {
-          toast.error("خطا در برقراری ارتباط");
+          message.error("خطا در برقراری ارتباط");
         }
       }
     }

@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./login.css";
-import { Input, Checkbox, Button } from "antd";
+import { Input, Checkbox, Button, message } from "antd";
 import FormatHelper from "../../helper/FormatHelper";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -61,11 +61,11 @@ export default function Login() {
 
   const handleLogin = () => {
     if (mobile.length === 0) {
-      toast.warning("لطفا شماره موبایل خود را وارد کنید");
+      message.warning("لطفا شماره موبایل خود را وارد کنید");
     } else if (mobile.length !== 11) {
-      toast.warning("شماره موبایل باید ۱۱ رقم باشد");
+      message.warning("شماره موبایل باید ۱۱ رقم باشد");
     } else if (!accepted) {
-      toast.warning("قوانین و مقررات را نپذیرفته اید");
+      message.warning("قوانین و مقررات را نپذیرفته اید");
     } else {
       getVerificationCode();
     }
