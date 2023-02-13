@@ -117,7 +117,7 @@ const Queue = () => {
               onClick={() => setPrivacyModal(false)}
               className="mv-button"
             >
-              شراط شما را می پذیرم
+              شرایط شما را می پذیرم
             </Button>
             <Button
               onClick={() => setPrivacyModal(false)}

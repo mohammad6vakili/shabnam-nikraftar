@@ -79,6 +79,7 @@
         "change auth requests",
         "add local reservation",
         "fix ui bugs",
-        "add reserve system"
+        "add reserve system",
+        "add reserve factor"
     ]
 }

@@ -37,6 +37,7 @@ const CreateQueue = () => {
   const [selectedType, setSelectedType] = useState(null);
   const [selectedSubType, setSelectedSubType] = useState(null);
   const [selectedLine, setSelectedLine] = useState(null);
+  const [selectedLineName, setSelectedLineName] = useState("");
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [radioSelected, setRadioSelected] = useState(false);
@@ -101,6 +102,8 @@ const CreateQueue = () => {
         name: name,
         lastname: family,
         mobile: mobile,
+        type_id: selectedSubType ? selectedSubType : selectedType,
+        beautyline_id: selectedLine,
       });
       setFactor(response.data.data);
       setFactorModal(true);
@@ -169,6 +172,14 @@ const CreateQueue = () => {
       setMobile("");
     }
   }, [radioSelected]);
+
+  useEffect(() => {
+    beautyLines.map((li) => {
+      if (li.value == selectedLine) {
+        setSelectedLineName(li.title);
+      }
+    });
+  }, [selectedLine]);
 
   return (
     <div className="queue-create">
@@ -464,51 +475,75 @@ const CreateQueue = () => {
           {/* queues */}
           <div className="queue-create-factor-queue">
             <div>
-              {/* <div>{FormatHelper.toPersianString(index + 1)}</div> */}
-              <Button className="mv-button-outline">ویرایش نوبت</Button>
+              <Button
+                onClick={() => {
+                  setFactorModal(false);
+                }}
+                className="mv-button-outline"
+              >
+                ویرایش نوبت
+              </Button>
             </div>
             <div>
               {/* type */}
               <div>
                 <div>نوع رزرو</div>
                 <div></div>
-                <div className="bold">{}</div>
+                <div className="bold">
+                  {types.map((tp) => {
+                    if (tp.id == selectedType) {
+                      return tp.attributes.persian_title;
+                    }
+                  })}
+                </div>
               </div>
               {/* beauty line */}
               <div>
                 <div>لاین زیبایی</div>
                 <div></div>
-                <div className="bold">{}</div>
+                <div className="bold">{selectedLineName}</div>
               </div>
               {/* name */}
               <div>
                 <div>نام زیباجو</div>
                 <div></div>
-                <div className="bold">{name}</div>
+                <div className="bold">
+                  {factor?.attributes?.user?.first_name &&
+                    factor?.attributes?.user?.first_name +
+                      " " +
+                      factor?.attributes?.user?.last_name &&
+                    factor?.attributes?.user?.last_name}
+                </div>
               </div>
               {/* date time */}
               <div>
                 <div>تاریخ رزرو</div>
                 <div></div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  {/* <span className="bold">
-                    {dates.map((dd) => {
-                      if (dd.id === formData.date) {
-                        return dd.full_title;
-                      }
-                    })}
-                  </span> */}
-                  {/* <span className="bold">
-                    {times.map((tt) => {
-                      if (tt.id === formData.time) {
-                        return (
-                          FormatHelper.toPersianString(tt.from) +
-                          " تا " +
-                          FormatHelper.toPersianString(tt.to)
+                  <span className="bold">
+                    {days.map((dy) => {
+                      if (dy.id == selectedDay) {
+                        return FormatHelper.toPersianString(
+                          dy.year + "/" + dy.month + "/" + dy.day
                         );
                       }
                     })}
-                  </span> */}
+                  </span>
+                  <span className="bold">
+                    {times.map((tt) => {
+                      if (tt.id === selectedTime) {
+                        return (
+                          FormatHelper.toPersianString(
+                            tt.from_hour + ":" + tt.from_minute
+                          ) +
+                          " تا " +
+                          FormatHelper.toPersianString(
+                            tt.to_hour + ":" + tt.to_minute
+                          )
+                        );
+                      }
+                    })}
+                  </span>
                 </div>
               </div>
               {/* price */}
