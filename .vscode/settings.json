@@ -78,6 +78,7 @@
         "add branches",
         "change auth requests",
         "add local reservation",
-        "fix ui bugs"
+        "fix ui bugs",
+        "add reserve system"
     ]
 }

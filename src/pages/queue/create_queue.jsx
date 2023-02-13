@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./create_queue.css";
 import { useHistory } from "react-router-dom";
-import { dates, times, factorQueues } from "../../utils/util";
+import { dates, factorQueues } from "../../utils/util";
 import { message } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,30 +25,34 @@ const CreateQueue = () => {
   const selectedBranch = useSelector((state) => state.user.selectedBranch);
 
   const [loading, setLoading] = useState(false);
+  const [linesLoading, setLinesLoading] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
+
   const [types, setTypes] = useState([]);
+  const [subTypes, setSubTypes] = useState([]);
+  const [beautyLines, setBeautyLines] = useState([]);
+  const [days, setDays] = useState([]);
+  const [times, setTimes] = useState([]);
 
-  const [tab, setTab] = useState(null);
-  const [subTab, setSubTab] = useState(null);
-
-  const [line, setLine] = useState("");
+  const [selectedType, setSelectedType] = useState(null);
+  const [selectedSubType, setSelectedSubType] = useState(null);
+  const [selectedLine, setSelectedLine] = useState(null);
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const [radioSelected, setRadioSelected] = useState(false);
-  const [remoteCansulate, setRemoteCansulate] = useState(0);
+  const [amount, setAmount] = useState(0);
+  const [name, setName] = useState("");
+  const [family, setFamily] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  const [factor, setFactor] = useState(null);
+
   const [factorModal, setFactorModal] = useState(false);
   const [discountModal, setDiscountModal] = useState(false);
   const [discountCode, setDiscountCode] = useState("");
   const [portModal, setPortModal] = useState(false);
   const [method, setMethod] = useState(0);
   const [portActive, setPortActive] = useState(0);
-
-  const [formData, setFormData] = useState({
-    type: "",
-    line: "",
-    date: "",
-    time: "",
-    name: "",
-    family: "",
-    mobile: "",
-  });
 
   const getBranchInfos = async () => {
     try {
@@ -63,22 +67,66 @@ const CreateQueue = () => {
     }
   };
 
+  const getBeautyLinesByType = async (index) => {
+    let array = [];
+    try {
+      setLinesLoading(true);
+      const response = await HttpService.post("api/reservation/type", {
+        id: index,
+        branch_id: selectedBranch,
+      });
+      setDays(response.data.data[0].attributes.days);
+      if (response.data.data.length == 0) {
+        message.warning("متاسفانه برای این مورد خدمتی تعریف نشده");
+        history.push("/queue");
+      } else {
+        response.data.data.map((res) => {
+          array.push({ value: res.id, title: res.attributes.beautyLine.name });
+        });
+        setBeautyLines(array);
+      }
+      setLinesLoading(false);
+    } catch ({ err, response }) {
+      setLinesLoading(false);
+    }
+  };
+
+  const submitReserve = async () => {
+    try {
+      setSubmitLoading(true);
+      const response = await HttpService.post("api/reservation", {
+        total_price: amount,
+        reservation_time_id: selectedTime,
+        for_owner: radioSelected === true ? "1" : "0",
+        name: name,
+        lastname: family,
+        mobile: mobile,
+      });
+      setFactor(response.data.data);
+      setFactorModal(true);
+      setSubmitLoading(false);
+    } catch ({ err, response }) {
+      setSubmitLoading(false);
+    }
+  };
+
   const handleReserveSubmit = () => {
-    if (formData?.line?.length === 0) {
+    if (selectedType === null) {
+      message.warning("لطفا نوع خدمت خود را انتخاب کنید");
+    } else if (selectedLine === null) {
       message.warning("لطفا لاین زیبایی خود را انتخاب کنید");
-    } else if (formData?.date?.length === 0) {
+    } else if (selectedDay === null) {
       message.warning("لطفا تاریخ مورد نظر را انتخاب کنید");
-    } else if (formData?.time?.length === 0) {
+    } else if (selectedTime === null) {
       message.warning("لطفا زمان مورد نظر را انتخاب کنید");
-    } else if (formData?.name?.length === 0) {
+    } else if (!radioSelected && name.length === 0) {
       message.warning("لطفا نام خود را وارد کنید");
-    } else if (formData?.family?.length === 0) {
+    } else if (!radioSelected && family.length === 0) {
       message.warning("لطفا نام خانوادگی را وارد کنید");
-    } else if (formData?.mobile?.length === 0) {
+    } else if (!radioSelected && mobile.length === 0) {
       message.warning("لطفا شماره موبایل خود را وارد کنید");
     } else {
-      setFactorModal(true);
-      console.log(formData);
+      submitReserve();
     }
   };
 
@@ -101,19 +149,26 @@ const CreateQueue = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   setFormData({ ...formData, line: line });
-  //   linesData.map((li) => {
-  //     if (li.id == line) {
-  //       if (li.attributes.types.length === 0) {
-  //         message.warning("متاسفانه برای این لاین خدمتی ارائه نشده است");
-  //         history.push("/queue");
-  //       }
-  //     } else {
-  //       setTypes(li.attributes.types);
-  //     }
-  //   });
-  // }, [line]);
+  useEffect(() => {
+    setSelectedSubType(null);
+    setSelectedLine(null);
+    setSelectedDay(null);
+    setSelectedTime(null);
+  }, [selectedType]);
+
+  useEffect(() => {
+    setSelectedLine(null);
+    setSelectedDay(null);
+    setSelectedTime(null);
+  }, [selectedSubType]);
+
+  useEffect(() => {
+    if (radioSelected) {
+      setName("");
+      setFamily("");
+      setMobile("");
+    }
+  }, [radioSelected]);
 
   return (
     <div className="queue-create">
@@ -124,10 +179,11 @@ const CreateQueue = () => {
           className="bold"
           style={{ color: "#40B1D1", margin: "0 3px", fontSize: 16 }}
         >
-          ۵۹۰,۰۰۰
+          {FormatHelper.toPersianString(FormatHelper.numberSeperator(amount))}
         </div>
         <div>تومان</div>
-        <div>
+        <div style={{ background: "transparent" }}></div>
+        {/* <div>
           <span>۰۴</span>
           <svg
             width="20"
@@ -141,7 +197,7 @@ const CreateQueue = () => {
               fill="#F7F7F7"
             />
           </svg>
-        </div>
+        </div> */}
       </div>
       {/* header */}
       <div className="queue-create-header">
@@ -153,13 +209,24 @@ const CreateQueue = () => {
         <Spin style={{ marginTop: 50 }} size="large" />
       ) : (
         <>
-          {/* tabs */}
+          {/* types */}
           <div className="queue-create-tabs">
             {types.map((type, index) => (
               <div
                 key={index}
-                onClick={() => setTab(type.id)}
-                className={tab === type.id ? "queue-create-tab-selected" : null}
+                onClick={() => {
+                  if (type.attributes.price) {
+                    setAmount(parseFloat(type.attributes.price));
+                  } else {
+                    setAmount(0);
+                  }
+                  setSelectedType(type.id);
+                  getBeautyLinesByType(type.id);
+                  setSubTypes(type.attributes.children);
+                }}
+                className={
+                  selectedType === type.id ? "queue-create-tab-selected" : null
+                }
               >
                 {type.id == 1 ? (
                   <img src={beautyIcon} alt="beauty queue" />
@@ -171,49 +238,49 @@ const CreateQueue = () => {
             ))}
           </div>
           {/* form */}
-          {tab && (
+          {selectedType && (
             <div className="queue-create-form">
-              {/* cansulate options */}
-              {tab == 2 && (
+              {/* sub types */}
+              {subTypes.length > 0 && (
                 <div className="queue-create-remote-cansulate">
-                  <div
-                    onClick={() => setRemoteCansulate(0)}
-                    className={
-                      remoteCansulate === 0
-                        ? "queue-create-remote-cansulate-selected"
-                        : null
-                    }
-                  >
-                    <div>{remoteCansulate === 0 && <div></div>}</div>
-                    <div>مشاوره حضوری</div>
-                  </div>
-                  <div
-                    onClick={() => setRemoteCansulate(1)}
-                    className={
-                      remoteCansulate === 1
-                        ? "queue-create-remote-cansulate-selected"
-                        : null
-                    }
-                  >
-                    <div>
-                      <div>{remoteCansulate === 1 && <div></div>}</div>
+                  {subTypes.map((type, index) => (
+                    <div
+                      key={index}
+                      onClick={() => {
+                        if (type.price) {
+                          setAmount(parseFloat(type.price));
+                        } else {
+                          setAmount(0);
+                        }
+                        setSelectedSubType(type.id);
+                        getBeautyLinesByType(type.id);
+                      }}
+                      className={
+                        selectedSubType == type.id
+                          ? "queue-create-remote-cansulate-selected"
+                          : null
+                      }
+                    >
+                      <div>{selectedSubType == type.id && <div></div>}</div>
+                      <div>مشاوره {type.persian_title}</div>
                     </div>
-                    <div>مشاوره آنلاین</div>
-                  </div>
+                  ))}
                 </div>
               )}
               {/* beauty line */}
               <div className="queue-create-form-field">
                 <div>نوع لاین زیبایی</div>
-                {/* <SelectModal
-                data={beautyLines}
-                placeHolder={"انتخاب کنید"}
-                value={line}
-                setValue={setLine}
-              /> */}
+                {!linesLoading && (
+                  <SelectModal
+                    data={beautyLines}
+                    placeHolder={"انتخاب کنید"}
+                    value={selectedLine}
+                    setValue={setSelectedLine}
+                  />
+                )}
               </div>
               {/* datetimes */}
-              {line.length > 0 && (
+              {days.length > 0 && (
                 <>
                   {/* date */}
                   <div className="queue-create-form-field queue-create-date-list">
@@ -229,12 +296,13 @@ const CreateQueue = () => {
                         spaceBetween={10}
                         slidesPerView={4}
                       >
-                        {dates.map((date, index) => (
+                        {days.map((date, index) => (
                           <SwiperSlide key={index}>
                             <div
                               onClick={() => {
-                                if (date.closed === false) {
-                                  setFormData({ ...formData, date: date.id });
+                                if (date.day_off == "0") {
+                                  setSelectedDay(date.id);
+                                  setTimes(date.times);
                                 } else {
                                   message.warning(
                                     "متاسفانه در روزهای تعطیل خدمت رسانی نداریم"
@@ -242,24 +310,20 @@ const CreateQueue = () => {
                                 }
                               }}
                               id={
-                                formData.date === date.id
+                                selectedDay === date.id
                                   ? "queue-create-date-item-selected"
                                   : null
                               }
                               className={`queue-create-date-item ${
-                                date.closed === true
+                                date.day_off == "1"
                                   ? "queue-create-date-item-closed"
-                                  : ""
-                              } ${
-                                date.today === true
-                                  ? "queue-create-date-item-today"
                                   : ""
                               }`}
                             >
                               <div className="bold">
-                                {FormatHelper.toPersianString(date.date)}
+                                {FormatHelper.toPersianString(date.day)}
                               </div>
-                              <div>{date.title}</div>
+                              {/* <div>{date.title}</div> */}
                             </div>
                           </SwiperSlide>
                         ))}
@@ -267,40 +331,52 @@ const CreateQueue = () => {
                     </div>
                   </div>
                   {/* time */}
-                  <div className="queue-create-form-field queue-create-date-list">
-                    <div>انتخاب ساعت مراجعه</div>
-                    <div>
-                      <Swiper
-                        style={{
-                          width: "100%",
-                          padding: "0 10px",
-                          direction: "rtl",
-                          margin: "2px 0 20px 0",
-                        }}
-                        spaceBetween={10}
-                        slidesPerView={3}
-                      >
-                        {times.map((time, index) => (
-                          <SwiperSlide key={index}>
-                            <div
-                              onClick={() => {
-                                setFormData({ ...formData, time: time.id });
-                              }}
-                              className={`queue-create-time-item ${
-                                time.id === formData.time
-                                  ? "queue-create-time-item-selected"
-                                  : ""
-                              }`}
-                            >
-                              <div className="bold">
-                                {time.from} تا {time.to}
+                  {selectedDay && (
+                    <div className="queue-create-form-field queue-create-date-list">
+                      <div>انتخاب ساعت مراجعه</div>
+                      <div>
+                        <Swiper
+                          style={{
+                            width: "100%",
+                            padding: "0 10px",
+                            direction: "rtl",
+                            margin: "2px 0 20px 0",
+                          }}
+                          spaceBetween={10}
+                          slidesPerView={3}
+                        >
+                          {times.map((time, index) => (
+                            <SwiperSlide key={index}>
+                              <div
+                                onClick={() => {
+                                  setSelectedTime(time.id);
+                                }}
+                                className={`queue-create-time-item ${
+                                  time.id === selectedTime
+                                    ? "queue-create-time-item-selected"
+                                    : ""
+                                }`}
+                              >
+                                <div className="bold">
+                                  <span style={{ direction: "rtl" }}>
+                                    {FormatHelper.toPersianString(
+                                      time.from_hour + ":" + time.from_minute
+                                    )}
+                                  </span>
+                                  <span style={{ margin: "0 3px" }}>تا</span>
+                                  <span style={{ direction: "rtl" }}>
+                                    {FormatHelper.toPersianString(
+                                      time.to_hour + ":" + time.to_minute
+                                    )}
+                                  </span>
+                                </div>
                               </div>
-                            </div>
-                          </SwiperSlide>
-                        ))}
-                      </Swiper>
+                            </SwiperSlide>
+                          ))}
+                        </Swiper>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </>
               )}
               {/* devider */}
@@ -330,10 +406,8 @@ const CreateQueue = () => {
                   <div className="queue-create-form-field">
                     <div>نام زیباجو</div>
                     <Input
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="mv-input"
                     />
                   </div>
@@ -341,10 +415,8 @@ const CreateQueue = () => {
                   <div className="queue-create-form-field">
                     <div>نام خانوادگی زیباجو</div>
                     <Input
-                      value={formData.family}
-                      onChange={(e) =>
-                        setFormData({ ...formData, family: e.target.value })
-                      }
+                      value={family}
+                      onChange={(e) => setFamily(e.target.value)}
                       className="mv-input"
                     />
                   </div>
@@ -352,10 +424,8 @@ const CreateQueue = () => {
                   <div className="queue-create-form-field">
                     <div>شماره موبایل</div>
                     <Input
-                      value={formData.mobile}
-                      onChange={(e) =>
-                        setFormData({ ...formData, mobile: e.target.value })
-                      }
+                      value={mobile}
+                      onChange={(e) => setMobile(e.target.value)}
                       inputMode="tel"
                       className="mv-input"
                     />
@@ -364,10 +434,18 @@ const CreateQueue = () => {
               )}
               {/* action area */}
               <div className="queue-create-action-area">
-                <Button onClick={handleReserveSubmit} className="mv-button">
+                <Button
+                  loading={submitLoading}
+                  onClick={handleReserveSubmit}
+                  className="mv-button"
+                >
                   پرداخت
                 </Button>
-                <Button onClick={handleReserveSubmit} className="mv-button">
+                <Button
+                  loading={submitLoading}
+                  onClick={handleReserveSubmit}
+                  className="mv-button"
+                >
                   افزودن و نوبت جدید
                 </Button>
               </div>
@@ -381,9 +459,7 @@ const CreateQueue = () => {
           {/* header */}
           <div className="queue-create-factor-modal-header">
             <span className="bold">فاکتور نهایی</span>
-            <span>
-              {FormatHelper.toPersianString(factorQueues.length)} نوبت
-            </span>
+            <span></span>
           </div>
           {/* queues */}
           <div className="queue-create-factor-queue">
@@ -396,33 +472,33 @@ const CreateQueue = () => {
               <div>
                 <div>نوع رزرو</div>
                 <div></div>
-                <div className="bold">{formData.type}</div>
+                <div className="bold">{}</div>
               </div>
               {/* beauty line */}
               <div>
                 <div>لاین زیبایی</div>
                 <div></div>
-                <div className="bold">{formData.line}</div>
+                <div className="bold">{}</div>
               </div>
               {/* name */}
               <div>
                 <div>نام زیباجو</div>
                 <div></div>
-                <div className="bold">{formData.name}</div>
+                <div className="bold">{name}</div>
               </div>
               {/* date time */}
               <div>
                 <div>تاریخ رزرو</div>
                 <div></div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <span className="bold">
+                  {/* <span className="bold">
                     {dates.map((dd) => {
                       if (dd.id === formData.date) {
                         return dd.full_title;
                       }
                     })}
-                  </span>
-                  <span className="bold">
+                  </span> */}
+                  {/* <span className="bold">
                     {times.map((tt) => {
                       if (tt.id === formData.time) {
                         return (
@@ -432,7 +508,7 @@ const CreateQueue = () => {
                         );
                       }
                     })}
-                  </span>
+                  </span> */}
                 </div>
               </div>
               {/* price */}
@@ -445,7 +521,7 @@ const CreateQueue = () => {
                     style={{ color: "#40B1D1", fontSize: 16, marginLeft: 3 }}
                   >
                     {FormatHelper.toPersianString(
-                      FormatHelper.numberSeperator(590000)
+                      FormatHelper.numberSeperator(amount)
                     )}
                   </span>
                   <span>تومان</span>
@@ -472,7 +548,7 @@ const CreateQueue = () => {
                     style={{ color: "#40B1D1", fontSize: 16, marginLeft: 3 }}
                   >
                     {FormatHelper.toPersianString(
-                      FormatHelper.numberSeperator(590000)
+                      FormatHelper.numberSeperator(amount)
                     )}
                   </span>
                   <span>تومان</span>
@@ -490,7 +566,9 @@ const CreateQueue = () => {
                     className="bold"
                     style={{ color: "#40B1D1", marginLeft: 3, fontSize: 16 }}
                   >
-                    ۵۹۰,۰۰۰
+                    {FormatHelper.toPersianString(
+                      FormatHelper.numberSeperator(amount)
+                    )}
                   </span>
                   <span>تومان</span>
                 </div>
@@ -499,7 +577,7 @@ const CreateQueue = () => {
                 <Button
                   onClick={() => {
                     setPortModal(true);
-                    dispatch(setUserQueue(formData));
+                    // dispatch(setUserQueue(formData));
                   }}
                   className="mv-button"
                 >

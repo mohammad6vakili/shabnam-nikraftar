@@ -30,7 +30,12 @@ const SelectModal = ({ value, setValue, data, placeHolder }) => {
           ))}
         </div>
       </ModalSlide>
-      <div className="select-modal" onClick={() => setIsModal(!isModal)}>
+      <div
+        className="select-modal"
+        onClick={() => {
+          setIsModal(!isModal);
+        }}
+      >
         {value ? (
           <span>
             {data.map((da) => {
