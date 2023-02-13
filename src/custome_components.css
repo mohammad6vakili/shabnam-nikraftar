@@ -122,7 +122,7 @@
   direction: rtl;
 }
 .react-code-input > input {
-  background-color: #eaf7fa !important;
+  background-color: #0a2229 !important;
   transition: border 0.1s;
   color: #40b1d1;
 }
@@ -131,7 +131,7 @@
   border: 1px solid #40b1d1 !important;
 }
 .react-code-input > input[value=""] {
-  background-color: #f7f7f7 !important;
+  background-color: #222222 !important;
 }
 
 /* --------------------------------– calendar input ---------------------------------- */

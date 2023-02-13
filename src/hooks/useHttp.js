@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 
 const useHttp = () => {
   const history = useHistory();
+  const token = localStorage.getItem("token");
 
   const HttpService = axios.create({
     baseURL: Env.base_url,
@@ -17,6 +18,10 @@ const useHttp = () => {
 
   HttpService.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
   HttpService.defaults.headers.common.Accept = "application/json";
+
+  if (token) {
+    HttpService.defaults.headers.common.Authorization = "Bearer " + token;
+  }
 
   HttpService.interceptors.response.use(
     (response) => response,

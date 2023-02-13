@@ -24,6 +24,6 @@ export const userReducer = createSlice({
   },
 });
 
-export const { setUserQueue } = userReducer.actions;
+export const { setUserQueue, setSelectedBranch } = userReducer.actions;
 
 export default userReducer.reducer;

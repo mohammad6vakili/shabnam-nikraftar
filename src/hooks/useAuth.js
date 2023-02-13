@@ -1,7 +1,4 @@
-import { useState } from "react";
-import axios from "axios";
-import Env from "../constant/env.json";
-import { toast } from "react-toastify";
+import { useState, useEffect } from "react";
 import { message } from "antd";
 import { useHistory } from "react-router-dom";
 import useHttp from "../hooks/useHttp";
@@ -68,6 +65,12 @@ const useAuth = () => {
       window.location.replace("/");
     }, 1000);
   };
+
+  useEffect(() => {
+    if (step == 0) {
+      setCode(["", "", "", "", ""]);
+    }
+  }, [step]);
 
   const exports = {
     getVerificationCode,

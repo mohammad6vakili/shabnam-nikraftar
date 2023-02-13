@@ -100,13 +100,12 @@ export default function Login() {
               شماره تلفن خود را وارد کنید و منتظر دریافت کد تایید باشید
             </span>
             <Input
-              className="mv-input"
+              className="mv-input login-mobile-input"
               type="tel"
               value={mobile}
               onChange={(e) =>
                 setMobile(FormatHelper.toPersianString(e.target.value))
               }
-              style={{ margin: "10px 0" }}
               placeholder="مثلا: ۰۹۱۱۲۳۴۵۶۷"
               prefix={<img src={loginInputPrefix} alt="login" />}
             />
@@ -116,13 +115,15 @@ export default function Login() {
                 onChange={(e) => setAccepted(e.target.checked)}
               >
                 <a href="#">قوانین و مقررات</a>{" "}
-                <span>پلتفرم شبنم نیکرفتار را می پذیرم.</span>
+                <span style={{ color: "#E1E1E1" }}>
+                  پلتفرم شبنم نیکرفتار را می پذیرم.
+                </span>
               </Checkbox>
             </div>
             <Button
               loading={loading}
               onClick={handleLogin}
-              className="mv-button"
+              className="mv-button login-submit"
             >
               دریافت کد تایید
             </Button>
@@ -247,7 +248,7 @@ export default function Login() {
                 onClick={() => history.push("/home")}
                 className="mv-button"
               >
-                تکمیل ثبت نام و ورود
+                ثبت نام و ورود
               </Button>
               <Button
                 onClick={() => history.push("/home")}

@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./create_queue.css";
 import { useHistory } from "react-router-dom";
-import {
-  beautyLines,
-  dates,
-  times,
-  factorQueues,
-  lines,
-} from "../../utils/util";
+import { dates, times, factorQueues } from "../../utils/util";
 import { message } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserQueue } from "../../features/user/user_slice";
 import SelectModal from "../../components/select_modal";
 import ModalSlide from "../../components/modal_slide";
@@ -18,17 +12,24 @@ import backIcon from "../../assets/queue/backButton.svg";
 import beautyIcon from "../../assets/queue/beautyTab.svg";
 import melliBank from "../../assets/profile/melliBank.svg";
 import samanBank from "../../assets/profile/samanBank.svg";
-import Env from "../../constant/env.json";
 import cansulateIcon from "../../assets/queue/cansulateTab.svg";
 import FormatHelper from "../../helper/FormatHelper";
-import { Input, Button } from "antd";
-import axios from "axios";
+import { Input, Button, Spin } from "antd";
+import useHttp from "../../hooks/useHttp";
 
 const CreateQueue = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { HttpService } = useHttp();
+
+  const selectedBranch = useSelector((state) => state.user.selectedBranch);
+
   const [loading, setLoading] = useState(false);
-  const [tab, setTab] = useState(0);
+  const [types, setTypes] = useState([]);
+
+  const [tab, setTab] = useState(null);
+  const [subTab, setSubTab] = useState(null);
+
   const [line, setLine] = useState("");
   const [radioSelected, setRadioSelected] = useState(false);
   const [remoteCansulate, setRemoteCansulate] = useState(0);
@@ -38,6 +39,7 @@ const CreateQueue = () => {
   const [portModal, setPortModal] = useState(false);
   const [method, setMethod] = useState(0);
   const [portActive, setPortActive] = useState(0);
+
   const [formData, setFormData] = useState({
     type: "",
     line: "",
@@ -47,6 +49,19 @@ const CreateQueue = () => {
     family: "",
     mobile: "",
   });
+
+  const getBranchInfos = async () => {
+    try {
+      setLoading(true);
+      const response = await HttpService.post("api/reservation/beautylines", {
+        id: selectedBranch,
+      });
+      setLoading(false);
+      setTypes(response.data.data);
+    } catch ({ err, response }) {
+      setLoading(false);
+    }
+  };
 
   const handleReserveSubmit = () => {
     if (formData?.line?.length === 0) {
@@ -70,7 +85,7 @@ const CreateQueue = () => {
   const initPayment = async () => {
     try {
       setLoading(true);
-      const response = await axios.post(Env.base_url + "api/payment/send");
+      const response = await HttpService.post("api/payment/send");
       setLoading(false);
       window.location.replace(response?.data?.data?.url);
     } catch ({ err, response }) {
@@ -79,16 +94,26 @@ const CreateQueue = () => {
   };
 
   useEffect(() => {
-    setFormData({ ...formData, line: line });
-  }, [line]);
-
-  useEffect(() => {
-    if (tab === 0) {
-      setFormData({ ...formData, type: "نوبت آرایشی" });
+    if (selectedBranch) {
+      getBranchInfos();
     } else {
-      setFormData({ ...formData, type: "نوبت مشاوره" });
+      history.push("/queue");
     }
-  }, [tab]);
+  }, []);
+
+  // useEffect(() => {
+  //   setFormData({ ...formData, line: line });
+  //   linesData.map((li) => {
+  //     if (li.id == line) {
+  //       if (li.attributes.types.length === 0) {
+  //         message.warning("متاسفانه برای این لاین خدمتی ارائه نشده است");
+  //         history.push("/queue");
+  //       }
+  //     } else {
+  //       setTypes(li.attributes.types);
+  //     }
+  //   });
+  // }, [line]);
 
   return (
     <div className="queue-create">
@@ -123,211 +148,233 @@ const CreateQueue = () => {
         <img onClick={() => history.push("/queue")} src={backIcon} alt="back" />
         <span className="bold">ثبت نوبت</span>
       </div>
-      {/* tabs */}
-      <div className="queue-create-tabs">
-        <div
-          onClick={() => setTab(0)}
-          className={tab === 0 ? "queue-create-tab-selected" : null}
-        >
-          <img src={beautyIcon} alt="beauty queue" />
-          <span>نوبت آرایشی</span>
-        </div>
-        <div
-          onClick={() => setTab(1)}
-          className={tab === 1 ? "queue-create-tab-selected" : null}
-        >
-          <img src={cansulateIcon} alt="cansulate queue" />
-          <span>نوبت مشاوره</span>
-        </div>
-      </div>
-      {/* form */}
-      <div className="queue-create-form">
-        {/* cansulate options */}
-        {tab === 1 && (
-          <div className="queue-create-remote-cansulate">
-            <div
-              onClick={() => setRemoteCansulate(0)}
-              className={
-                remoteCansulate === 0
-                  ? "queue-create-remote-cansulate-selected"
-                  : null
-              }
-            >
-              <div>{remoteCansulate === 0 && <div></div>}</div>
-              <div>مشاوره حضوری</div>
-            </div>
-            <div
-              onClick={() => setRemoteCansulate(1)}
-              className={
-                remoteCansulate === 1
-                  ? "queue-create-remote-cansulate-selected"
-                  : null
-              }
-            >
-              <div>
-                <div>{remoteCansulate === 1 && <div></div>}</div>
+      {/* body */}
+      {loading ? (
+        <Spin style={{ marginTop: 50 }} size="large" />
+      ) : (
+        <>
+          {/* tabs */}
+          <div className="queue-create-tabs">
+            {types.map((type, index) => (
+              <div
+                key={index}
+                onClick={() => setTab(type.id)}
+                className={tab === type.id ? "queue-create-tab-selected" : null}
+              >
+                {type.id == 1 ? (
+                  <img src={beautyIcon} alt="beauty queue" />
+                ) : (
+                  <img src={cansulateIcon} alt="beauty queue" />
+                )}
+                <span>نوبت {type.attributes.persian_title}</span>
               </div>
-              <div>مشاوره آنلاین</div>
-            </div>
+            ))}
           </div>
-        )}
-        {/* beauty line */}
-        <div className="queue-create-form-field">
-          <div>نوع لاین زیبایی</div>
-          <SelectModal
-            data={beautyLines}
-            placeHolder={"انتخاب کنید"}
-            value={line}
-            setValue={setLine}
-          />
-        </div>
-        {/* date */}
-        <div className="queue-create-form-field queue-create-date-list">
-          <div>انتخاب تاریخ مراجعه</div>
-          <div>
-            <Swiper
-              style={{
-                width: "100%",
-                padding: "0 10px",
-                direction: "rtl",
-                margin: "2px 0 20px 0",
-              }}
-              spaceBetween={10}
-              slidesPerView={4}
-            >
-              {dates.map((date, index) => (
-                <SwiperSlide key={index}>
+          {/* form */}
+          {tab && (
+            <div className="queue-create-form">
+              {/* cansulate options */}
+              {tab == 2 && (
+                <div className="queue-create-remote-cansulate">
                   <div
-                    onClick={() => {
-                      if (date.closed === false) {
-                        setFormData({ ...formData, date: date.id });
-                      } else {
-                        message.warning(
-                          "متاسفانه در روزهای تعطیل خدمت رسانی نداریم"
-                        );
-                      }
-                    }}
-                    id={
-                      formData.date === date.id
-                        ? "queue-create-date-item-selected"
+                    onClick={() => setRemoteCansulate(0)}
+                    className={
+                      remoteCansulate === 0
+                        ? "queue-create-remote-cansulate-selected"
                         : null
                     }
-                    className={`queue-create-date-item ${
-                      date.closed === true
-                        ? "queue-create-date-item-closed"
-                        : ""
-                    } ${
-                      date.today === true ? "queue-create-date-item-today" : ""
-                    }`}
                   >
-                    <div className="bold">
-                      {FormatHelper.toPersianString(date.date)}
-                    </div>
-                    <div>{date.title}</div>
+                    <div>{remoteCansulate === 0 && <div></div>}</div>
+                    <div>مشاوره حضوری</div>
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-        {/* time */}
-        <div className="queue-create-form-field queue-create-date-list">
-          <div>انتخاب ساعت مراجعه</div>
-          <div>
-            <Swiper
-              style={{
-                width: "100%",
-                padding: "0 10px",
-                direction: "rtl",
-                margin: "2px 0 20px 0",
-              }}
-              spaceBetween={10}
-              slidesPerView={3}
-            >
-              {times.map((time, index) => (
-                <SwiperSlide key={index}>
                   <div
-                    onClick={() => {
-                      setFormData({ ...formData, time: time.id });
-                    }}
-                    className={`queue-create-time-item ${
-                      time.id === formData.time
-                        ? "queue-create-time-item-selected"
-                        : ""
-                    }`}
+                    onClick={() => setRemoteCansulate(1)}
+                    className={
+                      remoteCansulate === 1
+                        ? "queue-create-remote-cansulate-selected"
+                        : null
+                    }
                   >
-                    <div className="bold">
-                      {time.from} تا {time.to}
+                    <div>
+                      <div>{remoteCansulate === 1 && <div></div>}</div>
+                    </div>
+                    <div>مشاوره آنلاین</div>
+                  </div>
+                </div>
+              )}
+              {/* beauty line */}
+              <div className="queue-create-form-field">
+                <div>نوع لاین زیبایی</div>
+                {/* <SelectModal
+                data={beautyLines}
+                placeHolder={"انتخاب کنید"}
+                value={line}
+                setValue={setLine}
+              /> */}
+              </div>
+              {/* datetimes */}
+              {line.length > 0 && (
+                <>
+                  {/* date */}
+                  <div className="queue-create-form-field queue-create-date-list">
+                    <div>انتخاب تاریخ مراجعه</div>
+                    <div>
+                      <Swiper
+                        style={{
+                          width: "100%",
+                          padding: "0 10px",
+                          direction: "rtl",
+                          margin: "2px 0 20px 0",
+                        }}
+                        spaceBetween={10}
+                        slidesPerView={4}
+                      >
+                        {dates.map((date, index) => (
+                          <SwiperSlide key={index}>
+                            <div
+                              onClick={() => {
+                                if (date.closed === false) {
+                                  setFormData({ ...formData, date: date.id });
+                                } else {
+                                  message.warning(
+                                    "متاسفانه در روزهای تعطیل خدمت رسانی نداریم"
+                                  );
+                                }
+                              }}
+                              id={
+                                formData.date === date.id
+                                  ? "queue-create-date-item-selected"
+                                  : null
+                              }
+                              className={`queue-create-date-item ${
+                                date.closed === true
+                                  ? "queue-create-date-item-closed"
+                                  : ""
+                              } ${
+                                date.today === true
+                                  ? "queue-create-date-item-today"
+                                  : ""
+                              }`}
+                            >
+                              <div className="bold">
+                                {FormatHelper.toPersianString(date.date)}
+                              </div>
+                              <div>{date.title}</div>
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
                     </div>
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-        {/* devider */}
-        <div
-          style={{
-            height: 2,
-            marginLeft: 24,
-            marginBottom: 24,
-            marginTop: 8,
-            background: "#F7F7F7",
-          }}
-        ></div>
-        {/* checkbox myself */}
-        <div
-          onClick={() => setRadioSelected(!radioSelected)}
-          id="queue-create-form-field-checkbox"
-          className={`profile-addresses-add-form-radio ${
-            radioSelected ? "mv-radio-selected" : ""
-          }`}
-        >
-          <div>{radioSelected && <div></div>}</div>
-          <div>گیرنده محصول خودمم</div>
-        </div>
-        {/* name */}
-        <div className="queue-create-form-field">
-          <div>نام زیباجو</div>
-          <Input
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="mv-input"
-          />
-        </div>
-        {/* family */}
-        <div className="queue-create-form-field">
-          <div>نام خانوادگی زیباجو</div>
-          <Input
-            value={formData.family}
-            onChange={(e) =>
-              setFormData({ ...formData, family: e.target.value })
-            }
-            className="mv-input"
-          />
-        </div>
-        {/* mobile */}
-        <div className="queue-create-form-field">
-          <div>شماره موبایل</div>
-          <Input
-            value={formData.mobile}
-            onChange={(e) =>
-              setFormData({ ...formData, mobile: e.target.value })
-            }
-            inputMode="tel"
-            className="mv-input"
-          />
-        </div>
-        {/* action area */}
-        <div className="queue-create-action-area">
-          <Button onClick={handleReserveSubmit} className="mv-button">
-            پرداخت
-          </Button>
-          <Button onClick={handleReserveSubmit} className="mv-button">
-            افزودن و نوبت جدید
-          </Button>
-        </div>
-      </div>
+                  {/* time */}
+                  <div className="queue-create-form-field queue-create-date-list">
+                    <div>انتخاب ساعت مراجعه</div>
+                    <div>
+                      <Swiper
+                        style={{
+                          width: "100%",
+                          padding: "0 10px",
+                          direction: "rtl",
+                          margin: "2px 0 20px 0",
+                        }}
+                        spaceBetween={10}
+                        slidesPerView={3}
+                      >
+                        {times.map((time, index) => (
+                          <SwiperSlide key={index}>
+                            <div
+                              onClick={() => {
+                                setFormData({ ...formData, time: time.id });
+                              }}
+                              className={`queue-create-time-item ${
+                                time.id === formData.time
+                                  ? "queue-create-time-item-selected"
+                                  : ""
+                              }`}
+                            >
+                              <div className="bold">
+                                {time.from} تا {time.to}
+                              </div>
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* devider */}
+              <div
+                style={{
+                  height: 2,
+                  marginLeft: 24,
+                  marginBottom: 24,
+                  marginTop: 8,
+                  background: "#F7F7F7",
+                }}
+              ></div>
+              {/* checkbox myself */}
+              <div
+                onClick={() => setRadioSelected(!radioSelected)}
+                id="queue-create-form-field-checkbox"
+                className={`profile-addresses-add-form-radio ${
+                  radioSelected ? "mv-radio-selected" : ""
+                }`}
+              >
+                <div>{radioSelected && <div></div>}</div>
+                <div>گیرنده خدمات خودمم</div>
+              </div>
+              {!radioSelected && (
+                <>
+                  {/* name */}
+                  <div className="queue-create-form-field">
+                    <div>نام زیباجو</div>
+                    <Input
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      className="mv-input"
+                    />
+                  </div>
+                  {/* family */}
+                  <div className="queue-create-form-field">
+                    <div>نام خانوادگی زیباجو</div>
+                    <Input
+                      value={formData.family}
+                      onChange={(e) =>
+                        setFormData({ ...formData, family: e.target.value })
+                      }
+                      className="mv-input"
+                    />
+                  </div>
+                  {/* mobile */}
+                  <div className="queue-create-form-field">
+                    <div>شماره موبایل</div>
+                    <Input
+                      value={formData.mobile}
+                      onChange={(e) =>
+                        setFormData({ ...formData, mobile: e.target.value })
+                      }
+                      inputMode="tel"
+                      className="mv-input"
+                    />
+                  </div>
+                </>
+              )}
+              {/* action area */}
+              <div className="queue-create-action-area">
+                <Button onClick={handleReserveSubmit} className="mv-button">
+                  پرداخت
+                </Button>
+                <Button onClick={handleReserveSubmit} className="mv-button">
+                  افزودن و نوبت جدید
+                </Button>
+              </div>
+            </div>
+          )}
+        </>
+      )}
       {/* factor modal */}
       <ModalSlide visible={factorModal} setVisible={setFactorModal}>
         <div className="queue-create-factor">

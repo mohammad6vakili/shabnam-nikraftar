@@ -77,6 +77,7 @@
         "app redirect",
         "add branches",
         "change auth requests",
-        "add local reservation"
+        "add local reservation",
+        "fix ui bugs"
     ]
 }

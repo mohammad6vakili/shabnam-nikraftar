@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./queue.css";
-import { Button } from "antd";
+import { Button, Spin, message } from "antd";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setSelectedBranch } from "../../features/user/user_slice";
+import useHttp from "../../hooks/useHttp";
 import { dates, times } from "../../utils/util";
 import FormatHelper from "../../helper/FormatHelper";
 import MobileMenu from "../../components/mobile_menu";
@@ -15,11 +17,35 @@ import editIcon from "../../assets/queue/edit.svg";
 
 const Queue = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { HttpService } = useHttp();
   const userQueue = useSelector((state) => state.user.userQueue);
+  const selectedBranch = useSelector((state) => state.user.selectedBranch);
+
+  const [loading, setLoading] = useState(false);
+  const [branches, setBranches] = useState([]);
 
   const [privacyModal, setPrivacyModal] = useState(false);
   const [branchModal, setBranchModal] = useState(false);
-  const [selectedBranch, setSelectedBranch] = useState(1);
+
+  const getBranches = async () => {
+    try {
+      setLoading(true);
+      const response = await HttpService.get("api/branches");
+      console.log(response.data.data);
+      setBranches(response.data.data);
+      setLoading(false);
+    } catch ({ err, response }) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (branchModal) {
+      getBranches();
+    }
+  }, [branchModal]);
 
   return (
     <div className="queue">
@@ -108,31 +134,40 @@ const Queue = () => {
         <div className="queue-privacy-title bold">انتخاب شعبه</div>
         {/* branches */}
         <div className="queue-branches">
-          <div
-            onClick={() => setSelectedBranch(1)}
-            className={selectedBranch == 1 ? "queue-branch-selected" : null}
-          >
-            <div>{selectedBranch == 1 && <div></div>}</div>
-            <div>
-              <div className="bold">شعبه تهران</div>
-              <div>تهران / یوسف آباد</div>
-            </div>
-          </div>
-          <div
-            onClick={() => setSelectedBranch(2)}
-            className={selectedBranch == 2 ? "queue-branch-selected" : null}
-          >
-            <div>{selectedBranch == 2 && <div></div>}</div>
-            <div>
-              <div className="bold">شعبه اهواز</div>
-              <div>اهواز / وفایی</div>
-            </div>
-          </div>
+          {loading ? (
+            <Spin style={{ margin: "10px auto" }} size="large" />
+          ) : (
+            branches.map((branch, index) => (
+              <div
+                key={index}
+                onClick={() => {
+                  dispatch(setSelectedBranch(branch.id));
+                }}
+                className={
+                  selectedBranch == branch.id ? "queue-branch-selected" : null
+                }
+              >
+                <div>{selectedBranch == branch.id && <div></div>}</div>
+                <div>
+                  <div className="bold">شعبه {branch.attributes.name}</div>
+                  <div>
+                    {branch.attributes.name} / {branch.attributes.title}
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
         {/* action */}
         <div className="queue-branches-action">
           <Button
-            onClick={() => history.push("/queue/create")}
+            onClick={() => {
+              if (!selectedBranch) {
+                message.warning("لطفا شعبه مورد نظر را انتخاب کنید");
+              } else {
+                history.push("/queue/create");
+              }
+            }}
             className="mv-button"
           >
             رزرو نوبت
