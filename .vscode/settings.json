@@ -80,6 +80,7 @@
         "add local reservation",
         "fix ui bugs",
         "add reserve system",
-        "add reserve factor"
+        "add reserve factor",
+        "fix ui bugs"
     ]
 }

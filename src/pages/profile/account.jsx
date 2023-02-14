@@ -35,7 +35,7 @@ const Account = () => {
       {/* tabs */}
       <div className="profile-account-body">
         {/* upload file */}
-        <div className="login-upload">
+        <div className="login-upload profile-account-upload">
           <div>
             {!file ? (
               <img src={loginNoImage} alt="no file" />
@@ -118,7 +118,7 @@ const Account = () => {
           </div>
         </div>
         {/* birthday */}
-        <div className="account-form-field account-full-input">
+        <div className="account-form-field account-full-input account-picker">
           <div>تاریخ تولد</div>
           <DatePicker
             value={date}
@@ -131,7 +131,7 @@ const Account = () => {
           />
         </div>
         {/* engagement date */}
-        <div className="account-form-field account-full-input">
+        <div className="account-form-field account-full-input account-picker">
           <div>تاریخ ازدواج</div>
           <DatePicker
             value={engage}

@@ -55,7 +55,14 @@
 .account-full-input > div:nth-child(2) > input {
   width: 100% !important;
 }
-
+.profile-account-upload > div {
+  background: #f7f7f7 !important;
+  border: 1px solid #e1e1e1 !important;
+}
+.account-picker > div > input {
+  background: #f7f7f7 !important;
+  border: 1px solid #e1e1e1 !important;
+}
 @media only screen and (max-width: 350px) {
   .account-form-field > div:nth-child(2) > input {
     width: 80% !important;
