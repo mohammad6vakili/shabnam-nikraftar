@@ -81,6 +81,7 @@
         "fix ui bugs",
         "add reserve system",
         "add reserve factor",
-        "fix ui bugs"
+        "fix ui bugs",
+        "add ios prompt"
     ]
 }

@@ -113,12 +113,14 @@
   border: none !important;
   border-radius: 30px !important;
   background: #222222 !important;
+  color: white;
 }
 .login-form-datepicker {
   width: 100% !important;
   border: none !important;
   border-radius: 30px !important;
   background: #222222 !important;
+  color: white !important;
 }
 .DatePicker {
   width: 100%;

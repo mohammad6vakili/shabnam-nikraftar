@@ -1,9 +1,10 @@
 import React, { useState, Fragment, useEffect } from "react";
 import "./login.css";
 import { Input, Checkbox, Button, message } from "antd";
+import moment from "jalali-moment";
 import FormatHelper from "../../helper/FormatHelper";
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
+import useUser from "../../hooks/useUser";
 import useAuth from "../../hooks/useAuth";
 import Countdown from "react-countdown";
 import { PinInput } from "react-input-pin-code";
@@ -14,6 +15,15 @@ import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 
 export default function Login() {
   const history = useHistory();
+  const {
+    file,
+    setFile,
+    updateUserProfile,
+    formData,
+    setFormData,
+    profileLoading,
+    setProfileLoading,
+  } = useUser();
   const {
     step,
     setStep,
@@ -33,7 +43,6 @@ export default function Login() {
   const [accepted, setAccepted] = useState(false);
   const [isKeyboard, setIsKeyboard] = useState(false);
   const [inp, setInp] = useState(null);
-  const [file, setFile] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [showImage, setShowImage] = useState(true);
   const [date, setDate] = useState(null);
@@ -88,6 +97,18 @@ export default function Login() {
       getJwtToken();
     }
   }, [code]);
+
+  useEffect(() => {
+    if (date) {
+      let newDate = date.year + "-" + date.month + "-" + date.day;
+      setFormData({
+        ...formData,
+        birthday_at: moment
+          .from(newDate, "fa", "YYYY-MM-DD")
+          .format("YYYY-MM-DD"),
+      });
+    }
+  }, [date]);
 
   return (
     <div className="login">
@@ -222,12 +243,24 @@ export default function Login() {
             {/* name */}
             <div className="login-form-field">
               <span>نام</span>
-              <Input className="mv-input" />
+              <Input
+                value={formData.first_name}
+                onChange={(e) =>
+                  setFormData({ ...formData, first_name: e.target.value })
+                }
+                className="mv-input"
+              />
             </div>
             {/* family */}
             <div className="login-form-field">
               <span>نام خانوادگی</span>
-              <Input className="mv-input" />
+              <Input
+                value={formData.last_name}
+                onChange={(e) =>
+                  setFormData({ ...formData, last_name: e.target.value })
+                }
+                className="mv-input"
+              />
             </div>
             {/* birthday */}
             <div className="login-form-field">
@@ -245,7 +278,8 @@ export default function Login() {
             {/* actions */}
             <div className="login-form-actions">
               <Button
-                onClick={() => history.push("/home")}
+                loading={profileLoading}
+                onClick={updateUserProfile}
                 className="mv-button"
               >
                 ثبت نام و ورود
