@@ -32,9 +32,10 @@ const PostPreview = () => {
 
   const postPreview = useSelector((state) => state.app.postPreview);
 
+  console.log("postPreview ===> ", postPreview)
   return (
     <div className={`post-preview ${postPreview ? "post-preview-open" : ""}`}>
-      <div className="post-preview-body">
+      <div className="post-preview-body" style={{backgroundImage:`url(${postPreview.url})`}}>
         {/* back button */}
         <div
           onClick={() => dispatch(setPostPreview(false))}
