@@ -33,7 +33,7 @@ const Collaborate = () => {
         {/* name */}
         <div className="collaborate-form-field">
           <div>نام و نام خانوادگی</div>
-          <Input placeholder="شبنم نیکرفتار" className="mv-input" />
+          <Input placeholder="شبنم نیک رفتار" className="mv-input" />
         </div>
         {/* mobile */}
         <div className="collaborate-form-field">

@@ -137,7 +137,7 @@ export default function Login() {
               >
                 <a href="#">قوانین و مقررات</a>{" "}
                 <span style={{ color: "#E1E1E1" }}>
-                  پلتفرم شبنم نیکرفتار را می پذیرم.
+                  پلتفرم شبنم نیک رفتار را می پذیرم.
                 </span>
               </Checkbox>
             </div>
@@ -285,7 +285,10 @@ export default function Login() {
                 ثبت نام و ورود
               </Button>
               <Button
-                onClick={() => history.push("/home")}
+                onClick={() => {
+                  history.push("/home");
+                  message.success("تبریک! کیف پول شما ۵۰۰ هزار تومان شارژ شد.");
+                }}
                 className="mv-button-outline-white"
               >
                 بعدا

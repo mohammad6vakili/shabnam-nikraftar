@@ -393,11 +393,11 @@ const BuyCourse = () => {
                 </div>
                 <div>
                   <div style={{ color: "black" }}>پرداخت از طریق کیف پول</div>
-                  <div>موجودی کافی نیست</div>
+                  <div></div>
                 </div>
                 <div>
                   <span style={{ color: "#40b1d1", marginLeft: 3 }}>
-                    ۲۵,۰۰۰
+                    ۵۰۰،۰۰۰
                   </span>
                   <span>تومان</span>
                 </div>

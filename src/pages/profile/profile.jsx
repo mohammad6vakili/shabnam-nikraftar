@@ -28,7 +28,7 @@ const Profile = () => {
           <div>
             <img src={profileAvatar} alt="avatar" />
             <div>
-              <span className="bold">شبنم نیکرفتار</span>
+              <span className="bold">شبنم نیک رفتار</span>
               <span>۰۹۱۲۱۲۳۴۵۶۷</span>
             </div>
           </div>
@@ -85,7 +85,7 @@ const Profile = () => {
                 className="bold"
                 style={{ color: "#40B1D1", fontSize: 12, marginLeft: 3 }}
               >
-                ۲۵،۰۰۰
+                ۵۰۰،۰۰۰
               </span>
               ت
             </div>

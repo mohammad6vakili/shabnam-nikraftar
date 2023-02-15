@@ -35,7 +35,7 @@ const Wallet = () => {
             style={{ color: "#40B1D1", fontSize: 16, marginLeft: 5 }}
             className="bold"
           >
-            ۲۵،۰۰۰
+            ۵۰۰،۰۰۰
           </span>
           تومان
         </div>

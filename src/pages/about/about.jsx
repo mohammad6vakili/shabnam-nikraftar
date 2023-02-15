@@ -75,7 +75,7 @@ const About = () => {
               {/* title */}
               <div>
                 <span>درباره ی</span>{" "}
-                <span className="bold">شبنم نیکرفتار</span>
+                <span className="bold">شبنم نیک رفتار</span>
               </div>
             </div>
             <div>
@@ -170,7 +170,7 @@ const About = () => {
               <Fragment>
                 {/* title */}
                 <div className="blog-view-title" style={{ marginBottom: 8 }}>
-                  <div className="bold">معرفی شبنم نیکرفتار</div>
+                  <div className="bold">معرفی شبنم نیک رفتار</div>
                 </div>
                 {/* content */}
                 <div className="blog-view-content">
@@ -410,7 +410,7 @@ const About = () => {
                             </span>
                           </div>
                           <div>
-                            <div className="bold">مهسا امینی</div>
+                            <div className="bold">سارا احمدی</div>
                             <div>هنرجوی دوره اکستنشن مو و ابرو</div>
                           </div>
                         </div>

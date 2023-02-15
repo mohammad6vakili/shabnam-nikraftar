@@ -334,7 +334,7 @@ const ViewCourse = () => {
                             </span>
                           </div>
                           <div>
-                            <div className="bold">مهسا امینی</div>
+                            <div className="bold">سارا احمدی</div>
                             <div>هنرجوی دوره اکستنشن مو و ابرو</div>
                           </div>
                         </div>

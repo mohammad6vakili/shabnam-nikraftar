@@ -27,6 +27,25 @@ import productThree from "../assets/shop/product-3.svg";
 import lineImage from "../assets/lines/lineImage.svg";
 import scoresImage from "../assets/lines/scores.svg";
 
+import story1 from "../assets/content/baft1.jpg";
+import story2 from "../assets/content/baft2.jpg";
+import story3 from "../assets/content/baft3.jpg";
+import story4 from "../assets/content/baft4.jpg";
+import story5 from "../assets/content/baft5.jpg";
+import story6 from "../assets/content/baft6.jpg";
+import story7 from "../assets/content/baft7.jpg";
+import story8 from "../assets/content/baft8.jpg";
+import story9 from "../assets/content/baft9.jpg";
+import story10 from "../assets/content/baft10.jpg";
+import story11 from "../assets/content/baft11.jpg";
+
+import cover1 from "../assets/content/cover1.png";
+import cover2 from "../assets/content/cover2.png";
+import cover3 from "../assets/content/cover3.png";
+import cover4 from "../assets/content/cover4.png";
+import cover5 from "../assets/content/cover5.png";
+import cover6 from "../assets/content/cover6.png";
+
 export const menuItems = [
   {
     icon: beautyLineIcon,
@@ -164,7 +183,7 @@ export const articles = [
 export const postComments = [
   {
     id: 1,
-    user: "مهسا امینی",
+    user: "سارا احمدی",
     content:
       "ممنون از این مجموعه برای خدمات عالی و کیفیت کاری بسیار بالای آنها.",
     liked: false,
@@ -172,20 +191,20 @@ export const postComments = [
   },
   {
     id: 2,
-    user: "مهسا امینی",
+    user: "سارا احمدی",
     content:
       "ممنون از این مجموعه برای خدمات عالی و کیفیت کاری بسیار بالای آنها.",
     liked: true,
     replies: [
       {
-        user: "شبنم نیکرفتار",
+        user: "شبنم نیک رفتار",
         content: "خیلی ممنون از شما و انتخاب شما",
       },
     ],
   },
   {
     id: 3,
-    user: "مهسا امینی",
+    user: "سارا احمدی",
     content:
       "ممنون از این مجموعه برای خدمات عالی و کیفیت کاری بسیار بالای آنها.",
     liked: false,
@@ -193,7 +212,7 @@ export const postComments = [
   },
   {
     id: 4,
-    user: "مهسا امینی",
+    user: "سارا احمدی",
     content:
       "ممنون از این مجموعه برای خدمات عالی و کیفیت کاری بسیار بالای آنها.",
     liked: false,
@@ -201,24 +220,24 @@ export const postComments = [
   },
   {
     id: 5,
-    user: "مهسا امینی",
+    user: "سارا احمدی",
     content:
       "ممنون از این مجموعه برای خدمات عالی و کیفیت کاری بسیار بالای آنها.",
     liked: false,
     replies: [
       {
-        user: "شبنم نیکرفتار",
+        user: "شبنم نیک رفتار",
         content: "خیلی ممنون از شما و انتخاب شما",
       },
       {
-        user: "شبنم نیکرفتار",
+        user: "شبنم نیک رفتار",
         content: "خیلی ممنون از شما و انتخاب شما",
       },
     ],
   },
   {
     id: 6,
-    user: "مهسا امینی",
+    user: "سارا احمدی",
     content:
       "ممنون از این مجموعه برای خدمات عالی و کیفیت کاری بسیار بالای آنها.",
     liked: false,
@@ -368,21 +387,21 @@ export const addresses = [
     id: 1,
     title: "تهران / خیابان انقلاب / کوی دانشجو / بهار ۲۰ / پلاک ۱۶۵",
     code: 12345678,
-    reciever: "شبنم نیکرفتار",
+    reciever: "شبنم نیک رفتار",
     mobile: "09390624049",
   },
   {
     id: 2,
     title: "تهران / خیابان انقلاب / کوی دانشجو / بهار ۲۰ / پلاک ۱۶۵",
     code: 12345678,
-    reciever: "شبنم نیکرفتار",
+    reciever: "شبنم نیک رفتار",
     mobile: "09390624049",
   },
   {
     id: 3,
     title: "تهران / خیابان انقلاب / کوی دانشجو / بهار ۲۰ / پلاک ۱۶۵",
     code: 12345678,
-    reciever: "شبنم نیکرفتار",
+    reciever: "شبنم نیک رفتار",
     mobile: "09390624049",
   },
 ];
@@ -741,5 +760,96 @@ export const questions = [
     question: "به چه صورت کیفت کاری خود را ضمانت می‌کنید؟",
     answer:
       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.",
+  },
+];
+
+export const stories = [
+  {
+    id: 1,
+    image: story1,
+    title: "بافت مو ۱",
+  },
+  {
+    id: 2,
+    image: story2,
+    title: "بافت مو ۲",
+  },
+  {
+    id: 3,
+    image: story3,
+    title: "بافت مو ۳",
+  },
+  {
+    id: 4,
+    image: story4,
+    title: "بافت مو ۴",
+  },
+  {
+    id: 5,
+    image: story5,
+    title: "بافت مو ۵",
+  },
+  {
+    id: 6,
+    image: story6,
+    title: "بافت مو ۶",
+  },
+  {
+    id: 7,
+    image: story7,
+    title: "بافت مو ۷",
+  },
+  {
+    id: 8,
+    image: story8,
+    title: "بافت مو ۸",
+  },
+  {
+    id: 9,
+    image: story9,
+    title: "بافت مو ۹",
+  },
+  {
+    id: 10,
+    image: story10,
+    title: "بافت مو ۱۰",
+  },
+  {
+    id: 12,
+    image: story11,
+    title: "بافت مو ۱۱",
+  },
+];
+
+export const posts = [
+  {
+    id: 1,
+    doc: cover1,
+    cover: cover1,
+  },
+  {
+    id: 2,
+    doc: cover2,
+    cover: cover2,
+  },
+  {
+    id: 3,
+    doc: cover3,
+    cover: cover3,
+  },
+  {
+    id: 4,
+    doc: cover4,
+    cover: cover4,
+  },
+  {
+    id: 5,
+    doc: cover5,
+    cover: cover5,
+  },
+  {
+    id: 6,
+    doc: cover6,
+    cover: cover6,
   },
 ];

@@ -41,7 +41,7 @@ const BlogView = () => {
       </div>
       {/* subtitle */}
       <div className="blog-view-subtitle">
-        <div>نویسنده: شبنم نیکرفتار</div>
+        <div>نویسنده: شبنم نیک رفتار</div>
         <div></div>
         <div>۱۵۰ بازدید</div>
       </div>

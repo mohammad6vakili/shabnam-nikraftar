@@ -8,12 +8,11 @@ import PostPreview from "../../components/post_preview";
 import StoryPreview from "../../components/story_preview";
 import { useDispatch } from "react-redux";
 import { setStoryPreview } from "../../features/app/app_slice";
-import { categories, articles } from "../../utils/util";
+import { categories, articles, stories, posts } from "../../utils/util";
 import Banner from "../../assets/images/headerBanner.svg";
 import coursesModelOne from "../../assets/images/coursesModelOne.svg";
 import coursesModelTwo from "../../assets/images/courseModelTwo.svg";
 import coursesModelThree from "../../assets/images/coursesModelThree.svg";
-import homeMainCarouselIMage from "../../assets/images/homeMainCarouselIMage.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import { ApiInterface } from "../../api/usePostService";
@@ -31,8 +30,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   const array = [1, 1, 1, 1, 1, 1, 1, 1];
-  // let postArray = [1, 1, 1, 1, 1, 1, 1, 1];
-  // const [postArray, setPostArray] = React.useState([]);
 
   const fetchDataHandler = async () => {
     try {
@@ -117,7 +114,7 @@ export default function Home() {
             autoplay={true}
             slidesPerView={5}
           >
-            {storyArray.map((item, index) => (
+            {stories.map((item, index) => (
               <SwiperSlide key={index}>
                 <div
                   onClick={() => dispatch(setStoryPreview(true))}
@@ -125,21 +122,21 @@ export default function Home() {
                   href={"#"}
                   target="_blank"
                 >
-                  {item.attributes &&
-                  item.attributes.images &&
-                  item.attributes.images.length ? (
-                    <img
-                      src={baseImageUrl + item.attributes.images[0].url}
-                      alt="slider image"
-                    />
-                  ) : (
-                    <img src={homeMainCarouselIMage} alt="slider image" />
-                  )}
+                  <img
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "44px 44px 16px 0",
+                    }}
+                    src={item.image}
+                    alt="slider image"
+                  />
                 </div>
                 <div
                   style={{ fontSize: 10, marginTop: 8, textAlign: "center" }}
                 >
-                  {item.attributes.title}
+                  {item.title}
                 </div>
               </SwiperSlide>
             ))}
@@ -164,7 +161,7 @@ export default function Home() {
         </div>
       </div>
       <div className="home-posts">
-        {postArray.map((post, index) => (
+        {posts.map((post, index) => (
           <Post index={index} post={post} />
         ))}
       </div>
@@ -214,7 +211,7 @@ export default function Home() {
       </div>
       {/* posts */}
       <div className="home-posts">
-        {postArray.map((post, index) => (
+        {posts.map((post, index) => (
           <Post index={index} post={post} />
         ))}
       </div>
@@ -239,7 +236,7 @@ export default function Home() {
       </div>
       {/* posts */}
       <div className="home-posts">
-        {postArray.map((post, index) => (
+        {posts.map((post, index) => (
           <Post index={index} post={post} />
         ))}
       </div>
@@ -279,7 +276,7 @@ export default function Home() {
       </div>
       {/* posts */}
       <div className="home-posts">
-        {postArray.map((post, index) => (
+        {posts.map((post, index) => (
           <Post index={index} post={post} />
         ))}
       </div>

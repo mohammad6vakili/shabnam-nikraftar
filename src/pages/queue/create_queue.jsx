@@ -40,7 +40,6 @@ const CreateQueue = () => {
   const [selectedLineName, setSelectedLineName] = useState("");
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [radioSelected, setRadioSelected] = useState(false);
   const [amount, setAmount] = useState(0);
   const [name, setName] = useState("");
   const [family, setFamily] = useState("");
@@ -98,7 +97,7 @@ const CreateQueue = () => {
       const response = await HttpService.post("api/reservation", {
         total_price: amount,
         reservation_time_id: selectedTime,
-        for_owner: radioSelected === true ? "1" : "0",
+        for_owner: "0",
         name: name,
         lastname: family,
         mobile: mobile,
@@ -122,11 +121,11 @@ const CreateQueue = () => {
       message.warning("لطفا تاریخ مورد نظر را انتخاب کنید");
     } else if (selectedTime === null) {
       message.warning("لطفا زمان مورد نظر را انتخاب کنید");
-    } else if (!radioSelected && name.length === 0) {
+    } else if (name.length === 0) {
       message.warning("لطفا نام خود را وارد کنید");
-    } else if (!radioSelected && family.length === 0) {
+    } else if (family.length === 0) {
       message.warning("لطفا نام خانوادگی را وارد کنید");
-    } else if (!radioSelected && mobile.length === 0) {
+    } else if (mobile.length === 0) {
       message.warning("لطفا شماره موبایل خود را وارد کنید");
     } else {
       submitReserve();
@@ -164,14 +163,6 @@ const CreateQueue = () => {
     setSelectedDay(null);
     setSelectedTime(null);
   }, [selectedSubType]);
-
-  useEffect(() => {
-    if (radioSelected) {
-      setName("");
-      setFamily("");
-      setMobile("");
-    }
-  }, [radioSelected]);
 
   useEffect(() => {
     beautyLines.map((li) => {
@@ -400,49 +391,34 @@ const CreateQueue = () => {
                   background: "#F7F7F7",
                 }}
               ></div>
-              {/* checkbox myself */}
-              <div
-                onClick={() => setRadioSelected(!radioSelected)}
-                id="queue-create-form-field-checkbox"
-                className={`profile-addresses-add-form-radio ${
-                  radioSelected ? "mv-radio-selected" : ""
-                }`}
-              >
-                <div>{radioSelected && <div></div>}</div>
-                <div>گیرنده خدمات خودمم</div>
+              {/* name */}
+              <div className="queue-create-form-field">
+                <div>نام زیباجو</div>
+                <Input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="mv-input"
+                />
               </div>
-              {!radioSelected && (
-                <>
-                  {/* name */}
-                  <div className="queue-create-form-field">
-                    <div>نام زیباجو</div>
-                    <Input
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="mv-input"
-                    />
-                  </div>
-                  {/* family */}
-                  <div className="queue-create-form-field">
-                    <div>نام خانوادگی زیباجو</div>
-                    <Input
-                      value={family}
-                      onChange={(e) => setFamily(e.target.value)}
-                      className="mv-input"
-                    />
-                  </div>
-                  {/* mobile */}
-                  <div className="queue-create-form-field">
-                    <div>شماره موبایل</div>
-                    <Input
-                      value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
-                      inputMode="tel"
-                      className="mv-input"
-                    />
-                  </div>
-                </>
-              )}
+              {/* family */}
+              <div className="queue-create-form-field">
+                <div>نام خانوادگی زیباجو</div>
+                <Input
+                  value={family}
+                  onChange={(e) => setFamily(e.target.value)}
+                  className="mv-input"
+                />
+              </div>
+              {/* mobile */}
+              <div className="queue-create-form-field">
+                <div>شماره موبایل</div>
+                <Input
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  inputMode="tel"
+                  className="mv-input"
+                />
+              </div>
               {/* action area */}
               <div className="queue-create-action-area">
                 <Button
@@ -674,7 +650,7 @@ const CreateQueue = () => {
                 <div>موجودی کافی نیست</div>
               </div>
               <div>
-                <span style={{ color: "#40b1d1", marginLeft: 3 }}>۰</span>
+                <span style={{ color: "#40b1d1", marginLeft: 3 }}>۵۰۰،۰۰۰</span>
                 <span>تومان</span>
               </div>
             </div>
